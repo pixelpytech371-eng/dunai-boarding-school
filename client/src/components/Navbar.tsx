@@ -17,7 +17,7 @@ export const NAV_LINKS: { label: string; page: Page; icon: React.ReactNode }[] =
   { label: "Notices",      page: "notices",      icon: <Bell size={16} /> },
   { label: "Achievements", page: "achievements", icon: <Award size={16} /> },
   { label: "Admission",    page: "admission",    icon: <FileText size={16} /> },
-  { label: "Contact",      page: "contact",      icon: <Phone size={16} /> },
+  // { label: "Contact",      page: "contact",      icon: <Phone size={16} /> },
 ];
 
 interface NavbarProps {

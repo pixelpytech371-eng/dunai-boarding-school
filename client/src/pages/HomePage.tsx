@@ -38,168 +38,176 @@ export default function HomePage({ setPage, notices, achievements, blogs }: Home
   return (
     <div className="overflow-x-hidden">
       {/* ═══════════════════ HERO SECTION ═══════════════════ */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Background layers */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-950" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-600/20 via-transparent to-transparent" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-indigo-600/20 via-transparent to-transparent" />
-        
-        {/* Animated grid pattern */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}
-        />
+      {/* ═══════════════════ HERO SECTION - FULL WIDTH IMAGE ═══════════════════ */}
+<section className="relative min-h-screen flex items-center overflow-hidden">
+  {/* Full width background image */}
+  <div className="absolute inset-0">
+    <img
+      src="https://images.unsplash.com/photo-1523050854058-8df90910e77f?w=1920&q=80"
+      alt="School building"
+      className="w-full h-full object-cover"
+    />
+    {/* Dark gradient overlay for text readability */}
+    <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/80 to-slate-900/60" />
+    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-slate-900/30" />
+  </div>
 
-        {/* Floating orbs for depth */}
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+  {/* Subtle pattern overlay */}
+  <div
+    className="absolute inset-0 opacity-[0.03]"
+    style={{
+      backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+    }}
+  />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left Content */}
-            <div className="space-y-6" style={{ animation: "heroSlideUp 0.8s ease both" }}>
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-blue-200 text-xs sm:text-sm font-semibold">
-                <Sparkles size={14} className="text-yellow-400" />
-                <span>Est. 2045 B.S.</span>
-                <span className="w-1 h-1 rounded-full bg-blue-400" />
-                <span>Kathmandu, Nepal</span>
-              </div>
+  {/* Floating orbs for subtle depth */}
+  <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
+  <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl" />
 
-              {/* Main Heading */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-[1.1] tracking-tight">
-                Shree{" "}
-                <span className="relative inline-block">
-                  <span className="relative z-10 bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-300 bg-clip-text text-transparent">
-                    Janapriya
-                  </span>
-                  {/* Underline decoration */}
-                  <svg
-                    className="absolute -bottom-2 left-0 w-full h-3 text-blue-400/40"
-                    viewBox="0 0 100 12"
-                    preserveAspectRatio="none"
-                  >
-                    <path
-                      d="M0,6 Q25,0 50,6 Q75,12 100,6"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="3"
-                    />
-                  </svg>
-                </span>
-                <br />
-                <span className="text-blue-300">Secondary School</span>
-              </h1>
+  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 w-full">
+    <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      {/* Left Content */}
+      <div className="space-y-6" style={{ animation: "heroSlideUp 0.8s ease both" }}>
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-blue-200 text-xs sm:text-sm font-semibold">
+          <Sparkles size={14} className="text-yellow-400 animate-pulse" />
+          <span>Est. 2045 B.S.</span>
+          <span className="w-1 h-1 rounded-full bg-blue-400" />
+          <span>Dunai, Nepal</span>
+        </div>
 
-              {/* Description */}
-              <p className="text-lg sm:text-xl text-blue-100/90 leading-relaxed max-w-lg">
-                Nurturing young minds with quality education, strong moral values, 
-                and a passion for lifelong learning — shaping Nepal's future leaders 
-                since 2045 B.S.
-              </p>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-wrap gap-4 pt-2">
-                <button
-                  onClick={() => go("admission")}
-                  className="group relative inline-flex items-center gap-2 px-6 sm:px-8 py-3.5 bg-white text-blue-900 font-bold rounded-2xl hover:bg-blue-50 transition-all duration-300 shadow-2xl shadow-blue-500/25 hover:shadow-blue-500/40 hover:-translate-y-0.5 text-sm sm:text-base overflow-hidden"
-                >
-                  <span className="relative z-10 flex items-center gap-2">
-                    <FileText size={18} />
-                    Apply for Admission
-                  </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-indigo-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </button>
-                <button
-                  onClick={() => go("about")}
-                  className="group inline-flex items-center gap-2 px-6 sm:px-8 py-3.5 border-2 border-white/30 text-white font-semibold rounded-2xl hover:bg-white/10 hover:border-white/50 transition-all duration-300 text-sm sm:text-base hover:-translate-y-0.5"
-                >
-                  <Play size={18} />
-                  Discover More
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                </button>
-              </div>
-
-              {/* Trust indicators */}
-              <div className="flex flex-wrap items-center gap-6 pt-4 text-sm text-blue-200/70">
-                <div className="flex items-center gap-2">
-                  <Shield size={16} className="text-green-400" />
-                  <span>CDC Nepal Affiliated</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Trophy size={16} className="text-yellow-400" />
-                  <span>37+ Years of Excellence</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Image Card */}
-            <div
-              className="relative lg:ml-auto"
-              style={{ animation: "heroSlideUp 0.8s ease 0.2s both" }}
+        {/* Main Heading */}
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-[1.1] tracking-tight">
+          Dunai{" "}
+          <span className="relative inline-block">
+            <span className="relative z-10 bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-300 bg-clip-text text-transparent">
+              Boarding
+            </span>
+            {/* Underline decoration */}
+            <svg
+              className="absolute -bottom-2 left-0 w-full h-3 text-blue-400/40"
+              viewBox="0 0 100 12"
+              preserveAspectRatio="none"
             >
-              <div className="relative">
-                {/* Decorative background */}
-                <div className="absolute -inset-4 lg:-inset-6 bg-gradient-to-br from-blue-400/20 to-indigo-500/20 rounded-[2rem] blur-xl" />
-                <div className="absolute -inset-2 lg:-inset-3 bg-gradient-to-br from-white/10 to-white/5 rounded-[1.5rem] border border-white/20" />
+              <path
+                d="M0,6 Q25,0 50,6 Q75,12 100,6"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="3"
+              />
+            </svg>
+          </span>
+          <br />
+          <span className="text-blue-300">School</span>
+        </h1>
 
-                {/* Main image */}
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                  <img
-                    src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80"
-                    alt="Students at Shree Janapriya"
-                    className="w-full max-w-lg object-cover"
-                    style={{ aspectRatio: "4/3" }}
-                    loading="lazy"
-                  />
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent" />
-                </div>
+        {/* Description */}
+        <p className="text-lg sm:text-xl text-blue-100/90 leading-relaxed max-w-lg">
+          Nurturing young minds with quality education, strong moral values, 
+          and a passion for lifelong learning — shaping Nepal's future leaders 
+          since 2045 B.S.
+        </p>
 
-                {/* Floating stats cards */}
-                <div className="absolute -bottom-6 -left-6 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-4 border border-gray-100 flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center">
-                    <Check size={18} className="text-green-600" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-gray-500 font-medium">Admission Open</p>
-                    <p className="text-sm font-bold text-gray-800">Session 2082 B.S.</p>
-                  </div>
-                </div>
+        {/* CTA Buttons */}
+        <div className="flex flex-wrap gap-4 pt-2">
+          <button
+            onClick={() => go("admission")}
+            className="group relative inline-flex items-center gap-2 px-6 sm:px-8 py-3.5 bg-white text-blue-900 font-bold rounded-2xl hover:bg-blue-50 transition-all duration-300 shadow-2xl shadow-blue-500/25 hover:shadow-blue-500/40 hover:-translate-y-0.5 text-sm sm:text-base overflow-hidden"
+          >
+            <span className="relative z-10 flex items-center gap-2">
+              <FileText size={18} />
+              Apply for Admission
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-indigo-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </button>
+          <button
+            onClick={() => go("about")}
+            className="group inline-flex items-center gap-2 px-6 sm:px-8 py-3.5 border-2 border-white/30 text-white font-semibold rounded-2xl hover:bg-white/10 hover:border-white/50 transition-all duration-300 text-sm sm:text-base hover:-translate-y-0.5"
+          >
+            <Play size={18} />
+            Discover More
+            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+          </button>
+        </div>
 
-                <div className="absolute -top-6 -right-6 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-4 border border-gray-100">
-                  <div className="flex items-center gap-2">
-                    <div className="flex -space-x-2">
-                      {[1, 2, 3, 4].map((i) => (
-                        <div
-                          key={i}
-                          className="w-8 h-8 rounded-full border-2 border-white bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center text-white text-xs font-bold"
-                        >
-                          {String.fromCharCode(64 + i)}
-                        </div>
-                      ))}
-                    </div>
-                    <div>
-                      <p className="text-xs font-bold text-gray-800">1,200+</p>
-                      <p className="text-[10px] text-gray-500">Happy Students</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+        {/* Trust indicators */}
+        <div className="flex flex-wrap items-center gap-6 pt-4 text-sm text-blue-200/70">
+          <div className="flex items-center gap-2">
+            <Shield size={16} className="text-green-400" />
+            <span>CDC Nepal Affiliated</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Trophy size={16} className="text-yellow-400" />
+            <span>37+ Years of Excellence</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Right: Feature Cards */}
+      <div
+        className="relative lg:ml-auto hidden lg:block"
+        style={{ animation: "heroSlideUp 0.8s ease 0.2s both" }}
+      >
+        <div className="grid grid-cols-2 gap-4">
+          {/* Feature Card 1 */}
+          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 hover:bg-white/15 transition-all duration-300 hover:-translate-y-1">
+            <div className="w-10 h-10 rounded-xl bg-green-500/20 flex items-center justify-center mb-3">
+              <GraduationCap size={20} className="text-green-400" />
             </div>
+            <p className="text-white font-bold text-lg">Nursery – 8</p>
+            <p className="text-blue-200/70 text-xs mt-1">Grade Levels</p>
+          </div>
+
+          {/* Feature Card 2 */}
+          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 hover:bg-white/15 transition-all duration-300 hover:-translate-y-1">
+            <div className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center mb-3">
+              <Users size={20} className="text-blue-400" />
+            </div>
+            <p className="text-white font-bold text-lg">30:1</p>
+            <p className="text-blue-200/70 text-xs mt-1">Student-Teacher Ratio</p>
+          </div>
+
+          {/* Feature Card 3 */}
+          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 hover:bg-white/15 transition-all duration-300 hover:-translate-y-1">
+            <div className="w-10 h-10 rounded-xl bg-yellow-500/20 flex items-center justify-center mb-3">
+              <Star size={20} className="text-yellow-400" />
+            </div>
+            <p className="text-white font-bold text-lg">98%</p>
+            <p className="text-blue-200/70 text-xs mt-1">Pass Rate</p>
+          </div>
+
+          {/* Feature Card 4 */}
+          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 hover:bg-white/15 transition-all duration-300 hover:-translate-y-1">
+            <div className="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center mb-3">
+              <Award size={20} className="text-purple-400" />
+            </div>
+            <p className="text-white font-bold text-lg">200+</p>
+            <p className="text-blue-200/70 text-xs mt-1">Achievements</p>
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-blue-300/60">
-          <span className="text-xs font-medium tracking-wider uppercase">Scroll to explore</span>
-          <div className="w-5 h-8 rounded-full border-2 border-blue-300/40 flex justify-center pt-1.5">
-            <div className="w-1 h-2 rounded-full bg-blue-300/60 animate-bounce" />
+        {/* Admission badge */}
+        <div className="mt-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-green-500/30 flex items-center justify-center animate-pulse">
+            <Check size={20} className="text-green-400" />
+          </div>
+          <div>
+            <p className="text-white font-bold text-sm">Admissions Open</p>
+            <p className="text-blue-200/70 text-xs">Session 2082 B.S. — Limited Seats!</p>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+
+  {/* Scroll indicator */}
+  <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-blue-300/60 z-10">
+    <span className="text-xs font-medium tracking-wider uppercase">Scroll to explore</span>
+    <div className="w-5 h-8 rounded-full border-2 border-blue-300/40 flex justify-center pt-1.5">
+      <div className="w-1 h-2 rounded-full bg-blue-300/60 animate-bounce" />
+    </div>
+  </div>
+</section>
 
       {/* ═══════════════════ STATS BAR ═══════════════════ */}
       <section className="relative bg-white -mt-1">
