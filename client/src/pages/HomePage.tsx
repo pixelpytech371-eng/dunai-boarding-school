@@ -8,6 +8,8 @@ import FadeIn from "../components/ui/FadeIn";
 import Badge from "../components/ui/Badge";
 import HomeBlogSection from "../components/Homeblogsection";
 import type { Notice, Achievement, BlogPost, Page } from "../types";
+import HeroImage from "../assets/images/hero.jpg";
+import PrincipalImage from "../assets/images/Lokendra.jpg";
 
 interface HomePageProps {
   setPage: (p: Page) => void;
@@ -37,13 +39,11 @@ export default function HomePage({ setPage, notices, achievements, blogs }: Home
 
   return (
     <div className="overflow-x-hidden">
-      {/* ═══════════════════ HERO SECTION ═══════════════════ */}
-      {/* ═══════════════════ HERO SECTION - FULL WIDTH IMAGE ═══════════════════ */}
 <section className="relative min-h-screen flex items-center overflow-hidden">
   {/* Full width background image */}
   <div className="absolute inset-0">
     <img
-      src="https://images.unsplash.com/photo-1523050854058-8df90910e77f?w=1920&q=80"
+      src={HeroImage}
       alt="School building"
       className="w-full h-full object-cover"
     />
@@ -209,7 +209,6 @@ export default function HomePage({ setPage, notices, achievements, blogs }: Home
   </div>
 </section>
 
-      {/* ═══════════════════ STATS BAR ═══════════════════ */}
       <section className="relative bg-white -mt-1">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
@@ -255,7 +254,7 @@ export default function HomePage({ setPage, notices, achievements, blogs }: Home
                     <div className="relative">
                       <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full border-4 border-white/30 shadow-2xl overflow-hidden mx-auto mb-6 ring-4 ring-white/10">
                         <img
-                          src="https://i.pravatar.cc/300?img=68"
+                          src={PrincipalImage}
                           alt="Principal"
                           className="w-full h-full object-cover"
                         />
@@ -266,7 +265,7 @@ export default function HomePage({ setPage, notices, achievements, blogs }: Home
                         ))}
                       </div>
                       <h3 className="text-xl sm:text-2xl font-bold text-white mb-1">
-                        Dr. Mohan Prasad Acharya
+                        Lokendra Jaisi
                       </h3>
                       <p className="text-blue-200 text-sm font-medium">
                         Principal
@@ -293,20 +292,10 @@ export default function HomePage({ setPage, notices, achievements, blogs }: Home
                         Message from the Principal
                       </div>
                       <blockquote className="text-lg sm:text-xl text-gray-700 leading-relaxed italic font-medium">
-                        "At Shree Janapriya, we believe every child is a universe of 
-                        possibilities waiting to unfold. Our mission transcends textbooks 
-                        and examinations — we are committed to nurturing compassionate, 
-                        curious, and capable individuals who will not only succeed in 
-                        their careers but will also contribute meaningfully to our society 
-                        and nation."
+                        "Warm greetings and welcome to our official school website. I am Lokendra Jaisi the Principal. At our school, we are dedicated to providing a nurturing environment where academic excellence meets character development. This website is designed to keep you updated on our latest school events, academic calendars, and achievements. Thank you for visiting, and we look forward to working together for our students' bright future."
                       </blockquote>
                       <p className="text-gray-600 mt-4 leading-relaxed">
-                        For over three decades, our institution has stood as a beacon of 
-                        quality education in Kathmandu. We blend traditional values with 
-                        modern pedagogy, ensuring our students are rooted in Nepali culture 
-                        while being globally competitive. Our dedicated faculty, state-of-the-art 
-                        facilities, and vibrant learning environment create the perfect ecosystem 
-                        for your child to thrive.
+                        Hello and a very warm welcome to all parents, students, and visitors. I am deeply honored to serve as the Principal of this wonderful institution. Our mission goes beyond classroom learning; we aim to foster creativity, critical thinking, and strong values in every child. We believe that a strong partnership between school and home is the key to student success. Please explore our website to discover our academic programs, co-curricular activities, and recent updates. Thank you for your continued trust and support.
                       </p>
                       <div className="mt-6 flex flex-wrap gap-4">
                         <button
@@ -510,13 +499,13 @@ export default function HomePage({ setPage, notices, achievements, blogs }: Home
           <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-blue-200 text-sm font-semibold px-4 py-2 rounded-full mb-6">
               <GraduationCap size={16} />
-              Admissions Open for 2082 B.S.
+              Admissions Open for 2083 B.S.
             </div>
             
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-6 tracking-tight">
               Ready to Join the{" "}
               <span className="bg-gradient-to-r from-yellow-300 to-amber-300 bg-clip-text text-transparent">
-                Janapriya Family
+                DBS Family
               </span>
               ?
             </h2>
@@ -548,7 +537,7 @@ export default function HomePage({ setPage, notices, achievements, blogs }: Home
             <div className="mt-12 flex flex-wrap justify-center gap-6 text-sm text-blue-200/80">
               <span className="flex items-center gap-2">
                 <MapPin size={14} />
-                Janapriya Marg, Kathmandu-14
+                ThuliBheri Municiapility-3, Dunai, Dolpa, Nepal
               </span>
               <span className="flex items-center gap-2">
                 <PhoneCall size={14} />
@@ -556,7 +545,7 @@ export default function HomePage({ setPage, notices, achievements, blogs }: Home
               </span>
               <span className="flex items-center gap-2">
                 <Globe size={14} />
-                www.janapriya.edu.np
+                www.dbs.edu.np
               </span>
             </div>
           </div>

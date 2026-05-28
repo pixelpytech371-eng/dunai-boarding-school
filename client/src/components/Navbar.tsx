@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import { useScrollY } from "../hooks/useInView";
 import type { Page } from "../types";
+import SchoolLogo from "../assets/images/logo.png";
 
 export const NAV_LINKS: { label: string; page: Page; icon: React.ReactNode }[] = [
   { label: "Home",         page: "home",         icon: <Home size={16} /> },
@@ -44,20 +45,17 @@ export default function Navbar({ page, setPage, adminLoggedIn, setAdminLoggedIn 
         scrolled ? "bg-white shadow-md" : "bg-white/95 backdrop-blur"
       }`}
     >
-      {/* ── Desktop bar ── */}
       <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
         {/* Logo */}
         <button onClick={() => go("home")} className="flex items-center gap-2 group">
           <div className="w-9 h-9 rounded-full bg-linear-to-br from-blue-600 to-indigo-700 flex items-center justify-center shadow">
-            <GraduationCap size={20} className="text-white" />
+            <img src={SchoolLogo} alt="School Logo" className="w-full h-full object-cover" />
           </div>
           <div className="leading-tight text-left">
             <p className="text-sm font-bold text-gray-900 group-hover:text-blue-700 transition-colors">
-              Shree Janapriya
+              Dunai Boarding School
             </p>
-            <p className="text-[10px] text-gray-500 font-medium tracking-wide uppercase">
-              Secondary School
-            </p>
+            
           </div>
         </button>
 
