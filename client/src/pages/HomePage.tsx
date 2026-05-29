@@ -10,6 +10,15 @@ import HomeBlogSection from "../components/Homeblogsection";
 import type { Notice, Achievement, BlogPost, Page } from "../types";
 import HeroImage from "../assets/images/hero.jpg";
 import PrincipalImage from "../assets/images/Lokendra.jpg";
+import GalleryPage from "./GalleryPage";
+import {
+  SEED_NOTICES,
+  SEED_PHOTOS,
+  SEED_ACHIEVEMENTS,
+  SEED_FACULTY,
+  SEED_INQUIRIES,
+  SEED_BLOGS
+} from "../data/seedData";
 
 interface HomePageProps {
   setPage: (p: Page) => void;
@@ -48,8 +57,8 @@ export default function HomePage({ setPage, notices, achievements, blogs }: Home
       className="w-full h-full object-cover"
     />
     {/* Dark gradient overlay for text readability */}
-    <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/80 to-slate-900/60" />
-    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-slate-900/30" />
+    <div className="absolute inset-0 bg-linear-to-r from-slate-900/80 via-slate-900/80 to-slate-900/60" />
+    <div className="absolute inset-0 bg-linear-to-t from-slate-900/50 via-transparent to-slate-900/30" />
   </div>
 
   {/* Subtle pattern overlay */}
@@ -80,7 +89,7 @@ export default function HomePage({ setPage, notices, achievements, blogs }: Home
         <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-[1.1] tracking-tight">
           Dunai{" "}
           <span className="relative inline-block">
-            <span className="relative z-10 bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-300 bg-clip-text text-transparent">
+            <span className="relative z-10 bg-linear-to-r from-blue-400 via-indigo-300 to-purple-300 bg-clip-text text-transparent">
               Boarding
             </span>
             {/* Underline decoration */}
@@ -214,9 +223,9 @@ export default function HomePage({ setPage, notices, achievements, blogs }: Home
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {STATS.map((s, i) => (
               <FadeIn key={i} delay={i * 0.1}>
-                <div className="group relative p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 hover:-translate-y-1">
+                <div className="group relative p-5 sm:p-6 rounded-2xl bg-linear-to-br from-gray-50 to-white border border-gray-100 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 hover:-translate-y-1">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-blue-500/25 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-12 h-12 rounded-xl bg-linear-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-blue-500/25 group-hover:scale-110 transition-transform duration-300">
                       {s.icon}
                     </div>
                     <div>
@@ -229,7 +238,7 @@ export default function HomePage({ setPage, notices, achievements, blogs }: Home
                     </div>
                   </div>
                   {/* Hover decoration */}
-                  <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-blue-50 to-transparent rounded-tr-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute top-0 right-0 w-20 h-20 bg-linear-to-bl from-blue-50 to-transparent rounded-tr-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
               </FadeIn>
             ))}
@@ -238,18 +247,18 @@ export default function HomePage({ setPage, notices, achievements, blogs }: Home
       </section>
 
       {/* ═══════════════════ PRINCIPAL'S MESSAGE ═══════════════════ */}
-      <section className="relative py-20 lg:py-28 overflow-hidden bg-gray-50">
+      <section className="relative py-20 lg:py-28 overflow-hidden bg-gray-50 w-screen">
         {/* Background decoration */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100/50 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-indigo-100/50 rounded-full blur-3xl" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative w-screen mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn>
-            <div className="max-w-5xl mx-auto">
-              <div className="bg-white rounded-[2.5rem] shadow-2xl shadow-gray-200/50 overflow-hidden">
+            <div className="max-w-screen  md:px-14 lg:px-28 mx-auto">
+              <div className="bg-white rounded-r-[2.5rem] shadow-2xl shadow-gray-200/50 overflow-hidden">
                 <div className="grid lg:grid-cols-5">
                   {/* Principal Photo Column */}
-                  <div className="lg:col-span-2 relative bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 p-8 sm:p-12 flex flex-col items-center justify-center text-center">
+                  <div className="lg:col-span-2 relative bg-linear-to-br from-blue-600 via-blue-700 to-indigo-800 p-8 sm:p-12 flex flex-col items-center justify-center text-center">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,_rgba(255,255,255,0.1)_0%,_transparent_70%)]" />
                     <div className="relative">
                       <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full border-4 border-white/30 shadow-2xl overflow-hidden mx-auto mb-6 ring-4 ring-white/10">
@@ -321,6 +330,10 @@ export default function HomePage({ setPage, notices, achievements, blogs }: Home
           </FadeIn>
         </div>
       </section>
+
+      <section>
+        <GalleryPage photos={SEED_PHOTOS}/>
+        </section>
 
       {/* ═══════════════════ QUICK LINKS ═══════════════════ */}
       <section className="py-20 lg:py-28 bg-white">

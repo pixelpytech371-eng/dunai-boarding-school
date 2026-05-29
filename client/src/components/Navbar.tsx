@@ -28,7 +28,7 @@ interface NavbarProps {
   setAdminLoggedIn: (v: boolean) => void;
 }
 
-export default function Navbar({ page, setPage, adminLoggedIn, setAdminLoggedIn }: NavbarProps) {
+export default function Navbar({ page, setPage, adminLoggedIn }: NavbarProps) {
   const [open, setOpen] = useState(false);
   const scrollY = useScrollY();
   const scrolled = scrollY > 10;
@@ -41,20 +41,20 @@ export default function Navbar({ page, setPage, adminLoggedIn, setAdminLoggedIn 
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed min-h-22 w-full items-center justify-center top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled ? "bg-white shadow-md" : "bg-white/95 backdrop-blur"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+      <div className="max-w-7xl mx-auto px-4 flex items-center justify-between min-h-22 ">
         {/* Logo */}
         <button onClick={() => go("home")} className="flex items-center gap-2 group">
           <div className="w-9 h-9 rounded-full bg-linear-to-br from-blue-600 to-indigo-700 flex items-center justify-center shadow">
             <img src={SchoolLogo} alt="School Logo" className="w-full h-full object-cover" />
           </div>
           <div className="leading-tight text-left">
-            <p className="text-sm font-bold text-gray-900 group-hover:text-blue-700 transition-colors">
-              Dunai Boarding School
-            </p>
+            <h1 className="text-lg font-bold text-gray-900 group-hover:text-blue-700 transition-colors">
+              <span className="text-blue-700 text-2xl underline font-extrabold">Dunai</span> Boarding School
+            </h1>
             
           </div>
         </button>
@@ -78,29 +78,9 @@ export default function Navbar({ page, setPage, adminLoggedIn, setAdminLoggedIn 
 
         {/* Auth buttons */}
         <div className="flex items-center gap-2">
-          {adminLoggedIn ? (
-            <>
-              <button
-                onClick={() => go("admin")}
-                className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-indigo-600 text-white text-sm rounded-lg font-medium hover:bg-indigo-700 transition-colors"
-              >
-                <Shield size={15} /> Admin
-              </button>
-              <button
-                onClick={() => { setAdminLoggedIn(false); go("home"); }}
-                className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-gray-100 text-gray-600 text-sm rounded-lg font-medium hover:bg-gray-200 transition-colors"
-              >
-                <LogOut size={15} /> Logout
-              </button>
-            </>
-          ) : (
-            <button
-              onClick={() => go("login")}
-              className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-blue-700 text-white text-sm rounded-lg font-medium hover:bg-blue-800 transition-colors"
-            >
-              <LogIn size={15} /> Admin Login
-            </button>
-          )}
+      
+         
+          
 
           {/* Hamburger */}
           <button

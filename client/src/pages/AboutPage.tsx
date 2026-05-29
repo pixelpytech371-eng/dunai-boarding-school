@@ -19,7 +19,7 @@ export default function AboutPage() {
           </div>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 tracking-tight">
             Our Story,{" "}
-            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
               Our Values
             </span>
           </h1>
