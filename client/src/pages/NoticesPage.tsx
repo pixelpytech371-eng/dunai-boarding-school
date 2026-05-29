@@ -6,7 +6,6 @@ import {
 } from "lucide-react";
 import type { Notice } from "../types";
 import FadeIn from "../components/ui/FadeIn";
-import Badge from "../components/ui/Badge";
 
 // Notice type configurations
 const noticeConfig: Record<string, { 

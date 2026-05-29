@@ -1,8 +1,8 @@
 import {
   FileText, ArrowRight, Check, Users, UserCheck, Star, Award,
-  Info, BookOpen, Bell, Calendar, Heart, Quote, Play,
+  Info, BookOpen, Bell, Calendar,  Quote, Play,
   ChevronRight, Sparkles, GraduationCap, MapPin, PhoneCall,
-  Globe, Shield, Zap, Trophy, School, Building2,
+  Globe, Shield, Zap, Trophy, 
 } from "lucide-react";
 import FadeIn from "../components/ui/FadeIn";
 import Badge from "../components/ui/Badge";
@@ -10,7 +10,9 @@ import HomeBlogSection from "../components/Homeblogsection";
 import type { Notice, Achievement, BlogPost, Page } from "../types";
 import HeroImage from "../assets/images/hero.jpg";
 import PrincipalImage from "../assets/images/Lokendra.jpg";
-import GalleryPage from "./GalleryPage";
+import HomeGalleryPreview from "../components/HomeGallaryPreview";
+import HomeAchievementsPreview from "../components/HomeAchievementsPreview";
+import type { Photo } from "../types";
 import {
   SEED_NOTICES,
   SEED_PHOTOS,
@@ -19,19 +21,22 @@ import {
   SEED_INQUIRIES,
   SEED_BLOGS
 } from "../data/seedData";
+import HomeNoticesPreview from "../components/HomeNoticesPreview";
+import HomeQuickLinks from "../components/HomeQuickLinks";
 
 interface HomePageProps {
   setPage: (p: Page) => void;
   notices: Notice[];
   achievements: Achievement[];
   blogs: BlogPost[];
+  photos: Photo[];
 }
 
 const STATS = [
-  { label: "Students", value: "1,200+", icon: <Users size={22} /> },
-  { label: "Teachers", value: "60+", icon: <UserCheck size={22} /> },
-  { label: "Years of Excellence", value: "37+", icon: <Star size={22} /> },
-  { label: "Achievements", value: "200+", icon: <Award size={22} /> },
+  { label: "Students", value: "300+", icon: <Users size={22} /> },
+  { label: "Teachers", value: "10+", icon: <UserCheck size={22} /> },
+  { label: "Years of Excellence", value: "30+", icon: <Star size={22} /> },
+  { label: "Achievements", value: "50+", icon: <Award size={22} /> },
 ];
 
 const QUICK_LINKS = [
@@ -43,7 +48,7 @@ const QUICK_LINKS = [
   { page: "admission" as Page, icon: <FileText size={20} />, title: "Admission", desc: "Inquire about joining Shree Janapriya.", color: "rose" },
 ];
 
-export default function HomePage({ setPage, notices, achievements, blogs }: HomePageProps) {
+export default function HomePage({ setPage, notices, achievements, blogs, photos }: HomePageProps) {
   const go = (p: Page) => { setPage(p); window.scrollTo(0, 0); };
 
   return (
@@ -62,12 +67,12 @@ export default function HomePage({ setPage, notices, achievements, blogs }: Home
   </div>
 
   {/* Subtle pattern overlay */}
-  <div
+  {/* <div
     className="absolute inset-0 opacity-[0.03]"
     style={{
       backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
     }}
-  />
+  /> */}
 
   {/* Floating orbs for subtle depth */}
   <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
@@ -80,7 +85,7 @@ export default function HomePage({ setPage, notices, achievements, blogs }: Home
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-blue-200 text-xs sm:text-sm font-semibold">
           <Sparkles size={14} className="text-yellow-400 animate-pulse" />
-          <span>Est. 2045 B.S.</span>
+          <span>Est. 2050 B.S.</span>
           <span className="w-1 h-1 rounded-full bg-blue-400" />
           <span>Dunai, Nepal</span>
         </div>
@@ -114,7 +119,7 @@ export default function HomePage({ setPage, notices, achievements, blogs }: Home
         <p className="text-lg sm:text-xl text-blue-100/90 leading-relaxed max-w-lg">
           Nurturing young minds with quality education, strong moral values, 
           and a passion for lifelong learning — shaping Nepal's future leaders 
-          since 2045 B.S.
+          since 2050 B.S.
         </p>
 
         {/* CTA Buttons */}
@@ -147,7 +152,7 @@ export default function HomePage({ setPage, notices, achievements, blogs }: Home
           </div>
           <div className="flex items-center gap-2">
             <Trophy size={16} className="text-yellow-400" />
-            <span>37+ Years of Excellence</span>
+            <span>30+ Years of Excellence</span>
           </div>
         </div>
       </div>
@@ -157,65 +162,18 @@ export default function HomePage({ setPage, notices, achievements, blogs }: Home
         className="relative lg:ml-auto hidden lg:block"
         style={{ animation: "heroSlideUp 0.8s ease 0.2s both" }}
       >
-        <div className="grid grid-cols-2 gap-4">
-          {/* Feature Card 1 */}
-          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 hover:bg-white/15 transition-all duration-300 hover:-translate-y-1">
-            <div className="w-10 h-10 rounded-xl bg-green-500/20 flex items-center justify-center mb-3">
-              <GraduationCap size={20} className="text-green-400" />
-            </div>
-            <p className="text-white font-bold text-lg">Nursery – 8</p>
-            <p className="text-blue-200/70 text-xs mt-1">Grade Levels</p>
-          </div>
-
-          {/* Feature Card 2 */}
-          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 hover:bg-white/15 transition-all duration-300 hover:-translate-y-1">
-            <div className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center mb-3">
-              <Users size={20} className="text-blue-400" />
-            </div>
-            <p className="text-white font-bold text-lg">30:1</p>
-            <p className="text-blue-200/70 text-xs mt-1">Student-Teacher Ratio</p>
-          </div>
-
-          {/* Feature Card 3 */}
-          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 hover:bg-white/15 transition-all duration-300 hover:-translate-y-1">
-            <div className="w-10 h-10 rounded-xl bg-yellow-500/20 flex items-center justify-center mb-3">
-              <Star size={20} className="text-yellow-400" />
-            </div>
-            <p className="text-white font-bold text-lg">98%</p>
-            <p className="text-blue-200/70 text-xs mt-1">Pass Rate</p>
-          </div>
-
-          {/* Feature Card 4 */}
-          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 hover:bg-white/15 transition-all duration-300 hover:-translate-y-1">
-            <div className="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center mb-3">
-              <Award size={20} className="text-purple-400" />
-            </div>
-            <p className="text-white font-bold text-lg">200+</p>
-            <p className="text-blue-200/70 text-xs mt-1">Achievements</p>
-          </div>
-        </div>
-
-        {/* Admission badge */}
-        <div className="mt-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-green-500/30 flex items-center justify-center animate-pulse">
-            <Check size={20} className="text-green-400" />
-          </div>
-          <div>
-            <p className="text-white font-bold text-sm">Admissions Open</p>
-            <p className="text-blue-200/70 text-xs">Session 2082 B.S. — Limited Seats!</p>
-          </div>
-        </div>
+       
       </div>
     </div>
   </div>
 
   {/* Scroll indicator */}
-  <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-blue-300/60 z-10">
+  {/* <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-blue-300/60 z-10">
     <span className="text-xs font-medium tracking-wider uppercase">Scroll to explore</span>
     <div className="w-5 h-8 rounded-full border-2 border-blue-300/40 flex justify-center pt-1.5">
       <div className="w-1 h-2 rounded-full bg-blue-300/60 animate-bounce" />
     </div>
-  </div>
+  </div> */}
 </section>
 
       <section className="relative bg-white -mt-1">
@@ -247,252 +205,138 @@ export default function HomePage({ setPage, notices, achievements, blogs }: Home
       </section>
 
       {/* ═══════════════════ PRINCIPAL'S MESSAGE ═══════════════════ */}
-      <section className="relative py-20 lg:py-28 overflow-hidden bg-gray-50 w-screen">
-        {/* Background decoration */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100/50 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-indigo-100/50 rounded-full blur-3xl" />
+{/* ═══════════════════ PRINCIPAL'S MESSAGE ═══════════════════ */}
+<section className="relative py-14 lg:py-20 overflow-hidden">
+  {/* Background */}
+  <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/50" />
+  
+  {/* Decorative blobs */}
+  <div className="absolute top-10 right-10 w-56 h-56 bg-blue-200/20 rounded-full blur-3xl" />
+  <div className="absolute bottom-10 left-10 w-56 h-56 bg-indigo-200/20 rounded-full blur-3xl" />
 
-        <div className="relative w-screen mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn>
-            <div className="max-w-screen  md:px-14 lg:px-28 mx-auto">
-              <div className="bg-white rounded-r-[2.5rem] shadow-2xl shadow-gray-200/50 overflow-hidden">
-                <div className="grid lg:grid-cols-5">
-                  {/* Principal Photo Column */}
-                  <div className="lg:col-span-2 relative bg-linear-to-br from-blue-600 via-blue-700 to-indigo-800 p-8 sm:p-12 flex flex-col items-center justify-center text-center">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,_rgba(255,255,255,0.1)_0%,_transparent_70%)]" />
-                    <div className="relative">
-                      <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full border-4 border-white/30 shadow-2xl overflow-hidden mx-auto mb-6 ring-4 ring-white/10">
-                        <img
-                          src={PrincipalImage}
-                          alt="Principal"
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div className="flex justify-center gap-1 mb-3">
-                        {[1, 2, 3, 4, 5].map((i) => (
-                          <Star key={i} size={14} className="text-yellow-400 fill-yellow-400" />
-                        ))}
-                      </div>
-                      <h3 className="text-xl sm:text-2xl font-bold text-white mb-1">
-                        Lokendra Jaisi
-                      </h3>
-                      <p className="text-blue-200 text-sm font-medium">
-                        Principal
-                      </p>
-                      <p className="text-blue-300/70 text-xs mt-1">
-                        M.Ed., Ph.D. in Educational Leadership
-                      </p>
-                      {/* Signature */}
-                      <div className="mt-6 pt-6 border-t border-white/20">
-                        <p className="text-blue-200/70 text-xs italic">
-                          "Education is the most powerful weapon<br />
-                          which you can use to change the world"
-                        </p>
-                        <p className="text-blue-200/50 text-[10px] mt-2">— Nelson Mandela</p>
-                      </div>
-                    </div>
-                  </div>
+  <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <FadeIn>
+      <div className="relative">
+        {/* Floating quote icon */}
+        <div className="absolute -top-5 left-6 sm:left-10 z-20">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-blue-500/25 rotate-3">
+            <Quote size={20} className="text-white" />
+          </div>
+        </div>
 
-                  {/* Message Column */}
-                  <div className="lg:col-span-3 p-8 sm:p-12 lg:p-14 flex flex-col justify-center">
-                    <div className="mb-6">
-                      <div className="inline-flex items-center gap-2 text-blue-600 font-semibold text-sm mb-3">
-                        <Quote size={16} />
-                        Message from the Principal
-                      </div>
-                      <blockquote className="text-lg sm:text-xl text-gray-700 leading-relaxed italic font-medium">
-                        "Warm greetings and welcome to our official school website. I am Lokendra Jaisi the Principal. At our school, we are dedicated to providing a nurturing environment where academic excellence meets character development. This website is designed to keep you updated on our latest school events, academic calendars, and achievements. Thank you for visiting, and we look forward to working together for our students' bright future."
-                      </blockquote>
-                      <p className="text-gray-600 mt-4 leading-relaxed">
-                        Hello and a very warm welcome to all parents, students, and visitors. I am deeply honored to serve as the Principal of this wonderful institution. Our mission goes beyond classroom learning; we aim to foster creativity, critical thinking, and strong values in every child. We believe that a strong partnership between school and home is the key to student success. Please explore our website to discover our academic programs, co-curricular activities, and recent updates. Thank you for your continued trust and support.
-                      </p>
-                      <div className="mt-6 flex flex-wrap gap-4">
-                        <button
-                          onClick={() => go("about")}
-                          className="inline-flex items-center gap-2 text-sm font-semibold text-blue-700 hover:text-blue-900 transition-colors group"
-                        >
-                          Read Our Full Story
-                          <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                        </button>
-                        <button
-                          onClick={() => go("admission")}
-                          className="inline-flex items-center gap-2 text-sm font-semibold text-green-700 hover:text-green-900 transition-colors group"
-                        >
-                          Start Admission Process
-                          <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                        </button>
-                      </div>
-                    </div>
+        <div className="bg-white rounded-[2rem] shadow-xl shadow-gray-200/30 border border-gray-100 overflow-hidden">
+          <div className="grid lg:grid-cols-12">
+            
+            {/* ═══ LEFT: PHOTO ═══ */}
+            <div className="lg:col-span-4 relative overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800">
+              {/* Pattern */}
+              <div 
+                className="absolute inset-0 opacity-[0.04]"
+                style={{
+                  backgroundImage: `radial-gradient(circle at 20% 30%, #ffffff 1px, transparent 1px), radial-gradient(circle at 80% 70%, #ffffff 1px, transparent 1px)`,
+                  backgroundSize: '40px 40px, 60px 60px',
+                }}
+              />
+
+              {/* Content - Centered */}
+              <div className="relative h-full flex flex-col items-center justify-center p-6 sm:p-8 text-center min-h-[280px] lg:min-h-full">
+                {/* Photo */}
+                <div className="relative mb-4">
+                  <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full border-[3px] border-white/30 shadow-xl overflow-hidden">
+                    <img
+                      src={PrincipalImage}
+                      alt="Principal Lokendra Jaisi"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
+                  {/* Status dot */}
+                  <div className="absolute bottom-1.5 right-1.5 w-3.5 h-3.5 bg-green-400 rounded-full border-2 border-white" />
                 </div>
+
+                {/* Info */}
+                <h3 className="text-lg sm:text-xl font-extrabold text-white mb-0.5">
+                  Lokendra Jaisi
+                </h3>
+                <p className="text-blue-200 text-xs font-semibold">
+                  Principal
+                </p>
               </div>
             </div>
-          </FadeIn>
-        </div>
-      </section>
 
-      <section>
-        <GalleryPage photos={SEED_PHOTOS}/>
-        </section>
+            {/* ═══ RIGHT: MESSAGE ═══ */}
+            <div className="lg:col-span-8 p-6 sm:p-8 lg:p-10">
+              {/* Header */}
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-1 h-6 bg-gradient-to-b from-blue-500 to-indigo-600 rounded-full" />
+                <div>
+                  <p className="text-[10px] font-bold text-blue-600 uppercase tracking-widest">
+                    A Personal Note
+                  </p>
+                  <h3 className="text-base sm:text-lg font-extrabold text-gray-900">
+                    Message from the Principal
+                  </h3>
+                </div>
+              </div>
+
+              {/* Quote */}
+              <div className="relative bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-4 sm:p-5 border border-blue-100 mb-4">
+                <blockquote className="text-sm text-gray-700 leading-relaxed italic font-medium">
+                  "Warm greetings and welcome to our official school website. I am 
+                  <span className="font-bold text-blue-700"> Lokendra Jaisi</span>, 
+                  the Principal. At our school, we are dedicated to providing a nurturing 
+                  environment where academic excellence meets character development. We look 
+                  forward to working together for our students' bright future."
+                </blockquote>
+              </div>
+
+              {/* Secondary text - shorter */}
+              <p className="text-xs sm:text-sm text-gray-500 leading-relaxed mb-4">
+                Our mission goes beyond classroom learning — we aim to foster creativity, 
+                critical thinking, and strong values in every child. We believe that a 
+                strong partnership between school and home is the key to student success.
+              </p>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-wrap gap-2.5">
+                <button
+                  onClick={() => go("about")}
+                  className="group inline-flex items-center gap-1.5 px-4 py-2 bg-blue-600 text-white text-xs sm:text-sm font-semibold rounded-lg hover:bg-blue-700 transition-all shadow-md shadow-blue-500/20 hover:shadow-lg hover:-translate-y-0.5"
+                >
+                  Read Our Story
+                  <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+                </button>
+                <button
+                  onClick={() => go("admission")}
+                  className="group inline-flex items-center gap-1.5 px-4 py-2 bg-white text-gray-700 text-xs sm:text-sm font-semibold rounded-lg border-2 border-gray-200 hover:border-green-300 hover:text-green-700 hover:bg-green-50 transition-all hover:-translate-y-0.5"
+                >
+                  Apply Now
+                  <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </FadeIn>
+  </div>
+</section>
+
+      <HomeGalleryPreview photos={photos} setPage={setPage} />
 
       {/* ═══════════════════ QUICK LINKS ═══════════════════ */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn>
-            <div className="text-center mb-12 lg:mb-16">
-              <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-sm font-semibold px-4 py-2 rounded-full mb-4">
-                <Zap size={14} />
-                Explore Our School
-              </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-4 tracking-tight">
-                Everything You Need,{" "}
-                <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                  Right at Your Fingertips
-                </span>
-              </h2>
-              <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-                Discover all the resources and information about Shree Janapriya 
-                Secondary School in one place.
-              </p>
-            </div>
-          </FadeIn>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {QUICK_LINKS.map((c, i) => (
-              <FadeIn key={i} delay={i * 0.08}>
-                <button
-                  onClick={() => go(c.page)}
-                  className="group w-full text-left p-6 sm:p-7 rounded-2xl bg-gray-50/80 hover:bg-white border border-gray-100 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 hover:-translate-y-1"
-                >
-                  <div className={`w-12 h-12 rounded-xl mb-4 flex items-center justify-center bg-${c.color}-100 text-${c.color}-600 group-hover:scale-110 transition-transform duration-300 shadow-sm`}>
-                    {c.icon}
-                  </div>
-                  <h3 className="font-bold text-gray-900 text-lg mb-2 group-hover:text-blue-700 transition-colors">
-                    {c.title}
-                  </h3>
-                  <p className="text-sm text-gray-500 leading-relaxed mb-4">
-                    {c.desc}
-                  </p>
-                  <div className="flex items-center gap-1 text-xs font-semibold text-blue-600 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-0 group-hover:translate-x-1">
-                    <span>Explore</span>
-                    <ChevronRight size={12} />
-                  </div>
-                </button>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
+      <HomeQuickLinks links={QUICK_LINKS} setPage={setPage} />
 
       {/* ═══════════════════ LATEST NOTICES ═══════════════════ */}
-      <section className="py-20 lg:py-28 bg-gradient-to-b from-blue-50/50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn>
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 lg:mb-14">
-              <div>
-                <div className="inline-flex items-center gap-2 bg-amber-50 text-amber-700 text-sm font-semibold px-4 py-2 rounded-full mb-4">
-                  <Bell size={14} />
-                  Stay Updated
-                </div>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight">
-                  Latest Notices
-                </h2>
-                <p className="text-gray-500 mt-2">
-                  Important announcements and updates from the school administration
-                </p>
-              </div>
-              <button
-                onClick={() => go("notices")}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-gray-200 text-gray-700 font-semibold rounded-2xl hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700 transition-all duration-300 text-sm shadow-sm hover:shadow-md"
-              >
-                View All Notices
-                <ArrowRight size={15} />
-              </button>
-            </div>
-          </FadeIn>
 
-          <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
-            {notices.slice(0, 4).map((n, i) => (
-              <FadeIn key={n.id} delay={i * 0.1}>
-                <div className="group bg-white rounded-2xl p-5 sm:p-6 border border-gray-100 shadow-sm hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 hover:-translate-y-1">
-                  <div className="flex items-start justify-between gap-3 mb-3">
-                    <h3 className="font-bold text-gray-900 group-hover:text-blue-700 transition-colors leading-snug">
-                      {n.title}
-                    </h3>
-                    <Badge label={n.type} />
-                  </div>
-                  <p className="text-sm text-gray-500 leading-relaxed line-clamp-2 mb-4">
-                    {n.body}
-                  </p>
-                  <div className="flex items-center gap-3 text-xs text-gray-400">
-                    <span className="flex items-center gap-1">
-                      <Calendar size={12} />
-                      {n.date}
-                    </span>
-                    <span className="w-1 h-1 rounded-full bg-gray-300" />
-                    <span>Shree Janapriya Admin</span>
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
+      <HomeNoticesPreview notices={notices} setPage={setPage} />
 
-      {/* ═══════════════════ ACHIEVEMENTS ═══════════════════ */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn>
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 lg:mb-14">
-              <div>
-                <div className="inline-flex items-center gap-2 bg-yellow-50 text-yellow-700 text-sm font-semibold px-4 py-2 rounded-full mb-4">
-                  <Trophy size={14} />
-                  Our Pride
-                </div>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight">
-                  Student Achievements
-                </h2>
-                <p className="text-gray-500 mt-2">
-                  Celebrating the brilliance and hard work of our students
-                </p>
-              </div>
-              <button
-                onClick={() => go("achievements")}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-gray-200 text-gray-700 font-semibold rounded-2xl hover:bg-yellow-50 hover:border-yellow-300 hover:text-yellow-700 transition-all duration-300 text-sm shadow-sm hover:shadow-md"
-              >
-                View All Achievements
-                <ArrowRight size={15} />
-              </button>
-            </div>
-          </FadeIn>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {achievements.slice(0, 4).map((a, i) => (
-              <FadeIn key={a.id} delay={i * 0.1}>
-                <div className="group bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 border border-yellow-100 rounded-2xl p-5 sm:p-6 hover:shadow-xl hover:shadow-yellow-500/10 transition-all duration-300 hover:-translate-y-1">
-                  <div className="w-10 h-10 rounded-xl bg-yellow-100 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <Star size={18} className="text-yellow-600 fill-yellow-400" />
-                  </div>
-                  <p className="font-bold text-gray-900 mb-1">{a.student}</p>
-                  <p className="text-sm font-semibold text-blue-700 mb-2 leading-snug">
-                    {a.title}
-                  </p>
-                  <p className="text-xs text-gray-500 mb-3 line-clamp-2">
-                    {a.desc}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <Badge label={a.type} />
-                    <span className="text-xs text-gray-400">{a.year} B.S.</span>
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
+      
+      <HomeAchievementsPreview achievements={achievements} setPage={setPage} />
 
       {/* ═══════════════════ STUDENT BLOG SECTION ═══════════════════ */}
       <HomeBlogSection posts={blogs} setPage={setPage} />
+
 
       {/* ═══════════════════ CTA BANNER ═══════════════════ */}
       <section className="relative py-24 lg:py-32 overflow-hidden">

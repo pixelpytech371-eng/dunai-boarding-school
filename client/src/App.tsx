@@ -60,7 +60,7 @@ export default function App() {
 
       <div className="pt-16">
         {page === "home" && (
-          <HomePage setPage={setPage} notices={notices} achievements={achievements} blogs={blogPosts} />
+          <HomePage setPage={setPage} notices={notices} achievements={achievements} blogs={blogPosts} photos={photos} />
         )}
         {page === "about" && <AboutPage />}
         {page === "academics" && <AcademicsPage />}

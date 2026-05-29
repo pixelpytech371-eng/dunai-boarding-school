@@ -1,8 +1,8 @@
 import { useState } from "react";
 import {
-  Star, Trophy, Award, Medal, Sparkles, Quote,
-  ChevronRight, Calendar, GraduationCap, TrendingUp,
-  Flame, Crown, Target, Heart, Users, School,
+  Star, Trophy, Award, Medal,  Quote,
+  ChevronRight,  GraduationCap, 
+  Flame, Crown, Target, Heart, Users
 } from "lucide-react";
 import type { Achievement } from "../types";
 import FadeIn from "../components/ui/FadeIn";
@@ -67,12 +67,6 @@ export default function AchievementsPage({ achievements }: { achievements: Achie
   // Calculate stats
   const totalAchievements = achievements.length;
   const uniqueStudents = [...new Set(achievements.map(a => a.student))].length;
-  const goldMedals = achievements.filter(a => 
-    a.title.toLowerCase().includes("gold") || 
-    a.title.toLowerCase().includes("first") || 
-    a.title.toLowerCase().includes("winner") ||
-    a.title.toLowerCase().includes("champion")
-  ).length;
 
   // Detail Modal
   if (selectedAchievement) {
@@ -91,11 +85,11 @@ export default function AchievementsPage({ achievements }: { achievements: Achie
           </button>
 
           <div className="bg-white rounded-[2.5rem] shadow-2xl shadow-gray-200/50 overflow-hidden border border-gray-100">
-            <div className={`h-2 bg-gradient-to-r ${config.gradient}`} />
+            <div className={`h-2 bg-linear-to-r ${config.gradient}`} />
 
             <div className="grid lg:grid-cols-5">
               {/* Left: Student Photo */}
-              <div className="lg:col-span-2 bg-gradient-to-br from-slate-800 via-slate-900 to-gray-900 p-8 sm:p-12 flex flex-col items-center justify-center text-center relative">
+              <div className="lg:col-span-2 bg-linear-to-br from-slate-800 via-slate-900 to-gray-900 p-8 sm:p-12 flex flex-col items-center justify-center text-center relative">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(255,255,255,0.05)_0%,_transparent_70%)]" />
                 
                 <div className="relative">
@@ -132,7 +126,7 @@ export default function AchievementsPage({ achievements }: { achievements: Achie
               <div className="lg:col-span-3 p-8 sm:p-12 lg:p-14">
                 <div className="mb-8">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${config.gradient} flex items-center justify-center shadow-lg`}>
+                    <div className={`w-12 h-12 rounded-xl bg-linear-to-br ${config.gradient} flex items-center justify-center shadow-lg`}>
                       {config.icon}
                     </div>
                     <div>
@@ -148,7 +142,7 @@ export default function AchievementsPage({ achievements }: { achievements: Achie
 
                   <div className={`p-6 rounded-2xl ${config.bgColor} border ${config.borderColor} mb-6`}>
                     <div className="flex gap-4">
-                      <div className={`w-1 flex-shrink-0 rounded-full bg-gradient-to-b ${config.gradient}`} />
+                      <div className={`w-1 flex-shrink-0 rounded-full bg-linear-to-b ${config.gradient}`} />
                       <div>
                         <p className="text-gray-700 leading-relaxed text-lg">
                           {selectedAchievement.desc}
@@ -173,7 +167,7 @@ export default function AchievementsPage({ achievements }: { achievements: Achie
               </div>
             </div>
 
-            <div className={`h-2 bg-gradient-to-r ${config.gradient}`} />
+            <div className={`h-2 bg-linear-to-r ${config.gradient}`} />
           </div>
         </FadeIn>
       </div>
@@ -186,10 +180,6 @@ export default function AchievementsPage({ achievements }: { achievements: Achie
       {/* ═══════════ PAGE HEADER ═══════════ */}
       <FadeIn>
         <div className="text-center mb-12 lg:mb-16">
-          <div className="inline-flex items-center gap-2 bg-yellow-50 text-yellow-700 text-sm font-semibold px-4 py-2 rounded-full mb-4">
-            <Crown size={14} />
-            Hall of Fame
-          </div>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 tracking-tight">
             Our{" "}
             <span className="bg-gradient-to-r from-yellow-500 via-amber-500 to-orange-500 bg-clip-text text-transparent">
@@ -203,24 +193,7 @@ export default function AchievementsPage({ achievements }: { achievements: Achie
         </div>
       </FadeIn>
 
-      {/* ═══════════ STATS ═══════════ */}
-      <FadeIn delay={0.1}>
-        <div className="grid grid-cols-3 gap-4 sm:gap-6 mb-12 lg:mb-16 max-w-2xl mx-auto">
-          {[
-            { value: totalAchievements, label: "Total Achievements", icon: <Award size={18} className="text-yellow-600" /> },
-            { value: uniqueStudents, label: "Brilliant Students", icon: <Users size={18} className="text-blue-600" /> },
-            { value: goldMedals, label: "Gold & First Place", icon: <Medal size={18} className="text-amber-600" /> },
-          ].map((stat, i) => (
-            <div key={i} className="bg-white rounded-2xl border border-gray-100 p-4 sm:p-6 text-center shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center mx-auto mb-3">
-                {stat.icon}
-              </div>
-              <p className="text-2xl sm:text-3xl font-extrabold text-gray-900">{stat.value}</p>
-              <p className="text-xs sm:text-sm text-gray-500 mt-1">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-      </FadeIn>
+      
 
       {/* ═══════════ FILTER BUTTONS ═══════════ */}
       <FadeIn delay={0.15}>

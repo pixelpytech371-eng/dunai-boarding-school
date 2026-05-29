@@ -1,7 +1,7 @@
 import type { Notice, Photo, Achievement, Faculty, Inquiry, BlogPost } from "../types";
 
 export const SEED_NOTICES: Notice[] = [
-  { id: 1, title: "Final Examination Schedule 2081", body: "The final examinations for classes 1–10 will commence from Baisakh 15, 2082. Students are advised to collect their admit cards from the school office.", date: "2025-04-10", type: "Exam" },
+  { id: 1, title: "Final Examination Schedule 2083", body: "The final examinations for classes Nursery-8 will commence from Baisakh 15, 2082. Students are advised to collect their admit cards from the school office.", date: "2025-04-10", type: "Exam" },
   { id: 2, title: "Annual Sports Day Notice", body: "Annual Sports Day is scheduled for Jestha 5, 2082. All students must report in sports uniform by 7:00 AM.", date: "2025-04-08", type: "Event" },
   { id: 3, title: "Summer Vacation 2082", body: "School will remain closed from Ashadh 1 to Ashadh 30 for summer vacation. Classes will resume from Shrawan 1.", date: "2025-03-25", type: "Holiday" },
   { id: 4, title: "Parent-Teacher Meeting", body: "A parent-teacher meeting is scheduled for Baisakh 25. Parents are cordially invited to discuss their ward's academic progress.", date: "2025-04-15", type: "Meeting" },
@@ -74,12 +74,13 @@ export const SEED_ACHIEVEMENTS: Achievement[] = [
 ];
 
 export const SEED_PHOTOS: Photo[] = [
-  { id: 1, url: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=400&q=70", caption: "Annual Prize Distribution 2081", category: "Event" },
-  { id: 2, url: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&q=70", caption: "Science Lab Activities", category: "Academic" },
-  { id: 3, url: "https://images.unsplash.com/photo-1544717305-2782549b5136?w=400&q=70", caption: "School Sports Day", category: "Sports" },
-  { id: 4, url: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400&q=70", caption: "Library Reading Program", category: "Academic" },
-  { id: 5, url: "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?w=400&q=70", caption: "Cultural Program 2081", category: "Event" },
-  { id: 6, url: "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=400&q=70", caption: "Classroom Learning", category: "Academic" },
+  { id: 1, url: "/gallery/image1.jpg", caption: " Prize Distribution", category: "Event" },
+  { id: 2, url: "/gallery/image2.jpg", caption: "Prize Distribution", category: "Academic" },
+  { id: 3, url: "/gallery/image6.jpg", caption: "School Sports Day", category: "Sports" },
+  { id: 4, url: "/gallery/image4.jpg", caption: "Environment Day Program", category: "Event" },
+  { id: 5, url: "/gallery/image5.jpg", caption: "Computer Class", category: "Academic" },
+  { id: 6, url: "/gallery/image3.jpg", caption: "Friday Activity", category: "Academic" },
+
 ];
 
 export const SEED_INQUIRIES: Inquiry[] = [
@@ -94,7 +95,7 @@ export const SEED_BLOGS: BlogPost[] = [
     id: 1,
     title: "The River That Taught Me Patience",
     author: "Priya Koirala",
-    authorClass: "Class 10",
+    authorClass: "Class 6",
     content: `Every monsoon, the Bagmati swells. I used to be afraid of it — the muddy surge that swallowed the ghats and crept toward the road. But last year, sitting on the steps with my grandfather, I began to understand something.\n\nMy grandfather said rivers don't rush to reach the sea. They take every curve the land offers, fill every hollow, and only then move on. He said people are the same — the ones who last are the ones who learn the shape of their obstacles before pushing past them.\n\nI thought about my Mathematics exam then. I had been panicking for weeks, trying to memorise formulas without understanding where they came from. That evening I went home and started again — slowly, from the first principle. By the time the exam arrived, I wasn't fast, but I was steady.\n\nThe river is flooding again this year. I watch it from the same steps, and I am no longer afraid. I am taking notes.`,
     excerpt: "Every monsoon the Bagmati swells — and last year it taught me something my textbooks never could about patience and persistence.",
     category: "Essay",
@@ -106,7 +107,7 @@ export const SEED_BLOGS: BlogPost[] = [
     id: 2,
     title: "Why I Want to Become a Software Engineer",
     author: "Suraj Shrestha",
-    authorClass: "Class 10",
+    authorClass: "Class 5",
     content: `When I was eight years old, the electricity went out during a storm and I discovered that my father's old Nokia still worked in the dark. I pressed every button trying to understand why it did what it did. That curiosity never left me.\n\nIn Class 7, our computer teacher Mr. Deepak showed us a simple Python script that printed our names in a loop. To me it looked like magic — instructions that the machine followed without question. I stayed after school every day for a week to write my own.\n\nNepal has some of the most talented young engineers in the world, yet we still import most of our software. I want to change that, even in a small way. I want to build tools that work offline, that work on low-end phones, that work for people in Humla and Jumla, not just Kathmandu.\n\nBeing a software engineer is not just about writing code. It is about solving real problems for real people. And there is no shortage of problems in Nepal waiting to be solved.`,
     excerpt: "A story that starts with a Nokia phone in a blackout and ends with a dream to build software for every corner of Nepal.",
     category: "Opinion",
@@ -130,7 +131,7 @@ export const SEED_BLOGS: BlogPost[] = [
     id: 4,
     title: "What the Science Fair Taught Me About Failure",
     author: "Rohan Bista",
-    authorClass: "Class 9",
+    authorClass: "Class 7",
     content: `My project was supposed to demonstrate electrolysis — splitting water into hydrogen and oxygen using a battery and two pencils. I had watched three YouTube videos and felt completely prepared.\n\nOn the day of the fair, nothing happened. The wires connected. The battery was new. But the water sat in its cup, utterly unimpressed.\n\nMr. Ram came over, looked at my setup, and asked one question: "Did you add salt?" I had not. Distilled water does not conduct electricity well enough. Three videos, zero mentions of salt.\n\nI added a pinch of table salt. Bubbles immediately appeared on both pencils. The crowd around my table grew.\n\nI did not win that year, but I learned something more useful than the prize: a failed experiment is not a failed scientist. It is just an experiment that still has one variable left to test. Now I always ask myself — what is the salt I forgot?`,
     excerpt: "How a cup of plain water, two pencils, and a missing pinch of salt turned into the most important science lesson of the year.",
     category: "Science",

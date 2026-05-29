@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { Globe } from "lucide-react";
 import {
   Home, Info, BookOpen, Users, Image, Bell, Award,
-  FileText, Phone, LogIn, LogOut, Menu, X,
-  GraduationCap, Shield, PenTool,
+  FileText,  LogIn,  Menu, X,
+   PenTool,
 } from "lucide-react";
 import { useScrollY } from "../hooks/useInView";
 import type { Page } from "../types";
@@ -30,6 +31,7 @@ interface NavbarProps {
 
 export default function Navbar({ page, setPage, adminLoggedIn }: NavbarProps) {
   const [open, setOpen] = useState(false);
+  const [language, setLanguage] = useState<"en" | "ne">("en");
   const scrollY = useScrollY();
   const scrolled = scrollY > 10;
 
@@ -78,8 +80,33 @@ export default function Navbar({ page, setPage, adminLoggedIn }: NavbarProps) {
 
         {/* Auth buttons */}
         <div className="flex items-center gap-2">
-      
-         
+            
+             {/* ═══ LANGUAGE SWITCHER ═══ */}
+  <button
+    onClick={() => setLanguage(language === "en" ? "ne" : "en")}
+    className="relative flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold transition-all duration-300 bg-gray-100 hover:bg-gray-200"
+  >
+    {/* EN option */}
+    <span className={`px-2 py-1 rounded-lg transition-all duration-300 ${
+      language === "en" 
+        ? "bg-blue-600 text-white shadow-md" 
+        : "text-gray-500"
+    }`}>
+      EN
+    </span>
+    
+    {/* Divider */}
+    <span className="w-px h-4 bg-gray-300" />
+    
+    {/* NE option */}
+    <span className={`px-2 py-1 rounded-lg transition-all duration-300 ${
+      language === "ne" 
+        ? "bg-blue-600 text-white shadow-md" 
+        : "text-gray-500"
+    }`}>
+      ने
+    </span>
+  </button>
           
 
           {/* Hamburger */}

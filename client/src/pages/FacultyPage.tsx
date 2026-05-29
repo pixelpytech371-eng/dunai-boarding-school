@@ -197,40 +197,7 @@ export default function FacultyPage({ faculty }: { faculty: Faculty[] }) {
         </div>
       </FadeIn>
 
-      {/* ═══════════ STATS ROW ═══════════ */}
-      <FadeIn delay={0.1}>
-        <div className="grid grid-cols-3 gap-4 sm:gap-6 mb-12 lg:mb-16 max-w-2xl mx-auto">
-          {[
-            { value: totalTeachers, label: "Dedicated Teachers", icon: <Users size={18} className="text-blue-600" /> },
-            { value: uniqueSubjects, label: "Subjects Covered", icon: <BookOpen size={18} className="text-green-600" /> },
-            { value: "15+", label: "Avg Years Experience", icon: <Clock size={18} className="text-purple-600" /> },
-          ].map((stat, i) => (
-            <div key={i} className="bg-white rounded-2xl border border-gray-100 p-4 sm:p-6 text-center shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center mx-auto mb-3">
-                {stat.icon}
-              </div>
-              <p className="text-2xl sm:text-3xl font-extrabold text-gray-900">{stat.value}</p>
-              <p className="text-xs sm:text-sm text-gray-500 mt-1">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-      </FadeIn>
-
-      {/* ═══════════ SEARCH BAR ═══════════ */}
-      <FadeIn delay={0.15}>
-        <div className="max-w-md mx-auto mb-10 lg:mb-14">
-          <div className="relative">
-            <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
-            <input
-              type="text"
-              placeholder="Search by name or subject..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm"
-            />
-          </div>
-        </div>
-      </FadeIn>
+      
 
       {/* ═══════════ TEACHER CARDS GRID ═══════════ */}
       {filteredFaculty.length === 0 ? (

@@ -1,5 +1,5 @@
 import {
-  MapPin, PhoneCall, Mail, Globe, Heart,
+ Heart,
 } from "lucide-react";
 import {
   FaFacebookF, FaYoutube, FaTwitter, FaInstagram,
@@ -34,7 +34,7 @@ export default function Footer({ setPage }: FooterProps) {
           {/* School Info */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-11 h-11 rounded-xl bg-white flex items-center justify-center shadow-md overflow-hidden flex-shrink-0">
+              <div className="w-11 h-11 rounded-xl bg-white flex items-center justify-center shadow-md overflow-hidden shrink-0">
                 <img
                   src={SchoolLogo}
                   alt="Dunai Boarding School"
@@ -43,11 +43,11 @@ export default function Footer({ setPage }: FooterProps) {
               </div>
               <div>
                 <h3 className="font-extrabold text-white text-sm">Dunai Boarding School</h3>
-                <p className="text-xs text-gray-400">Est. 2045 B.S.</p>
+                <p className="text-xs text-gray-400">Est. 2050 B.S.</p>
               </div>
             </div>
             <p className="text-sm text-gray-400 leading-relaxed max-w-xs">
-              Nurturing young minds with quality education and strong values since 2045 B.S.
+              Nurturing young minds with quality education and strong values since 2050 B.S.
             </p>
           </div>
 
@@ -76,6 +76,7 @@ export default function Footer({ setPage }: FooterProps) {
             <div className="space-y-2.5 text-sm text-gray-400">
               <p>ThuliBheri Municipality-3, Dunai, Dolpa, Nepal</p>
               <p>+977-01-4567890</p>
+              <p>dunaiboarding2050@gmail.com</p>
               <p>info@dbs.edu.np</p>
               <div className="flex gap-3 pt-2">
                 {[FaFacebookF, FaYoutube, FaTwitter, FaInstagram].map((Icon, i) => (
@@ -94,11 +95,17 @@ export default function Footer({ setPage }: FooterProps) {
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 pt-5 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-gray-500">
-          <p>© 2082 B.S. Dunai Boarding School. All rights reserved.</p>
-          <p className="flex items-center gap-1">
-            Made with <Heart size={11} className="text-red-500 fill-red-500" /> in Nepal
-          </p>
-        </div>
+  <p>© 2083 B.S. Dunai Boarding School. All rights reserved.</p>
+  <p className="flex items-center gap-1">
+    Made with <Heart size={11} className="text-red-500 fill-red-500" /> by{" "}
+    <a 
+      href="#" 
+      className="font-semibold text-blue-400 hover:text-blue-300 transition-colors"
+    >
+      PixelpyTech
+    </a>
+  </p>
+</div>
       </div>
     </footer>
   );

@@ -1,18 +1,12 @@
 import { useState } from "react";
 import {
   Send, CheckCircle, MapPin, PhoneCall, Mail, Clock,
-  FileText, Sparkles, School, Heart,
-  ChevronRight, Star, Users, Globe, Shield,
-  Check, AlertCircle, MessageCircle,
-  ArrowRight, GraduationCap,
+  FileText, Heart, Check, AlertCircle,
+  MessageCircle, ArrowRight, GraduationCap, Shield, Leaf,
 } from "lucide-react";
 import {
-  FaFacebookF,
-  FaYoutube,
-  FaTwitter,
-  FaInstagram,
+  FaFacebookF, FaYoutube, FaTwitter, FaInstagram,
 } from "react-icons/fa";
-
 import FadeIn from "../components/ui/FadeIn";
 import type { Inquiry } from "../types";
 
@@ -31,41 +25,37 @@ export default function AdmissionPage({ onSubmit }: AdmissionPageProps) {
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = () => {
-    if (!form.name || !form.email || !form.phone || !form.grade) return;
+    if (!form.name || !form.phone || !form.grade) return;
     onSubmit(form);
     setSubmitted(true);
   };
 
   const grades = [
-    "Nursery",
-    "KG",
+    "Nursery", "KG",
     ...Array.from({ length: 8 }, (_, i) => `Class ${i + 1}`),
   ];
 
   const contactInfo = [
     {
-      icon: <MapPin size={22} className="text-blue-600" />,
+      icon: <MapPin size={20} className="text-blue-600" />,
       title: "Visit Our Campus",
-      lines: [
-        "Janapriya Marg, Kathmandu-14",
-        "Bagmati Province, Nepal",
-      ],
+      lines: ["Thuli Bheri Municipality-3, Dunai", "Dolpa, Karnali Province, Nepal"],
       color: "border-l-blue-500",
     },
     {
-      icon: <PhoneCall size={22} className="text-green-600" />,
+      icon: <PhoneCall size={20} className="text-green-600" />,
       title: "Call Us",
-      lines: ["+977-01-4567890", "+977-01-4567891"],
+      lines: ["+977-9848303292"],
       color: "border-l-green-500",
     },
     {
-      icon: <Mail size={22} className="text-purple-600" />,
+      icon: <Mail size={20} className="text-purple-600" />,
       title: "Email Us",
-      lines: ["info@dunai.edu.np", "principal@dunai.edu.np"],
+      lines: ["dunaiboarding2050@gmail.com"],
       color: "border-l-purple-500",
     },
     {
-      icon: <Clock size={22} className="text-amber-600" />,
+      icon: <Clock size={20} className="text-amber-600" />,
       title: "Office Hours",
       lines: ["Sun–Fri: 10:00 AM – 4:00 PM", "Saturday: Closed"],
       color: "border-l-amber-500",
@@ -81,13 +71,10 @@ export default function AdmissionPage({ onSubmit }: AdmissionPageProps) {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
-      {/* ═══════════ PAGE HEADER ═══════════ */}
+      {/* ═══════ HEADER ═══════ */}
       <FadeIn>
         <div className="text-center mb-12 lg:mb-16">
-          <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-sm font-semibold px-4 py-2 rounded-full mb-4">
-            <GraduationCap size={14} />
-            Admissions Open 2082 B.S.
-          </div>
+          
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 tracking-tight">
             Join the{" "}
             <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
@@ -95,31 +82,33 @@ export default function AdmissionPage({ onSubmit }: AdmissionPageProps) {
             </span>
           </h1>
           <p className="text-gray-500 text-lg sm:text-xl max-w-3xl mx-auto">
-            Take the first step towards a brighter future for your child. 
-            Fill the form below or reach out to us directly.
+            Take the first step towards a brighter future for your child in the 
+            heart of Dolpa. Fill the form below or reach out to us directly.
           </p>
         </div>
       </FadeIn>
 
-      {/* ═══════════ MAIN CONTENT ═══════════ */}
+      {/* ═══════ MAIN CONTENT ═══════ */}
       <div className="grid lg:grid-cols-3 gap-8 lg:gap-10">
         
-        {/* ═══════ LEFT: INFO & CONTACT ═══════ */}
-        <div className="lg:col-span-1 space-y-6">
+        {/* ═══════ LEFT: INFO ═══════ */}
+        <div className="lg:col-span-1 space-y-5">
+          
           {/* Admission Info Card */}
           <FadeIn delay={0.1}>
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-6">
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-5">
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center">
                   <AlertCircle size={20} className="text-blue-600" />
                 </div>
                 <h3 className="font-extrabold text-gray-900">Admission Info</h3>
               </div>
-              <ul className="space-y-3">
+              <ul className="space-y-2.5">
                 {[
                   "Nursery to Class 8 admissions open",
-                  "Merit-based with entrance evaluation",
-                  "Scholarships for deserving students",
+                  "~350 students enrolled (IEMIS)",
+                  "English-medium modern education",
+                  "Boarding (hostel) facilities available",
                   "Documents: TC, birth certificate, photos",
                 ].map((item, i) => (
                   <li key={i} className="flex gap-3 text-sm text-gray-700">
@@ -133,22 +122,36 @@ export default function AdmissionPage({ onSubmit }: AdmissionPageProps) {
             </div>
           </FadeIn>
 
+          {/* School Highlights */}
+          <FadeIn delay={0.15}>
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 rounded-2xl p-5">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center">
+                  <Leaf size={20} className="text-green-600" />
+                </div>
+                <h3 className="font-extrabold text-gray-900 text-sm">Why Choose Us</h3>
+              </div>
+              <ul className="space-y-2 text-xs text-gray-600">
+                <li>• Eco-Club with WWF Nepal & Shey Phoksundo National Park</li>
+                <li>• STEAM learning (Science, Tech, Engineering, Arts, Math)</li>
+                <li>• Safe hostel for students from remote villages</li>
+                <li>• Supported by DESERT & Friends of Dolpa</li>
+              </ul>
+            </div>
+          </FadeIn>
+
           {/* Contact Cards */}
           {contactInfo.map((item, i) => (
-            <FadeIn key={i} delay={0.15 + i * 0.08}>
-              <div className={`bg-white rounded-2xl border border-gray-100 p-5 shadow-sm hover:shadow-md transition-all duration-300 border-l-4 ${item.color}`}>
-                <div className="flex gap-4">
-                  <div className="w-11 h-11 rounded-xl bg-gray-50 flex items-center justify-center flex-shrink-0">
+            <FadeIn key={i} delay={0.2 + i * 0.08}>
+              <div className={`bg-white rounded-2xl border border-gray-100 p-4 shadow-sm hover:shadow-md transition-all duration-300 border-l-4 ${item.color}`}>
+                <div className="flex gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center flex-shrink-0">
                     {item.icon}
                   </div>
                   <div>
-                    <p className="font-bold text-gray-900 text-sm mb-1">
-                      {item.title}
-                    </p>
+                    <p className="font-bold text-gray-900 text-sm mb-0.5">{item.title}</p>
                     {item.lines.map((line, j) => (
-                      <p key={j} className="text-sm text-gray-600">
-                        {line}
-                      </p>
+                      <p key={j} className="text-xs text-gray-600">{line}</p>
                     ))}
                   </div>
                 </div>
@@ -156,11 +159,41 @@ export default function AdmissionPage({ onSubmit }: AdmissionPageProps) {
             </FadeIn>
           ))}
 
-          {/* Social Media */}
+          {/* Google Map */}
           <FadeIn delay={0.4}>
-            <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl border border-gray-200 p-6">
-              <p className="font-bold text-gray-900 text-sm mb-4 flex items-center gap-2">
-                <Heart size={16} className="text-red-500" />
+            <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
+              <div className="h-48 w-full">
+                 <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3506.123456789!2d82.900000!3d28.950000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDU3JzAwLjAiTiA4MsKwNTQnMDAuMCJF!5e0!3m2!1sen!2snp!4v1234567890"
+        width="100%"
+        height="100%"
+        style={{ border: 0 }}
+        allowFullScreen
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+        title="Dunai Boarding School Location"
+      />
+              </div>
+              <div className="p-3 text-center border-t border-gray-100 bg-gray-50">
+                <a
+                  href="https://www.google.com/maps/search/Dunai+Boarding+School,+Thuli+Bheri,+Dunai,+Dolpa,+Nepal"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-800 transition-colors"
+                >
+                  <MapPin size={12} />
+                  Open in Google Maps
+                  <ArrowRight size={12} />
+                </a>
+              </div>
+            </div>
+          </FadeIn>
+
+          {/* Social Media */}
+          <FadeIn delay={0.5}>
+            <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl border border-gray-200 p-5">
+              <p className="font-bold text-gray-900 text-sm mb-3 flex items-center gap-2">
+                <Heart size={14} className="text-red-500" />
                 Connect With Us
               </p>
               <div className="flex gap-2">
@@ -168,42 +201,18 @@ export default function AdmissionPage({ onSubmit }: AdmissionPageProps) {
                   <a
                     key={i}
                     href="#"
-                    className={`w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-gray-500 ${color} hover:text-white transition-all duration-300 shadow-sm`}
+                    className={`w-9 h-9 rounded-lg bg-white border border-gray-200 flex items-center justify-center text-gray-500 ${color} hover:text-white transition-all duration-300 shadow-sm`}
                     title={label}
                   >
-                    <Icon size={16} />
+                    <Icon size={14} />
                   </a>
                 ))}
               </div>
             </div>
           </FadeIn>
-
-          {/* Map Preview */}
-          <FadeIn delay={0.45}>
-            <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
-              <div className="h-40 bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center relative">
-                <MapPin size={36} className="text-blue-400" />
-                <div className="absolute bottom-0 left-0 right-0 p-3 bg-white/80 backdrop-blur-sm">
-                  <p className="text-xs font-bold text-gray-800">📍 Janapriya Marg, Kathmandu-14</p>
-                </div>
-              </div>
-              <div className="p-3 text-center">
-                <a
-                  href="https://maps.google.com/?q=Kathmandu,Nepal"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-800"
-                >
-                  <Globe size={12} />
-                  Open in Google Maps
-                  <ArrowRight size={12} />
-                </a>
-              </div>
-            </div>
-          </FadeIn>
         </div>
 
-        {/* ═══════ RIGHT: ADMISSION FORM ═══════ */}
+        {/* ═══════ RIGHT: FORM ═══════ */}
         <div className="lg:col-span-2">
           <FadeIn delay={0.2}>
             {submitted ? (
@@ -232,10 +241,13 @@ export default function AdmissionPage({ onSubmit }: AdmissionPageProps) {
                   >
                     Submit Another Inquiry
                   </button>
-                  <button className="px-6 py-3 bg-gray-100 text-gray-700 font-bold rounded-xl hover:bg-gray-200 transition-all text-sm flex items-center gap-2">
+                  <a
+                    href="tel:+977-9848303292"
+                    className="px-6 py-3 bg-gray-100 text-gray-700 font-bold rounded-xl hover:bg-gray-200 transition-all text-sm flex items-center gap-2"
+                  >
                     <PhoneCall size={16} />
                     Call Us Now
-                  </button>
+                  </a>
                 </div>
               </div>
             ) : (
@@ -250,13 +262,12 @@ export default function AdmissionPage({ onSubmit }: AdmissionPageProps) {
                       Admission Inquiry Form
                     </h2>
                   </div>
-                  <p className="text-gray-500 text-sm ml-13">
+                  <p className="text-gray-500 text-sm">
                     Fill in the details below and we'll get back to you soon.
                   </p>
                 </div>
 
-                <div className="space-y-5">
-                  {/* Name & Email Row */}
+                <div className="space-y-4">
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
                       <label className="text-sm font-semibold text-gray-700 block mb-1.5">
@@ -272,7 +283,7 @@ export default function AdmissionPage({ onSubmit }: AdmissionPageProps) {
                     </div>
                     <div>
                       <label className="text-sm font-semibold text-gray-700 block mb-1.5">
-                        Email Address <span className="text-red-500">*</span>
+                        Email Address
                       </label>
                       <input
                         type="email"
@@ -284,7 +295,6 @@ export default function AdmissionPage({ onSubmit }: AdmissionPageProps) {
                     </div>
                   </div>
 
-                  {/* Phone & Grade Row */}
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
                       <label className="text-sm font-semibold text-gray-700 block mb-1.5">
@@ -309,15 +319,12 @@ export default function AdmissionPage({ onSubmit }: AdmissionPageProps) {
                       >
                         <option value="">Select grade</option>
                         {grades.map((g) => (
-                          <option key={g} value={g}>
-                            {g}
-                          </option>
+                          <option key={g} value={g}>{g}</option>
                         ))}
                       </select>
                     </div>
                   </div>
 
-                  {/* Message */}
                   <div>
                     <label className="text-sm font-semibold text-gray-700 block mb-1.5">
                       Additional Message
@@ -331,7 +338,6 @@ export default function AdmissionPage({ onSubmit }: AdmissionPageProps) {
                     />
                   </div>
 
-                  {/* Submit Button */}
                   <button
                     onClick={handleSubmit}
                     className="w-full flex items-center justify-center gap-2 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-sm"
@@ -341,7 +347,6 @@ export default function AdmissionPage({ onSubmit }: AdmissionPageProps) {
                     <ArrowRight size={16} />
                   </button>
 
-                  {/* Trust note */}
                   <p className="text-center text-xs text-gray-400 flex items-center justify-center gap-1">
                     <Shield size={12} />
                     Your information is safe and secure with us
@@ -353,7 +358,7 @@ export default function AdmissionPage({ onSubmit }: AdmissionPageProps) {
         </div>
       </div>
 
-      {/* ═══════════ BOTTOM CTA ═══════════ */}
+      {/* ═══════ BOTTOM CTA ═══════ */}
       <FadeIn>
         <div className="mt-16 lg:mt-20 text-center py-10 px-6 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 rounded-3xl border border-blue-200">
           <MessageCircle size={28} className="text-blue-500 mx-auto mb-4" />
@@ -361,13 +366,13 @@ export default function AdmissionPage({ onSubmit }: AdmissionPageProps) {
             Prefer to Talk in Person?
           </h3>
           <p className="text-gray-600 max-w-lg mx-auto text-sm mb-4">
-            Visit our campus during office hours. Our admission counselors will 
-            guide you through the entire process and give you a tour of our facilities.
+            Visit our campus in Dunai, Dolpa. Our admission counselors will guide 
+            you through the process and show you our facilities.
           </p>
           <div className="flex flex-wrap justify-center gap-3 text-sm">
             <span className="flex items-center gap-1.5 text-gray-600">
               <MapPin size={14} className="text-blue-500" />
-              Janapriya Marg, Kathmandu-14
+              Thuli Bheri-3, Dunai, Dolpa
             </span>
             <span className="hidden sm:block text-gray-300">|</span>
             <span className="flex items-center gap-1.5 text-gray-600">
