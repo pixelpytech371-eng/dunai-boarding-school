@@ -78,7 +78,7 @@ function BlogCard({
   if (featured) {
     return (
       <div
-        className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer hover:-translate-y-1 col-span-full"
+        className="group relative max-w-screen rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer hover:-translate-y-1 col-span-full"
         onClick={() => onRead(post)}
         style={{ aspectRatio: "21/7", minHeight: 220 }}
       >

@@ -19,7 +19,7 @@ function GalleryPage({ photos }: { photos: Photo[] }) {
           ))}
         </div>
       </FadeIn>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {filtered.map((p, i) => (
           <FadeIn key={p.id} delay={i * 0.07}>
             <div className="group rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-white">

@@ -1,9 +1,27 @@
 import {
-  Heart, Layers, Globe, TrendingUp, Star, BookMarked,
-  Clock, Award, Users, School, Quote, Shield, Flower2,
-  MapPin, Building, GraduationCap, Target, Eye, Flag,
-  BookOpen, Landmark, Trophy, Gem, Sparkles, Crown,
-  ScrollText, HandHeart,
+  Heart,
+  Layers,
+  Globe,
+  Star,
+  BookMarked,
+  Clock,
+  Award,
+  Users,
+  School,
+  Quote,
+  Shield,
+  MapPin,
+  Building,
+  GraduationCap,
+  Target,
+  Eye,
+  BookOpen,
+  Landmark,
+  Trophy,
+  Gem,
+  Sparkles,
+  Crown,
+  HandHeart,
 } from "lucide-react";
 import FadeIn from "../components/ui/FadeIn";
 
@@ -24,8 +42,9 @@ export default function AboutPage() {
             </span>
           </h1>
           <p className="text-gray-500 text-lg sm:text-xl max-w-3xl mx-auto">
-            From a humble beginning with 45 students to over 1,200 today — 
-            a journey of dedication, vision, and unwavering commitment to education.
+            From a humble beginning with 45 students to over 1,200 today — a
+            journey of dedication, vision, and unwavering commitment to
+            education.
           </p>
         </div>
       </FadeIn>
@@ -41,13 +60,13 @@ export default function AboutPage() {
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-2 tracking-tight">
               The Visionary Who{" "}
-              <span className="bg-gradient-to-r from-amber-500 to-yellow-600 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-amber-500 to-yellow-600 bg-clip-text text-transparent">
                 Started It All
               </span>
             </h2>
             <p className="text-gray-500 max-w-2xl mx-auto">
-              A humble educator with an extraordinary dream — to bring quality education 
-              to every child, regardless of their background.
+              A humble educator with an extraordinary dream — to bring quality
+              education to every child, regardless of their background.
             </p>
           </div>
         </FadeIn>
@@ -56,11 +75,11 @@ export default function AboutPage() {
         <FadeIn delay={0.1}>
           <div className="relative bg-white rounded-[2.5rem] shadow-2xl shadow-gray-200/50 overflow-hidden border border-gray-100">
             {/* Top decorative gradient bar */}
-            <div className="h-2 bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-400" />
+            <div className="h-2 bg-linear-to-r from-amber-400 via-yellow-500 to-amber-400" />
 
             <div className="grid lg:grid-cols-12">
               {/* Left: Image Column */}
-              <div className="lg:col-span-5 relative bg-gradient-to-br from-slate-800 via-slate-900 to-gray-900 p-8 sm:p-12 flex items-center justify-center">
+              <div className="lg:col-span-5 relative bg-linear-to-br from-slate-800 via-slate-900 to-gray-900 p-8 sm:p-12 flex items-center justify-center">
                 {/* Background pattern */}
                 <div
                   className="absolute inset-0 opacity-[0.03]"
@@ -77,7 +96,7 @@ export default function AboutPage() {
                     {/* Decorative frame */}
                     <div className="absolute -inset-3 rounded-2xl border-2 border-amber-400/30" />
                     <div className="absolute -inset-2 rounded-2xl border border-amber-400/20" />
-                    
+
                     {/* Image */}
                     <div className="relative rounded-2xl overflow-hidden shadow-2xl h-full">
                       <img
@@ -88,7 +107,7 @@ export default function AboutPage() {
                       />
                       {/* Gradient overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
-                      
+
                       {/* Bottom info bar */}
                       <div className="absolute bottom-0 left-0 right-0 p-4 text-center">
                         <div className="inline-block px-3 py-1 bg-amber-500 text-white text-xs font-bold rounded-full mb-2">
@@ -125,7 +144,10 @@ export default function AboutPage() {
                   </h3>
                   <div className="flex items-center gap-3 text-sm text-gray-500">
                     <span className="flex items-center gap-1">
-                      <Star size={12} className="text-yellow-500 fill-yellow-500" />
+                      <Star
+                        size={12}
+                        className="text-yellow-500 fill-yellow-500"
+                      />
                       2001 – 2045 B.S.
                     </span>
                     <span className="w-1 h-1 rounded-full bg-gray-300" />
@@ -139,28 +161,47 @@ export default function AboutPage() {
                 {/* Biography */}
                 <div className="space-y-4 text-gray-600 leading-relaxed mb-8">
                   <p>
-                    <span className="font-semibold text-gray-800">Late Shri Hari Prasad Dhakal</span> was 
-                    not just an educator — he was a <span className="text-amber-700 font-medium">revolutionary</span> who 
-                    believed that education was the most powerful tool for social transformation. Born into a 
-                    humble farming family in Dhading district, he walked two hours each day to attend school 
-                    — an experience that shaped his lifelong commitment to making education accessible.
+                    <span className="font-semibold text-gray-800">
+                      Late Shri Hari Prasad Dhakal
+                    </span>{" "}
+                    was not just an educator — he was a{" "}
+                    <span className="text-amber-700 font-medium">
+                      revolutionary
+                    </span>{" "}
+                    who believed that education was the most powerful tool for
+                    social transformation. Born into a humble farming family in
+                    Dhading district, he walked two hours each day to attend
+                    school — an experience that shaped his lifelong commitment
+                    to making education accessible.
                   </p>
-                  
+
                   <div className="flex gap-4 items-start">
                     <div className="w-1 h-full min-h-[80px] bg-gradient-to-b from-amber-400 to-yellow-400 rounded-full flex-shrink-0" />
                     <div className="space-y-3">
                       <p>
-                        After earning his Master's degree in Education from Tribhuvan University with 
-                        distinction, he taught across Kathmandu Valley for over 15 years. During this time, 
-                        he witnessed a painful reality — <span className="text-gray-800 font-medium">quality education 
-                        was a privilege, not a right</span>. Children from poor families were denied opportunities 
+                        After earning his Master's degree in Education from
+                        Tribhuvan University with distinction, he taught across
+                        Kathmandu Valley for over 15 years. During this time, he
+                        witnessed a painful reality —{" "}
+                        <span className="text-gray-800 font-medium">
+                          quality education was a privilege, not a right
+                        </span>
+                        . Children from poor families were denied opportunities
                         simply because of their economic status.
                       </p>
                       <p>
-                        This injustice ignited a fire in him. In <span className="font-bold text-amber-700">2045 B.S.</span>, 
-                        with his life savings of just NPR 25,000 and support from five like-minded community 
-                        leaders, he rented three small rooms in Kalimati and opened the doors of 
-                        <span className="font-bold text-amber-700"> Shree Janapriya Secondary School</span>.
+                        This injustice ignited a fire in him. In{" "}
+                        <span className="font-bold text-amber-700">
+                          2045 B.S.
+                        </span>
+                        , with his life savings of just NPR 25,000 and support
+                        from five like-minded community leaders, he rented three
+                        small rooms in Kalimati and opened the doors of
+                        <span className="font-bold text-amber-700">
+                          {" "}
+                          Shree Janapriya Secondary School
+                        </span>
+                        .
                       </p>
                     </div>
                   </div>
@@ -168,12 +209,16 @@ export default function AboutPage() {
 
                 {/* Quote */}
                 <div className="relative bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 border border-amber-200 rounded-2xl p-6 mb-8">
-                  <Quote size={28} className="text-amber-300 absolute top-4 left-4" />
+                  <Quote
+                    size={28}
+                    className="text-amber-300 absolute top-4 left-4"
+                  />
                   <div className="pl-10">
                     <blockquote className="text-gray-700 italic font-medium leading-relaxed text-lg">
-                      "Education is not about filling a vessel, but about kindling a flame. 
-                      Our duty is not just to teach, but to inspire young minds to dream, 
-                      to question, and to contribute to the world with compassion and courage."
+                      "Education is not about filling a vessel, but about
+                      kindling a flame. Our duty is not just to teach, but to
+                      inspire young minds to dream, to question, and to
+                      contribute to the world with compassion and courage."
                     </blockquote>
                     <p className="text-right text-sm text-amber-700 font-bold mt-4">
                       — Late Shri Hari Prasad Dhakal
@@ -184,9 +229,21 @@ export default function AboutPage() {
                 {/* Legacy Stats */}
                 <div className="grid grid-cols-3 gap-3">
                   {[
-                    { label: "Students First Year", value: "45", icon: <Users size={16} /> },
-                    { label: "Years as Principal", value: "13", icon: <Clock size={16} /> },
-                    { label: "Students Today", value: "1,200+", icon: <GraduationCap size={16} /> },
+                    {
+                      label: "Students First Year",
+                      value: "45",
+                      icon: <Users size={16} />,
+                    },
+                    {
+                      label: "Years as Principal",
+                      value: "13",
+                      icon: <Clock size={16} />,
+                    },
+                    {
+                      label: "Students Today",
+                      value: "1,200+",
+                      icon: <GraduationCap size={16} />,
+                    },
                   ].map((stat, i) => (
                     <div
                       key={i}
@@ -195,8 +252,12 @@ export default function AboutPage() {
                       <div className="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center mx-auto mb-2 text-amber-700">
                         {stat.icon}
                       </div>
-                      <p className="text-lg sm:text-xl font-extrabold text-gray-900">{stat.value}</p>
-                      <p className="text-[10px] sm:text-xs text-gray-500 leading-tight">{stat.label}</p>
+                      <p className="text-lg sm:text-xl font-extrabold text-gray-900">
+                        {stat.value}
+                      </p>
+                      <p className="text-[10px] sm:text-xs text-gray-500 leading-tight">
+                        {stat.label}
+                      </p>
                     </div>
                   ))}
                 </div>
@@ -244,68 +305,85 @@ export default function AboutPage() {
                 title: "The Foundation",
                 icon: <Building size={20} className="text-white" />,
                 color: "from-blue-500 to-blue-700",
-                content: "Shree Janapriya Secondary School was established by Late Shri Hari Prasad Dhakal with just 3 rented classrooms, 45 students, and 5 teachers. The school was founded with a vision to provide quality education to children from all economic backgrounds.",
+                content:
+                  "Shree Janapriya Secondary School was established by Late Shri Hari Prasad Dhakal with just 3 rented classrooms, 45 students, and 5 teachers. The school was founded with a vision to provide quality education to children from all economic backgrounds.",
               },
               {
                 year: "2050 B.S.",
                 title: "First Batch Graduates",
                 icon: <GraduationCap size={20} className="text-white" />,
                 color: "from-green-500 to-green-700",
-                content: "The first batch of SLC (now SEE) students appeared for their examinations. All 18 students passed with distinction, establishing the school's reputation for academic excellence. The school's enrollment grew to over 200 students.",
+                content:
+                  "The first batch of SLC (now SEE) students appeared for their examinations. All 18 students passed with distinction, establishing the school's reputation for academic excellence. The school's enrollment grew to over 200 students.",
               },
               {
                 year: "2058 B.S.",
                 title: "A New Chapter",
                 icon: <BookOpen size={20} className="text-white" />,
                 color: "from-purple-500 to-purple-700",
-                content: "After the passing of founder Shri Hari Prasad Dhakal, Dr. Mohan Prasad Acharya took over as Principal. Under his leadership, the school expanded its infrastructure, adding a science laboratory and library wing.",
+                content:
+                  "After the passing of founder Shri Hari Prasad Dhakal, Dr. Mohan Prasad Acharya took over as Principal. Under his leadership, the school expanded its infrastructure, adding a science laboratory and library wing.",
               },
               {
                 year: "2065 B.S.",
                 title: "Expansion & Growth",
                 icon: <Landmark size={20} className="text-white" />,
                 color: "from-indigo-500 to-indigo-700",
-                content: "The school moved to its current campus at Janapriya Marg, Kathmandu-14. New buildings were constructed to accommodate over 600 students. The school introduced computer education and expanded extracurricular activities.",
+                content:
+                  "The school moved to its current campus at Janapriya Marg, Kathmandu-14. New buildings were constructed to accommodate over 600 students. The school introduced computer education and expanded extracurricular activities.",
               },
               {
                 year: "2072 B.S.",
                 title: "Modernization Era",
                 icon: <Trophy size={20} className="text-white" />,
                 color: "from-orange-500 to-orange-700",
-                content: "Major infrastructure upgrades including a modern computer lab with 40 computers, upgraded science laboratories, and a library with over 5,000 books. Student enrollment crossed 1,000 for the first time.",
+                content:
+                  "Major infrastructure upgrades including a modern computer lab with 40 computers, upgraded science laboratories, and a library with over 5,000 books. Student enrollment crossed 1,000 for the first time.",
               },
               {
                 year: "2078 B.S.",
                 title: "National Recognition",
                 icon: <Award size={20} className="text-white" />,
                 color: "from-red-500 to-red-700",
-                content: "The school received the 'Model School' designation from the Ministry of Education. Students won multiple national-level competitions in science, sports, and literature. First batch of students appeared in SEE under the new grading system with outstanding results.",
+                content:
+                  "The school received the 'Model School' designation from the Ministry of Education. Students won multiple national-level competitions in science, sports, and literature. First batch of students appeared in SEE under the new grading system with outstanding results.",
               },
               {
                 year: "2082 B.S.",
                 title: "Today & Beyond",
                 icon: <Target size={20} className="text-white" />,
                 color: "from-teal-500 to-teal-700",
-                content: "Today, Shree Janapriya stands as one of Kathmandu's premier secondary schools with over 1,200 students and 60+ dedicated teachers. We continue to innovate with digital learning initiatives while staying true to our founding values of accessibility, quality, and character development.",
+                content:
+                  "Today, Shree Janapriya stands as one of Kathmandu's premier secondary schools with over 1,200 students and 60+ dedicated teachers. We continue to innovate with digital learning initiatives while staying true to our founding values of accessibility, quality, and character development.",
               },
             ].map((item, index) => (
               <FadeIn key={index} delay={index * 0.1}>
-                <div className={`flex items-start gap-4 md:gap-8 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
+                <div
+                  className={`flex items-start gap-4 md:gap-8 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
+                >
                   {/* Timeline dot */}
                   <div className="hidden md:flex md:w-1/2" />
                   <div className="relative flex items-center justify-center z-10 flex-shrink-0">
-                    <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center shadow-lg shadow-blue-500/20`}>
+                    <div
+                      className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center shadow-lg shadow-blue-500/20`}
+                    >
                       {item.icon}
                     </div>
                   </div>
                   {/* Content card */}
-                  <div className={`flex-1 ${index % 2 === 0 ? "md:text-left" : "md:text-right"}`}>
+                  <div
+                    className={`flex-1 ${index % 2 === 0 ? "md:text-left" : "md:text-right"}`}
+                  >
                     <div className="bg-white rounded-2xl border border-gray-100 p-5 sm:p-6 shadow-sm hover:shadow-lg hover:shadow-blue-500/5 transition-all duration-300 hover:-translate-y-1">
                       <span className="inline-block text-xs font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full mb-3">
                         {item.year}
                       </span>
-                      <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
-                      <p className="text-sm text-gray-600 leading-relaxed">{item.content}</p>
+                      <h3 className="text-lg font-bold text-gray-900 mb-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-sm text-gray-600 leading-relaxed">
+                        {item.content}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -328,9 +406,10 @@ export default function AboutPage() {
                 </div>
                 <h3 className="text-2xl font-extrabold mb-4">Our Mission</h3>
                 <p className="text-blue-100 leading-relaxed mb-6">
-                  To provide holistic, quality education that nurtures intellectual curiosity, 
-                  moral values, and practical skills — enabling every student to contribute 
-                  meaningfully to Nepal and the world.
+                  To provide holistic, quality education that nurtures
+                  intellectual curiosity, moral values, and practical skills —
+                  enabling every student to contribute meaningfully to Nepal and
+                  the world.
                 </p>
                 <ul className="space-y-3 text-sm">
                   {[
@@ -339,7 +418,10 @@ export default function AboutPage() {
                     "Practical skills for the modern world",
                     "Inclusive education for all economic backgrounds",
                   ].map((item, i) => (
-                    <li key={i} className="flex items-center gap-3 text-blue-100">
+                    <li
+                      key={i}
+                      className="flex items-center gap-3 text-blue-100"
+                    >
                       <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
                         <Star size={10} className="text-white fill-white" />
                       </div>
@@ -361,9 +443,9 @@ export default function AboutPage() {
                 </div>
                 <h3 className="text-2xl font-extrabold mb-4">Our Vision</h3>
                 <p className="text-indigo-100 leading-relaxed mb-6">
-                  To be the leading center of learning in Nepal — known for academic 
-                  excellence, inclusive education, and the production of responsible, 
-                  globally-aware citizens and future leaders.
+                  To be the leading center of learning in Nepal — known for
+                  academic excellence, inclusive education, and the production
+                  of responsible, globally-aware citizens and future leaders.
                 </p>
                 <ul className="space-y-3 text-sm">
                   {[
@@ -372,7 +454,10 @@ export default function AboutPage() {
                     "Bridging traditional values with global perspectives",
                     "A model institution for sustainable education",
                   ].map((item, i) => (
-                    <li key={i} className="flex items-center gap-3 text-indigo-100">
+                    <li
+                      key={i}
+                      className="flex items-center gap-3 text-indigo-100"
+                    >
                       <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
                         <Star size={10} className="text-white fill-white" />
                       </div>
@@ -405,14 +490,20 @@ export default function AboutPage() {
                 Gyan, Anushasan, Sewa
               </p>
               <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-                <span className="text-blue-400 font-semibold">Knowledge (ज्ञान)</span> — 
-                The light that illuminates the path to understanding.
+                <span className="text-blue-400 font-semibold">
+                  Knowledge (ज्ञान)
+                </span>{" "}
+                — The light that illuminates the path to understanding.
                 <br />
-                <span className="text-indigo-400 font-semibold">Discipline (अनुशासन)</span> — 
-                The foundation upon which all success is built.
+                <span className="text-indigo-400 font-semibold">
+                  Discipline (अनुशासन)
+                </span>{" "}
+                — The foundation upon which all success is built.
                 <br />
-                <span className="text-purple-400 font-semibold">Service (सेवा)</span> — 
-                The highest purpose of education is to serve humanity.
+                <span className="text-purple-400 font-semibold">
+                  Service (सेवा)
+                </span>{" "}
+                — The highest purpose of education is to serve humanity.
               </p>
             </div>
           </div>
@@ -461,12 +552,18 @@ export default function AboutPage() {
             },
           ].map((value, i) => (
             <FadeIn key={i} delay={i * 0.1}>
-              <div className={`h-full bg-gradient-to-br ${value.color} border rounded-2xl p-6 sm:p-7 hover:shadow-lg transition-all duration-300 hover:-translate-y-1`}>
+              <div
+                className={`h-full bg-gradient-to-br ${value.color} border rounded-2xl p-6 sm:p-7 hover:shadow-lg transition-all duration-300 hover:-translate-y-1`}
+              >
                 <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center mb-4 shadow-sm">
                   {value.icon}
                 </div>
-                <h3 className="font-bold text-gray-900 text-lg mb-2">{value.title}</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">{value.desc}</p>
+                <h3 className="font-bold text-gray-900 text-lg mb-2">
+                  {value.title}
+                </h3>
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  {value.desc}
+                </p>
               </div>
             </FadeIn>
           ))}
@@ -528,7 +625,9 @@ export default function AboutPage() {
                 <h3 className="font-bold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors">
                   {facility.title}
                 </h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{facility.desc}</p>
+                <p className="text-sm text-gray-500 leading-relaxed">
+                  {facility.desc}
+                </p>
               </div>
             </FadeIn>
           ))}
@@ -542,10 +641,11 @@ export default function AboutPage() {
             <GraduationCap size={28} className="text-white" />
           </div>
           <p className="text-gray-600 text-lg leading-relaxed">
-            For over <span className="font-bold text-blue-700">37 years</span>, Shree Janapriya 
-            Secondary School has been more than just an educational institution — we are a family 
-            dedicated to nurturing the leaders, thinkers, and changemakers of tomorrow. We invite 
-            you to be part of our continuing story.
+            For over <span className="font-bold text-blue-700">37 years</span>,
+            Shree Janapriya Secondary School has been more than just an
+            educational institution — we are a family dedicated to nurturing the
+            leaders, thinkers, and changemakers of tomorrow. We invite you to be
+            part of our continuing story.
           </p>
           <div className="mt-6 flex items-center justify-center gap-2 text-sm text-gray-500">
             <MapPin size={14} className="text-blue-500" />

@@ -12,7 +12,7 @@ export default function HomeNoticesPreview({ notices, setPage }: HomeNoticesPrev
   const displayNotices = notices.slice(0, 4);
 
   return (
-    <section className="py-20 lg:py-28 bg-gradient-to-b from-blue-50/50 to-white">
+    <section className="py-20 lg:py-28 bg-linear-to-b from-blue-50/50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn>
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 lg:mb-14">
@@ -33,7 +33,7 @@ export default function HomeNoticesPreview({ notices, setPage }: HomeNoticesPrev
                 setPage("notices");
                 window.scrollTo(0, 0);
               }}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-gray-200 text-gray-700 font-semibold rounded-2xl hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700 transition-all duration-300 text-sm shadow-sm hover:shadow-md"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-gray-200 text-gray-700 font-semibold rounded-2xl hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700 transition-all duration-300 text-sm shadow-sm hover:shadow-md max-w-46"
             >
               View All Notices
               <ArrowRight size={15} />
