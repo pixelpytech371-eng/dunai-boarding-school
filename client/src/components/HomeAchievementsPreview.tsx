@@ -30,7 +30,7 @@ export default function HomeAchievementsPreview({ achievements, setPage }: HomeA
               </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight">
                 Student{" "}
-                <span className="bg-gradient-to-r from-yellow-500 to-amber-600 bg-clip-text text-transparent">
+                <span className="bg-linear-to-r from-yellow-500 to-amber-600 bg-clip-text text-transparent">
                   Achievements
                 </span>
               </h2>
@@ -43,7 +43,7 @@ export default function HomeAchievementsPreview({ achievements, setPage }: HomeA
                 setPage("achievements");
                 window.scrollTo(0, 0);
               }}
-              className="group inline-flex items-center gap-2 px-5 py-2.5 bg-yellow-500 text-white font-semibold rounded-xl hover:bg-yellow-600 transition-all duration-300 text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5"
+              className="group inline-flex items-center gap-2 px-5 py-2.5 bg-yellow-500 text-white font-semibold rounded-xl hover:bg-yellow-600 transition-all duration-300 text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5 max-w-52"
             >
               View All Achievements
               <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
@@ -65,7 +65,7 @@ export default function HomeAchievementsPreview({ achievements, setPage }: HomeA
                   }}
                 >
                   {/* Photo - Using aspect-square for proper face display */}
-                  <div className="relative w-full aspect-[3/4] overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
+                  <div className="relative w-full aspect-6/4 md:aspect-4/5 overflow-hidden bg-linear-to-br from-gray-100 to-gray-200">
                     <img
                       src={a.photo}
                       alt={a.student}
@@ -74,7 +74,7 @@ export default function HomeAchievementsPreview({ achievements, setPage }: HomeA
                     />
                     
                     {/* Gradient overlay at bottom only */}
-                    <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-linear-to-t from-black/60 to-transparent" />
 
                     {/* Year badge */}
                     <div className="absolute top-2 right-2">
