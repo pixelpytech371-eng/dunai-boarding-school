@@ -13,6 +13,7 @@ import ContactPage from "./pages/ContactPage";
 import Login from "./pages/Login";
 import BlogPage from "./pages/BlogPage";
 import  AdminPanel  from "./admin/AdminPanel";
+import { useLanguage } from "./hooks/useLanguage";
 import {
   SEED_NOTICES,
   SEED_PHOTOS,
@@ -22,6 +23,47 @@ import {
   SEED_BLOGS
 } from "./data/seedData";
 import type { Notice, Photo, Achievement, Faculty, Inquiry, Page } from "./types";
+
+const footerTranslations = {
+  en: {
+    schoolName: "Dunai Boarding School",
+    footerDesc: "Nurturing young minds with quality education and strong values since 2050 B.S.",
+    quickLinks: "Quick Links",
+    getInTouch: "Get In Touch",
+    footerAddress: "ThuliBheri Municipality-3, Dunai, Dolpa, Nepal",
+    footerRights: "© 2083 B.S. Dunai Boarding School. All rights reserved.",
+    madeWith: "Made with",
+    inNepal: "in Nepal",
+    navHome: "Home",
+    navAbout: "About",
+    navAcademics: "Academics",
+    navFaculty: "Faculty",
+    navGallery: "Gallery",
+    navBlog: "Blog",
+    navNotices: "Notices",
+    navAchievements: "Achievements",
+    navAdmission: "Admission",
+  },
+  ne: {
+    schoolName: "दुनै बोर्डिङ स्कूल",
+    footerDesc: "२०५० सालदेखि गुणस्तरीय शिक्षा र बलियो मूल्यमान्यताका साथ युवा दिमागहरूलाई हुर्काउँदै।",
+    quickLinks: "द्रुत लिङ्कहरू",
+    getInTouch: "सम्पर्कमा रहनुहोस्",
+    footerAddress: "ठूलीभेरी नगरपालिका-३, दुनै, डोल्पा, नेपाल",
+    footerRights: "© २०८३ साल। दुनै बोर्डिङ स्कूल। सर्वाधिकार सुरक्षित।",
+    madeWith: "साथ बनाइएको",
+    inNepal: "नेपालमा",
+    navHome: "गृहपृष्ठ",
+    navAbout: "बारेमा",
+    navAcademics: "शैक्षिक",
+    navFaculty: "शिक्षक",
+    navGallery: "ग्यालरी",
+    navBlog: "ब्लग",
+    navNotices: "सूचना",
+    navAchievements: "उपलब्धि",
+    navAdmission: "भर्ना",
+  },
+};
 
 export default function App() {
   const [page, setPage] = useState<Page>("home");
@@ -34,6 +76,21 @@ export default function App() {
   const [faculty, setFaculty] = useState<Faculty[]>(SEED_FACULTY);
   const [inquiries, setInquiries] = useState<Inquiry[]>(SEED_INQUIRIES);
   const [blogPosts, setBlogPosts] = useState(SEED_BLOGS);
+
+  const language = useLanguage();
+const t = footerTranslations[language];
+
+const footerNavLinks = [
+  { label: t.navHome, page: "home" as Page },
+  { label: t.navAbout, page: "about" as Page },
+  { label: t.navAcademics, page: "academics" as Page },
+  { label: t.navFaculty, page: "faculty" as Page },
+  { label: t.navGallery, page: "gallery" as Page },
+  { label: t.navBlog, page: "blog" as Page },
+  { label: t.navNotices, page: "notices" as Page },
+  { label: t.navAchievements, page: "achievements" as Page },
+  { label: t.navAdmission, page: "admission" as Page },
+];
 
   const handleAdmissionSubmit = (data: Omit<Inquiry, "id" | "date" | "status">) => {
     setInquiries([
@@ -111,7 +168,7 @@ export default function App() {
         )}
       </div>
 
-      {showFooter && <Footer setPage={setPage} />}
+      {showFooter && <Footer setPage={setPage}  schoolName={t.schoolName} footerDesc={t.footerDesc} quickLinks={t.quickLinks} getInTouch={t.getInTouch} footerAddress={t.footerAddress} footerRights={t.footerRights} madeWith={t.madeWith} inNepal={t.inNepal} navLinks={footerNavLinks} />}
     </div>
   );
 }

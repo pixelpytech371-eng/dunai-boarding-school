@@ -6,9 +6,15 @@ import type { BlogPost, Page } from "../types";
 interface HomeBlogSectionProps {
   posts: BlogPost[];
   setPage: (p: Page) => void;
+   studentBlog: string;
+  blogDesc: string;
+  allPosts: string;
+  readAllPosts: string;
+  featured: string;   // ← Rename prop to featuredText
+  by: string;
 }
 
-export default function HomeBlogSection({ posts, setPage }: HomeBlogSectionProps) {
+export default function HomeBlogSection({ posts, setPage , studentBlog, blogDesc, allPosts, readAllPosts, featured:featuredText, by: byText }: HomeBlogSectionProps) {
   if (posts.length === 0) return null;
 
   const go = () => { setPage("blog"); window.scrollTo(0, 0); };
@@ -25,15 +31,15 @@ export default function HomeBlogSection({ posts, setPage }: HomeBlogSectionProps
           <div>
             <div className="flex items-center gap-2 mb-1">
               <BookOpen size={20} className="text-indigo-600" />
-              <h2 className="text-2xl font-extrabold text-gray-900">Student Blog</h2>
+              <h2 className="text-2xl font-extrabold text-gray-900">{studentBlog}</h2>
             </div>
-            <p className="text-gray-500 text-sm">Essays, poetry, and ideas from our students' own pens.</p>
+            <p className="text-gray-500 text-sm">{blogDesc}</p>
           </div>
           <button
             onClick={go}
             className="flex items-center gap-1 text-sm font-semibold text-indigo-600 hover:text-indigo-900 transition-colors"
           >
-            All Posts <ArrowRight size={15} />
+            {allPosts} <ArrowRight size={15} />
           </button>
         </div>
       </FadeIn>
@@ -57,7 +63,7 @@ export default function HomeBlogSection({ posts, setPage }: HomeBlogSectionProps
 
               {/* Featured badge */}
               <span className="absolute top-4 left-4 flex items-center gap-1 bg-yellow-400 text-yellow-900 text-xs font-bold px-2.5 py-1 rounded-full shadow">
-                <Star size={10} className="fill-yellow-800" /> Featured
+                <Star size={10} className="fill-yellow-800" /> {featuredText}
               </span>
 
               <div className="absolute bottom-0 left-0 right-0 p-5">
@@ -72,7 +78,7 @@ export default function HomeBlogSection({ posts, setPage }: HomeBlogSectionProps
                 </h3>
                 <p className="text-white/75 text-sm line-clamp-2 mb-2">{featured.excerpt}</p>
                 <p className="text-indigo-300 text-xs font-semibold">
-                  by {featured.author} · {featured.authorClass}
+                  {byText} {featured.author} · {featured.authorClass}
                 </p>
               </div>
             </div>
@@ -124,7 +130,7 @@ export default function HomeBlogSection({ posts, setPage }: HomeBlogSectionProps
               onClick={go}
               className="w-full flex items-center justify-center gap-2 py-3 rounded-2xl border-2 border-dashed border-indigo-200 text-indigo-600 text-sm font-semibold hover:bg-indigo-50 hover:border-indigo-400 transition-all"
             >
-              <BookOpen size={16} /> Read All Posts
+              <BookOpen size={16} /> {readAllPosts}
             </button>
           </FadeIn>
         </div>

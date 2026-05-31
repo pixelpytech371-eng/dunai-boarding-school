@@ -7,6 +7,46 @@ import {
 import type { Achievement } from "../types";
 import FadeIn from "../components/ui/FadeIn";
 import Badge from "../components/ui/Badge";
+import { useLanguage } from "../hooks/useLanguage";
+
+const translations = {
+  en: {
+    our: "Our",
+    shiningStars: "Shining Stars",
+    achievementsDesc: "Celebrating the brilliant achievements of our students who make us proud every single day.",
+    all: "All",
+    academic: "Academic",
+    sports: "Sports",
+    technology: "Technology",
+    cultural: "Cultural",
+    backToAchievements: "Back to Achievements",
+    achievement: "Achievement",
+    proudStudent: "This achievement wouldn't have been possible without the support of my teachers and the excellent facilities at our school. I'm proud to be a student of Dunai Boarding School.",
+    noAchievements: "No achievements in this category",
+    tryDifferent: "Try selecting a different category",
+    viewDetails: "View Details",
+    yourChild: "Your Child Could Be Next!",
+    yourChildDesc: "At Dunai Boarding School, we nurture talent and celebrate every achievement. Join us and watch your child shine.",
+  },
+  ne: {
+    our: "हाम्रा",
+    shiningStars: "चम्किला ताराहरू",
+    achievementsDesc: "हाम्रा विद्यार्थीहरूको शानदार उपलब्धिहरूको उत्सव जसले हामीलाई हरेक दिन गर्व गराउँछ।",
+    all: "सबै",
+    academic: "शैक्षिक",
+    sports: "खेलकुद",
+    technology: "प्रविधि",
+    cultural: "सांस्कृतिक",
+    backToAchievements: "उपलब्धिहरूमा फर्कनुहोस्",
+    achievement: "उपलब्धि",
+    proudStudent: "यो उपलब्धि मेरा शिक्षकहरूको सहयोग र हाम्रो विद्यालयको उत्कृष्ट सुविधाहरू बिना सम्भव थिएन। म दुनै बोर्डिङ स्कूलको विद्यार्थी हुन पाउँदा गर्व गर्छु।",
+    noAchievements: "यस श्रेणीमा कुनै उपलब्धि छैन",
+    tryDifferent: "फरक श्रेणी छान्ने प्रयास गर्नुहोस्",
+    viewDetails: "विवरण हेर्नुहोस्",
+    yourChild: "तपाईंको बच्चा अर्को हुन सक्छ!",
+    yourChildDesc: "दुनै बोर्डिङ स्कूलमा, हामी प्रतिभालाई पोषण गर्छौं र हरेक उपलब्धिको उत्सव मनाउँछौं। हामीसँग जोडिनुहोस् र आफ्नो बच्चालाई चम्केको हेर्नुहोस्।",
+  },
+};
 
 // Achievement type configurations
 const typeConfig: Record<string, {
@@ -52,6 +92,8 @@ const typeConfig: Record<string, {
 };
 
 export default function AchievementsPage({ achievements }: { achievements: Achievement[] }) {
+  const language = useLanguage();
+const t = translations[language];
   const [selectedAchievement, setSelectedAchievement] = useState<Achievement | null>(null);
   const [filter, setFilter] = useState("All");
 
@@ -81,7 +123,7 @@ export default function AchievementsPage({ achievements }: { achievements: Achie
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:-translate-x-1 transition-transform">
               <path d="M19 12H5M12 19l-7-7 7-7" />
             </svg>
-            Back to Achievements
+            {t.backToAchievements}
           </button>
 
           <div className="bg-white rounded-[2.5rem] shadow-2xl shadow-gray-200/50 overflow-hidden border border-gray-100">
@@ -155,9 +197,8 @@ export default function AchievementsPage({ achievements }: { achievements: Achie
                   <div className="relative bg-gray-50 rounded-2xl p-6 border border-gray-100">
                     <Quote size={24} className="text-gray-300 absolute top-4 left-4" />
                     <blockquote className="pl-8 text-gray-600 italic">
-                      "This achievement wouldn't have been possible without the support of my teachers 
-                      and the excellent facilities at our school. I'm proud to be a student of 
-                      Dunai Boarding School."
+                       {t.proudStudent}
+                      {t.yourChild}.
                     </blockquote>
                     <p className="text-right text-sm text-gray-500 mt-3 font-semibold">
                       — {selectedAchievement.student}
@@ -183,12 +224,11 @@ export default function AchievementsPage({ achievements }: { achievements: Achie
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 tracking-tight">
             Our{" "}
             <span className="bg-gradient-to-r from-yellow-500 via-amber-500 to-orange-500 bg-clip-text text-transparent">
-              Shining Stars
+              {t.shiningStars}
             </span>
           </h1>
           <p className="text-gray-500 text-lg sm:text-xl max-w-2xl mx-auto">
-            Celebrating the brilliant achievements of our students who make us proud 
-            every single day.
+            {t.achievementsDesc}
           </p>
         </div>
       </FadeIn>
@@ -221,8 +261,8 @@ export default function AchievementsPage({ achievements }: { achievements: Achie
             <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-4">
               <Trophy size={32} className="text-gray-400" />
             </div>
-            <p className="text-gray-500 text-lg font-medium">No achievements in this category</p>
-            <p className="text-gray-400 text-sm mt-1">Try selecting a different category</p>
+            <p className="text-gray-500 text-lg font-medium">{t.noAchievements}</p>
+            <p className="text-gray-400 text-sm mt-1">{t.tryDifferent}</p>
           </div>
         </FadeIn>
       ) : (
@@ -290,7 +330,7 @@ export default function AchievementsPage({ achievements }: { achievements: Achie
                     <div className="flex items-center justify-between pt-3 border-t border-gray-100">
                       <Badge label={a.type} />
                       <span className="flex items-center gap-1 text-xs font-bold text-blue-600 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                        View Details
+                        {t.viewDetails}
                         <ChevronRight size={12} />
                       </span>
                     </div>
@@ -307,11 +347,10 @@ export default function AchievementsPage({ achievements }: { achievements: Achie
         <div className="mt-16 lg:mt-20 text-center py-10 px-6 bg-gradient-to-br from-yellow-50 via-amber-50 to-orange-50 rounded-3xl border border-yellow-200">
           <Flame size={28} className="text-orange-500 mx-auto mb-4" />
           <h3 className="text-xl font-extrabold text-gray-900 mb-2">
-            Your Child Could Be Next!
+            {t.yourChild}
           </h3>
           <p className="text-gray-600 max-w-lg mx-auto text-sm">
-            At Dunai Boarding School, we nurture talent and celebrate every achievement. 
-            Join us and watch your child shine.
+            {t.yourChildDesc}
           </p>
         </div>
       </FadeIn>

@@ -6,9 +6,14 @@ import type { Notice, Page } from "../types";
 interface HomeNoticesPreviewProps {
   notices: Notice[];
   setPage: (p: Page) => void;
+  stayUpdated: string;
+  latestNotices: string;
+  noticesDesc: string;
+  viewAllNotices: string;
+  schoolName: string;
 }
 
-export default function HomeNoticesPreview({ notices, setPage }: HomeNoticesPreviewProps) {
+export default function HomeNoticesPreview({ notices, setPage, stayUpdated, latestNotices, noticesDesc, viewAllNotices, schoolName }: HomeNoticesPreviewProps) {
   const displayNotices = notices.slice(0, 4);
 
   return (
@@ -19,13 +24,13 @@ export default function HomeNoticesPreview({ notices, setPage }: HomeNoticesPrev
             <div>
               <div className="inline-flex items-center gap-2 bg-amber-50 text-amber-700 text-sm font-semibold px-4 py-2 rounded-full mb-4">
                 <Bell size={14} />
-                Stay Updated
+                {stayUpdated}
               </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight">
-                Latest Notices
+                {latestNotices}
               </h2>
               <p className="text-gray-500 mt-2">
-                Important announcements and updates from the school administration
+                {noticesDesc}
               </p>
             </div>
             <button
@@ -35,7 +40,7 @@ export default function HomeNoticesPreview({ notices, setPage }: HomeNoticesPrev
               }}
               className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-gray-200 text-gray-700 font-semibold rounded-2xl hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700 transition-all duration-300 text-sm shadow-sm hover:shadow-md max-w-46"
             >
-              View All Notices
+              {viewAllNotices}
               <ArrowRight size={15} />
             </button>
           </div>
@@ -60,7 +65,7 @@ export default function HomeNoticesPreview({ notices, setPage }: HomeNoticesPrev
                     {n.date}
                   </span>
                   <span className="w-1 h-1 rounded-full bg-gray-300" />
-                  <span>Dunai Boarding School</span>
+                  <span>{schoolName}</span>
                 </div>
               </div>
             </FadeIn>

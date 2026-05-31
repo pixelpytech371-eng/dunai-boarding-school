@@ -6,6 +6,56 @@ import {
 } from "lucide-react";
 import type { Notice } from "../types";
 import FadeIn from "../components/ui/FadeIn";
+import { useLanguage } from "../hooks/useLanguage";
+
+const translations = {
+  en: {
+    stayInformed: "Stay Informed",
+    noticeBoard: "Notice",
+    board: "Board",
+    noticeDesc: "All official announcements, updates, and important information from the school administration.",
+    totalNotices: "Total Notices",
+    thisMonth: "This Month",
+    exams: "Exams",
+    upcomingEvents: "Upcoming Events",
+    importantNotices: "Important Notices",
+    backToNotices: "Back to Notices",
+    published: "Published:",
+    readMore: "Read More",
+    noNotices: "No notices found",
+    tryDifferent: "Try selecting a different category",
+    neverMiss: "Never Miss an Update",
+    neverMissDesc: "All notices are also displayed on the school notice board and shared with parents through our official communication channels.",
+    today: "Today",
+    yesterday: "Yesterday",
+    daysAgo: "days ago",
+    weeksAgo: "weeks ago",
+    monthsAgo: "months ago",
+  },
+  ne: {
+    stayInformed: "सूचित रहनुहोस्",
+    noticeBoard: "सूचना",
+    board: "पाटी",
+    noticeDesc: "विद्यालय प्रशासनबाट सबै आधिकारिक घोषणाहरू, अपडेटहरू र महत्त्वपूर्ण जानकारीहरू।",
+    totalNotices: "कुल सूचनाहरू",
+    thisMonth: "यो महिना",
+    exams: "परीक्षा",
+    upcomingEvents: "आगामी कार्यक्रम",
+    importantNotices: "महत्त्वपूर्ण सूचनाहरू",
+    backToNotices: "सूचनाहरूमा फर्कनुहोस्",
+    published: "प्रकाशित:",
+    readMore: "थप पढ्नुहोस्",
+    noNotices: "कुनै सूचना फेला परेन",
+    tryDifferent: "फरक श्रेणी छान्ने प्रयास गर्नुहोस्",
+    neverMiss: "कहिल्यै अपडेट नछुटाउनुहोस्",
+    neverMissDesc: "सबै सूचनाहरू विद्यालयको सूचना पाटीमा पनि प्रदर्शित हुन्छन् र हाम्रो आधिकारिक संचार माध्यमहरू मार्फत अभिभावकहरूसँग साझा गरिन्छ।",
+    today: "आज",
+    yesterday: "हिजो",
+    daysAgo: "दिन अघि",
+    weeksAgo: "हप्ता अघि",
+    monthsAgo: "महिना अघि",
+  },
+};
 
 // Notice type configurations
 const noticeConfig: Record<string, { 
@@ -51,6 +101,9 @@ const noticeConfig: Record<string, {
 };
 
 export default function NoticesPage({ notices }: { notices: Notice[] }) {
+  const language = useLanguage();
+const t = translations[language];
+
   const [filter, setFilter] = useState("All");
   const [selectedNotice, setSelectedNotice] = useState<Notice | null>(null);
   const [showPinned, setShowPinned] = useState(true);
@@ -82,16 +135,16 @@ export default function NoticesPage({ notices }: { notices: Notice[] }) {
 
   // Get time ago
   const getTimeAgo = (dateStr: string) => {
-    const now = new Date();
-    const date = new Date(dateStr);
-    const diffDays = Math.floor((now.getTime() - date.getTime()) / (1000 * 60 * 60 * 24));
-    
-    if (diffDays === 0) return "Today";
-    if (diffDays === 1) return "Yesterday";
-    if (diffDays < 7) return `${diffDays} days ago`;
-    if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
-    return `${Math.floor(diffDays / 30)} months ago`;
-  };
+  const now = new Date();
+  const date = new Date(dateStr);
+  const diffDays = Math.floor((now.getTime() - date.getTime()) / (1000 * 60 * 60 * 24));
+  
+  if (diffDays === 0) return t.today;
+  if (diffDays === 1) return t.yesterday;
+  if (diffDays < 7) return `${diffDays} ${t.daysAgo}`;
+  if (diffDays < 30) return `${Math.floor(diffDays / 7)} ${t.weeksAgo}`;
+  return `${Math.floor(diffDays / 30)} ${t.monthsAgo}`;
+};
 
   // Notice Detail Modal
   if (selectedNotice) {
@@ -106,7 +159,7 @@ export default function NoticesPage({ notices }: { notices: Notice[] }) {
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:-translate-x-1 transition-transform">
               <path d="M19 12H5M12 19l-7-7 7-7" />
             </svg>
-            Back to Notices
+            {t.backToNotices}
           </button>
 
           <div className="bg-white rounded-[2.5rem] shadow-2xl shadow-gray-200/50 overflow-hidden border border-gray-100">
@@ -169,40 +222,21 @@ export default function NoticesPage({ notices }: { notices: Notice[] }) {
         <div className="text-center mb-12 lg:mb-16">
           <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-sm font-semibold px-4 py-2 rounded-full mb-4">
             <Megaphone size={14} />
-            Stay Informed
+            {t.stayInformed}
           </div>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 tracking-tight">
-            Notice{" "}
+            {t.noticeBoard}{" "}
             <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-              Board
+              {t.board}
             </span>
           </h1>
           <p className="text-gray-500 text-lg sm:text-xl max-w-2xl mx-auto">
-            All official announcements, updates, and important information 
-            from the school administration.
+            {t.noticeDesc}
           </p>
         </div>
       </FadeIn>
 
-      {/* ═══════════ QUICK STATS ═══════════ */}
-      <FadeIn delay={0.1}>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-10 lg:mb-14">
-          {[
-            { label: "Total Notices", value: notices.length, icon: <Bell size={16} className="text-blue-600" /> },
-            { label: "This Month", value: notices.filter(n => new Date(n.date).getMonth() === new Date().getMonth()).length, icon: <Calendar size={16} className="text-green-600" /> },
-            { label: "Exams", value: notices.filter(n => n.type === "Exam").length, icon: <BookOpen size={16} className="text-red-600" /> },
-            { label: "Upcoming Events", value: notices.filter(n => n.type === "Event").length, icon: <PartyPopper size={16} className="text-purple-600" /> },
-          ].map((stat, i) => (
-            <div key={i} className="bg-white rounded-xl border border-gray-100 p-3 sm:p-4 text-center shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-8 h-8 rounded-lg bg-gray-50 flex items-center justify-center mx-auto mb-2">
-                {stat.icon}
-              </div>
-              <p className="text-lg sm:text-xl font-extrabold text-gray-900">{stat.value}</p>
-              <p className="text-[10px] sm:text-xs text-gray-500">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-      </FadeIn>
+     
 
       {/* ═══════════ FILTER BUTTONS ═══════════ */}
       <FadeIn delay={0.15}>
@@ -230,9 +264,9 @@ export default function NoticesPage({ notices }: { notices: Notice[] }) {
             <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-4">
               <Bell size={32} className="text-gray-400" />
             </div>
-            <p className="text-gray-500 text-lg font-medium">No notices found</p>
+            <p className="text-gray-500 text-lg font-medium">{t.noNotices}</p>
             <p className="text-gray-400 text-sm mt-1">
-              Try selecting a different category
+              {t.tryDifferent}
             </p>
           </div>
         </FadeIn>
@@ -244,7 +278,7 @@ export default function NoticesPage({ notices }: { notices: Notice[] }) {
               <FadeIn>
                 <div className="flex items-center gap-2 mb-4">
                   <Pin size={16} className="text-red-500" />
-                  <h2 className="text-lg font-extrabold text-gray-900">Important Notices</h2>
+                  <h2 className="text-lg font-extrabold text-gray-900">{t.importantNotices}</h2>
                   <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
                 </div>
               </FadeIn>
@@ -290,7 +324,7 @@ export default function NoticesPage({ notices }: { notices: Notice[] }) {
                               {formatDate(n.date)}
                             </span>
                             <span className="flex items-center gap-1 text-xs font-bold text-blue-600 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                              Read More
+                              {t.readMore}
                               <ChevronRight size={12} />
                             </span>
                           </div>
@@ -359,11 +393,10 @@ export default function NoticesPage({ notices }: { notices: Notice[] }) {
         <div className="mt-12 lg:mt-16 text-center py-8 px-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl border border-blue-100">
           <Volume2 size={24} className="text-blue-500 mx-auto mb-3" />
           <h3 className="text-lg font-extrabold text-gray-900 mb-2">
-            Never Miss an Update
+            {t.neverMiss}
           </h3>
           <p className="text-gray-500 text-sm max-w-md mx-auto">
-            All notices are also displayed on the school notice board and shared 
-            with parents through our official communication channels.
+            {t.neverMissDesc}
           </p>
         </div>
       </FadeIn>

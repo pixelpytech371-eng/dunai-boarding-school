@@ -7,23 +7,30 @@ import {
 import type { Page } from "../types";
 import SchoolLogo from "../assets/images/logo.png";
 
-const NAV_LINKS: { label: string; page: Page }[] = [
-  { label: "Home", page: "home" },
-  { label: "About", page: "about" },
-  { label: "Academics", page: "academics" },
-  { label: "Faculty", page: "faculty" },
-  { label: "Gallery", page: "gallery" },
-  { label: "Blog", page: "blog" },
-  { label: "Notices", page: "notices" },
-  { label: "Achievements", page: "achievements" },
-  { label: "Admission", page: "admission" },
-];
+
 
 interface FooterProps {
   setPage: (p: Page) => void;
+   schoolName: string;
+  footerDesc: string;
+  quickLinks: string;
+  getInTouch: string;
+  footerAddress: string;
+  footerRights: string;
+  madeWith: string;
+  inNepal: string;
+  navLinks: { label: string; page: Page }[];
 }
 
-export default function Footer({ setPage }: FooterProps) {
+export default function Footer({ setPage, schoolName, 
+  footerDesc, 
+  quickLinks, 
+  getInTouch, 
+  footerAddress, 
+  footerRights, 
+  madeWith, 
+  inNepal,
+  navLinks  }: FooterProps) {
   return (
     <footer className="bg-gray-900 text-gray-300 pt-12 pb-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -42,20 +49,20 @@ export default function Footer({ setPage }: FooterProps) {
                 />
               </div>
               <div>
-                <h3 className="font-extrabold text-white text-sm">Dunai Boarding School</h3>
+                <h3 className="font-extrabold text-white text-sm">{schoolName}</h3>
                 <p className="text-xs text-gray-400">Est. 2050 B.S.</p>
               </div>
             </div>
             <p className="text-sm text-gray-400 leading-relaxed max-w-xs">
-              Nurturing young minds with quality education and strong values since 2050 B.S.
+              {footerDesc}
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white font-semibold text-sm mb-3">Quick Links</h4>
+            <h4 className="text-white font-semibold text-sm mb-3">{quickLinks}</h4>
             <div className="grid grid-cols-2 gap-1.5">
-              {NAV_LINKS.map((l) => (
+              {navLinks.map((l) => (
                 <button
                   key={l.page}
                   onClick={() => {
@@ -72,22 +79,26 @@ export default function Footer({ setPage }: FooterProps) {
 
           {/* Contact */}
           <div>
-            <h4 className="text-white font-semibold text-sm mb-3">Get In Touch</h4>
+            <h4 className="text-white font-semibold text-sm mb-3">{getInTouch}</h4>
             <div className="space-y-2.5 text-sm text-gray-400">
-              <p>ThuliBheri Municipality-3, Dunai, Dolpa, Nepal</p>
+              <p>{footerAddress}</p>
               <p>+977-01-4567890</p>
               <p>dunaiboarding2050@gmail.com</p>
               <p>info@dbs.edu.np</p>
               <div className="flex gap-3 pt-2">
-                {[FaFacebookF, FaYoutube, FaTwitter, FaInstagram].map((Icon, i) => (
-                  <a
-                    key={i}
-                    href="#"
-                    className="w-8 h-8 rounded-lg bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition-colors text-gray-400 hover:text-white"
-                  >
-                    <Icon size={13} />
-                  </a>
-                ))}
+                {[
+  { Icon: FaFacebookF, url: "https://www.facebook.com/profile.php?id=61560367036422" },
+].map(({ Icon, url }, i) => (
+  <a
+    key={i}
+    href={url}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-8 h-8 rounded-lg bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition-colors text-gray-400 hover:text-white"
+  >
+    <Icon size={13} />
+  </a>
+))}
               </div>
             </div>
           </div>
@@ -95,9 +106,9 @@ export default function Footer({ setPage }: FooterProps) {
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 pt-5 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-gray-500">
-  <p>© 2083 B.S. Dunai Boarding School. All rights reserved.</p>
+  <p>© 2083 B.S. {schoolName}. {footerRights}</p>
   <p className="flex items-center gap-1">
-    Made with <Heart size={11} className="text-red-500 fill-red-500" /> by{" "}
+    {madeWith} <Heart size={11} className="text-red-500 fill-red-500" /> {inNepal}{" "}
     <a 
       href="#" 
       className="font-semibold text-blue-400 hover:text-blue-300 transition-colors"
