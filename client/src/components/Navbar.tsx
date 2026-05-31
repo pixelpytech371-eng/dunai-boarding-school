@@ -16,6 +16,7 @@ import {
 import { useScrollY } from "../hooks/useInView";
 import type { Page } from "../types";
 import SchoolLogo from "../assets/images/logo.png";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const translations = {
   en: {
@@ -69,12 +70,13 @@ export const NAV_LINKS = [
 ];
 
 interface NavbarProps {
-  page: Page;
-  setPage: (p: Page) => void;
   adminLoggedIn: boolean;
 }
 
-export default function Navbar({ page, setPage, adminLoggedIn }: NavbarProps) {
+export default function Navbar({ adminLoggedIn }: NavbarProps) {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const page = (location.pathname.replace("/", "") || "home") as Page;
   const [open, setOpen] = useState(false);
   const [language, setLanguage] = useState<"en" | "ne">("en");
 
@@ -92,7 +94,7 @@ export default function Navbar({ page, setPage, adminLoggedIn }: NavbarProps) {
   const t = translations[language];
 
   const go = (p: Page) => {
-    setPage(p);
+    navigate(p === "home" ? "/" : `/${p}`);
     setOpen(false);
 
     window.scrollTo({

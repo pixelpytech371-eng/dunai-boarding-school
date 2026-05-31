@@ -9,11 +9,11 @@ import GalleryPage from "./pages/GalleryPage";
 import NoticesPage from "./pages/NoticesPage";
 import AchievementsPage from "./pages/AchievementsPage";
 import AdmissionPage from "./pages/AdmissionPage";
-import ContactPage from "./pages/ContactPage";
 import Login from "./pages/Login";
 import BlogPage from "./pages/BlogPage";
 import  AdminPanel  from "./admin/AdminPanel";
 import { useLanguage } from "./hooks/useLanguage";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import {
   SEED_NOTICES,
   SEED_PHOTOS,
@@ -66,7 +66,8 @@ const footerTranslations = {
 };
 
 export default function App() {
-  const [page, setPage] = useState<Page>("home");
+  const location = useLocation();
+  const navigate = useNavigate();
   const [adminLoggedIn, setAdminLoggedIn] = useState(false);
 
   // State management for all data
@@ -104,71 +105,29 @@ const footerNavLinks = [
     ]);
   };
 
-  const showFooter = !["admin", "login"].includes(page);
-
+const showFooter = !["/admin", "/login"].includes(location.pathname);
   return (
     <div className="min-h-screen bg-white font-sans">
       <Navbar
-        page={page}
-        setPage={setPage}
         adminLoggedIn={adminLoggedIn}
         setAdminLoggedIn={setAdminLoggedIn}
       />
 
-      <div className="pt-16">
-        {page === "home" && (
-          <HomePage setPage={setPage} notices={notices} achievements={achievements} blogs={blogPosts} photos={photos} />
-        )}
-        {page === "about" && <AboutPage />}
-        {page === "academics" && <AcademicsPage />}
-        {page === "faculty" && <FacultyPage faculty={faculty} />}
-        {page === "gallery" && <GalleryPage photos={photos} />}
-        {page === "notices" && <NoticesPage notices={notices} />}
-        {page === "achievements" && <AchievementsPage achievements={achievements} />}
-        {page === "admission" && (
-          <AdmissionPage onSubmit={handleAdmissionSubmit} />
-        )}
-        {page === "contact" && <ContactPage />}
-        {page === "blog" && <BlogPage posts={blogPosts} />}
-        {page === "login" && (
-          <Login
-            onLogin={() => {
-              setAdminLoggedIn(true);
-              setPage("admin");
-            }}
-          />
-        )}
-        {page === "admin" && adminLoggedIn && (
-          <AdminPanel
-            notices={notices}
-            setNotices={setNotices}
-            photos={photos}
-            setPhotos={setPhotos}
-            achievements={achievements}
-            setAchievements={setAchievements}
-            faculty={faculty}
-            setFaculty={setFaculty}
-            inquiries={inquiries}
-            setInquiries={setInquiries}
-            blogs={blogPosts}
-            setBlogs={setBlogPosts}
-            onLogout={() => {
-              setAdminLoggedIn(false);
-              setPage("home");
-            }}
-          />
-        )}
-        {page === "admin" && !adminLoggedIn && (
-          <Login
-            onLogin={() => {
-              setAdminLoggedIn(true);
-              setPage("admin");
-            }}
-          />
-        )}
-      </div>
+      <Routes>
+  <Route path="/" element={<HomePage setPage={(p) => navigate(p === "home" ? "/" : `/${p}`)} notices={notices} achievements={achievements} blogs={blogPosts} photos={photos} />} />
+  <Route path="/about" element={<AboutPage />} />
+  <Route path="/academics" element={<AcademicsPage />} />
+  <Route path="/faculty" element={<FacultyPage faculty={faculty} />} />
+  <Route path="/gallery" element={<GalleryPage photos={photos} />} />
+  <Route path="/notices" element={<NoticesPage notices={notices} />} />
+  <Route path="/achievements" element={<AchievementsPage achievements={achievements} />} />
+  <Route path="/admission" element={<AdmissionPage onSubmit={handleAdmissionSubmit} />} />
+  <Route path="/blog" element={<BlogPage posts={blogPosts} />} />
+  <Route path="/login" element={<Login onLogin={() => { setAdminLoggedIn(true); navigate("/admin"); }} />} />
+  <Route path="/admin" element={adminLoggedIn ? <AdminPanel notices={notices} setNotices={setNotices} photos={photos} setPhotos={setPhotos} achievements={achievements} setAchievements={setAchievements} faculty={faculty} setFaculty={setFaculty} inquiries={inquiries} setInquiries={setInquiries} blogs={blogPosts} setBlogs={setBlogPosts} onLogout={() => { setAdminLoggedIn(false); navigate("/"); }} /> : <Login onLogin={() => { setAdminLoggedIn(true); navigate("/admin"); }} />} />
+</Routes>
 
-      {showFooter && <Footer setPage={setPage}  schoolName={t.schoolName} footerDesc={t.footerDesc} quickLinks={t.quickLinks} getInTouch={t.getInTouch} footerAddress={t.footerAddress} footerRights={t.footerRights} madeWith={t.madeWith} inNepal={t.inNepal} navLinks={footerNavLinks} />}
+      {showFooter && <Footer  schoolName={t.schoolName} footerDesc={t.footerDesc} quickLinks={t.quickLinks} getInTouch={t.getInTouch} footerAddress={t.footerAddress} footerRights={t.footerRights} madeWith={t.madeWith} inNepal={t.inNepal} navLinks={footerNavLinks} />}
     </div>
   );
 }

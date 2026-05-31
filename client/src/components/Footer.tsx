@@ -2,15 +2,16 @@ import {
  Heart,
 } from "lucide-react";
 import {
-  FaFacebookF, FaYoutube, FaTwitter, FaInstagram,
+  FaFacebookF, 
 } from "react-icons/fa";
 import type { Page } from "../types";
 import SchoolLogo from "../assets/images/logo.png";
+import { useNavigate } from "react-router-dom";
 
 
 
 interface FooterProps {
-  setPage: (p: Page) => void;
+  
    schoolName: string;
   footerDesc: string;
   quickLinks: string;
@@ -22,7 +23,7 @@ interface FooterProps {
   navLinks: { label: string; page: Page }[];
 }
 
-export default function Footer({ setPage, schoolName, 
+export default function Footer({  schoolName, 
   footerDesc, 
   quickLinks, 
   getInTouch, 
@@ -31,6 +32,8 @@ export default function Footer({ setPage, schoolName,
   madeWith, 
   inNepal,
   navLinks  }: FooterProps) {
+
+    const navigate = useNavigate();
   return (
     <footer className="bg-gray-900 text-gray-300 pt-12 pb-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -66,7 +69,7 @@ export default function Footer({ setPage, schoolName,
                 <button
                   key={l.page}
                   onClick={() => {
-                    setPage(l.page);
+                    navigate(`/${l.page}`);
                     window.scrollTo(0, 0);
                   }}
                   className="text-left text-sm text-gray-400 hover:text-blue-400 transition-colors py-1"
