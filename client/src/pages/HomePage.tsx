@@ -32,6 +32,75 @@ const translations = {
     schoolName1: "Dunai",
     schoolName2: "Boarding",
     schoolName3: "School",
+
+
+     exploreSchool: "Explore Our School",
+    everything: "Everything You Need,",
+    atFingertips: "Right at Your Fingertips",
+    discoverInfo: "Discover all the resources and information about Dunai Boarding School in one place.",
+    explore: "Explore",
+
+    ourGallery: "Our Gallery",
+    glimpsesOf: "Glimpses of",
+    schoolLife: "School Life",
+    galleryDesc: "Capturing precious moments from our vibrant school community",
+    viewFullGallery: "View Full Gallery",
+    
+    // Quick Link cards
+    aboutUs: "About Us",
+    aboutDesc: "Our history, vision, and the message from our principal.",
+    academicPrograms: "Academic Programs",
+    academicDesc: "Explore classes, programs, and student activities.",
+    facultyStaff: "Faculty & Staff",
+    facultyDesc: "Meet our dedicated team of educators.",
+    noticeBoard: "Notice Board",
+    noticeDesc: "Latest notices, holidays, and announcements.",
+    achievementsTitle: "Achievements",
+    achievementsDesc: "Celebrating our students' brilliant accomplishments.",
+    admission: "Admission",
+    admissionDesc: "Inquire about joining Dunai Boarding School.",
+
+
+    stayUpdated: "Stay Updated",
+    latestNotices: "Latest Notices",
+    noticesDesc: "Important announcements and updates from the school administration",
+    viewAllNotices: "View All Notices",
+    dunaiAdmin: "Dunai Boarding School",
+
+    // Achievements
+    ourPride: "Our Pride",
+    studentAchievements: "Student Achievements",
+    achievementsPreviewDesc: "Celebrating the brilliance and hard work of our students",
+    viewAllAchievements: "View All Achievements",
+
+    // Blog
+    studentBlog: "Student Blog",
+    blogDesc: "Essays, poetry, and ideas from our students' own pens.",
+    viewAllPosts: "View All Posts",
+
+    allPosts: "All Posts",
+readAllPosts: "Read All Posts",
+featured: "Featured",
+by: "by",
+
+
+    // CTA Banner
+    admissionsOpen: "Admissions Open for 2083 B.S.",
+    readyToJoin: "Ready to Join the",
+    dbsFamily: "DBS Family",
+    ctaDesc: "Give your child the gift of quality education in a nurturing environment. Applications for the new academic session are now open.",
+    applyNowCTA: "Apply Now",
+    contactUs: "Contact Us",
+
+    // Footer
+    schoolName: "Dunai Boarding School",
+    footerDesc: "Nurturing young minds with quality education and strong values since 2050 B.S.",
+    quickLinks: "Quick Links",
+    getInTouch: "Get In Touch",
+    footerAddress: "ThuliBheri Municipality-3, Dunai, Dolpa, Nepal",
+    footerRights: "© 2082 B.S. Dunai Boarding School. All rights reserved.",
+    madeWith: "Made with",
+    inNepal: "in Nepal",
   },
 
   ne: {
@@ -70,6 +139,73 @@ const translations = {
     schoolName1: "दुनै",
     schoolName2: "बोर्डिङ",
     schoolName3: "स्कूल",
+
+    ourGallery: "हाम्रो ग्यालरी",
+    glimpsesOf: "झलक",
+    schoolLife: "विद्यालय जीवनको",
+    galleryDesc: "हाम्रो जीवन्त विद्यालय समुदायका अमूल्य क्षणहरू कैद गर्दै",
+    viewFullGallery: "पूरा ग्यालरी हेर्नुहोस्",
+
+      // Quick Links
+    exploreSchool: "हाम्रो विद्यालय अन्वेषण गर्नुहोस्",
+    everything: "तपाईंलाई चाहिने सबै,",
+    atFingertips: "तपाईंकै हातमा",
+    discoverInfo: "दुनै बोर्डिङ स्कूलको बारेमा सबै जानकारी एकै ठाउँमा पाउनुहोस्।",
+    explore: "अन्वेषण गर्नुहोस्",
+    
+    // Quick Link cards
+    aboutUs: "हाम्रो बारेमा",
+    aboutDesc: "हाम्रो इतिहास, दृष्टिकोण र प्रधानाध्यापकको सन्देश।",
+    academicPrograms: "शैक्षिक कार्यक्रमहरू",
+    academicDesc: "कक्षाहरू, कार्यक्रमहरू र विद्यार्थी गतिविधिहरू अन्वेषण गर्नुहोस्।",
+    facultyStaff: "शिक्षक र कर्मचारी",
+    facultyDesc: "हाम्रो समर्पित शिक्षक टोलीलाई भेट्नुहोस्।",
+    noticeBoard: "सूचना पाटी",
+    noticeDesc: "भर्खरका सूचनाहरू, बिदाहरू र घोषणाहरू।",
+    achievementsTitle: "उपलब्धिहरू",
+    achievementsDesc: "हाम्रा विद्यार्थीहरूको शानदार उपलब्धिहरूको उत्सव।",
+    admission: "भर्ना",
+    admissionDesc: "दुनै बोर्डिङ स्कूलमा भर्ना बारे जानकारी।",
+
+     stayUpdated: "अपडेट रहनुहोस्",
+    latestNotices: "भर्खरका सूचनाहरू",
+    noticesDesc: "विद्यालय प्रशासनबाट महत्त्वपूर्ण घोषणा र अपडेटहरू",
+    viewAllNotices: "सबै सूचनाहरू हेर्नुहोस्",
+    dunaiAdmin: "दुनै बोर्डिङ स्कूल",
+
+    // Achievements
+    ourPride: "हाम्रो गौरव",
+    studentAchievements: "विद्यार्थी उपलब्धिहरू",
+    achievementsPreviewDesc: "हाम्रा विद्यार्थीहरूको प्रतिभा र मेहनतको उत्सव",
+    viewAllAchievements: "सबै उपलब्धिहरू हेर्नुहोस्",
+
+    // Blog
+    studentBlog: "विद्यार्थी ब्लग",
+    blogDesc: "हाम्रा विद्यार्थीहरूको कलमबाट निबन्ध, कविता र विचारहरू।",
+    viewAllPosts: "सबै पोस्टहरू हेर्नुहोस्",
+
+    allPosts: "सबै पोस्टहरू",
+readAllPosts: "सबै पोस्ट पढ्नुहोस्",
+featured: "विशेष",
+by: "द्वारा",
+
+    // CTA Banner
+    admissionsOpen: "२०८३ सालको लागि भर्ना खुल्ला",
+    readyToJoin: "जोडिन तयार हुनुहुन्छ",
+    dbsFamily: "DBS परिवारमा",
+    ctaDesc: "आफ्नो बच्चालाई पोषण वातावरणमा गुणस्तरीय शिक्षाको उपहार दिनुहोस्। नयाँ शैक्षिक सत्रको लागि आवेदन खुल्ला छ।",
+    applyNowCTA: "अहिले आवेदन दिनुहोस्",
+    contactUs: "हामीलाई सम्पर्क गर्नुहोस्",
+
+    // Footer
+    schoolName: "दुनै बोर्डिङ स्कूल",
+    footerDesc: "२०५० सालदेखि गुणस्तरीय शिक्षा र बलियो मूल्यमान्यताका साथ युवा दिमागहरूलाई हुर्काउँदै।",
+    quickLinks: "द्रुत लिङ्कहरू",
+    getInTouch: "सम्पर्कमा रहनुहोस्",
+    footerAddress: "ठूलीभेरी नगरपालिका-३, दुनै, डोल्पा, नेपाल",
+    footerRights: "© २०८२ साल। दुनै बोर्डिङ स्कूल। सर्वाधिकार सुरक्षित।",
+    madeWith: "साथ बनाइएको",
+    inNepal: "नेपालमा",
   },
 };
 
@@ -77,7 +213,6 @@ import { useLanguage } from "../hooks/useLanguage";
 import {
   FileText,
   ArrowRight,
-  Check,
   Users,
   UserCheck,
   Star,
@@ -85,17 +220,15 @@ import {
   Info,
   BookOpen,
   Bell,
-  Calendar,
   Quote,
   Play,
-  ChevronRight,
   Sparkles,
   GraduationCap,
   MapPin,
   PhoneCall,
   Globe,
   Shield,
-  Zap,
+
   Trophy,
 } from "lucide-react";
 import FadeIn from "../components/ui/FadeIn";
@@ -109,6 +242,7 @@ import HomeAchievementsPreview from "../components/HomeAchievementsPreview";
 import type { Photo } from "../types";
 import HomeNoticesPreview from "../components/HomeNoticesPreview";
 import HomeQuickLinks from "../components/HomeQuickLinks";
+import { FaFacebookF } from "react-icons/fa6";
 
 interface HomePageProps {
   setPage: (p: Page) => void;
@@ -125,47 +259,47 @@ const STATS = (t: any) => [
   { label: t.achievements, value: "50+", icon: <Award size={22} /> },
 ];
 
-const QUICK_LINKS = [
+const QUICK_LINKS = (t: any) => [
   {
     page: "about" as Page,
     icon: <Info size={20} />,
-    title: "About Us",
-    desc: "Our history, vision, and the message from our principal.",
+    title: t.aboutUs,
+    desc: t.aboutDesc,
     color: "blue",
   },
   {
     page: "academics" as Page,
     icon: <BookOpen size={20} />,
-    title: "Academic Programs",
-    desc: "Explore classes, programs, and student activities.",
+    title: t.academicPrograms,
+    desc: t.academicDesc,
     color: "indigo",
   },
   {
     page: "faculty" as Page,
     icon: <Users size={20} />,
-    title: "Faculty & Staff",
-    desc: "Meet our dedicated team of educators.",
+    title: t.facultyStaff,
+    desc: t.facultyDesc,
     color: "teal",
   },
   {
     page: "notices" as Page,
     icon: <Bell size={20} />,
-    title: "Notice Board",
-    desc: "Latest notices, holidays, and announcements.",
+    title: t.noticeBoard,
+    desc: t.noticeDesc,
     color: "amber",
   },
   {
     page: "achievements" as Page,
     icon: <Award size={20} />,
-    title: "Achievements",
-    desc: "Celebrating our students' brilliant accomplishments.",
+    title: t.achievementsTitle,
+    desc: t.achievementsDesc,
     color: "green",
   },
   {
     page: "admission" as Page,
     icon: <FileText size={20} />,
-    title: "Admission",
-    desc: "Inquire about joining Shree Janapriya.",
+    title: t.admission,
+    desc: t.admissionDesc,
     color: "rose",
   },
 ];
@@ -192,7 +326,7 @@ export default function HomePage({
   <div className="absolute inset-0">
     <img
       src={HeroImage}
-      alt={t?.schoolAlt}
+      alt="Dunai Boarding School"
       className="w-full h-full object-cover"
     />
     <div className="absolute inset-0 bg-linear-to-r from-slate-900/80 via-slate-900/80 to-slate-900/60" />
@@ -380,11 +514,22 @@ export default function HomePage({
 
                       {/* Info */}
                       <h3 className="text-lg sm:text-xl font-extrabold text-white mb-0.5">
-                         {t.principalName}
-                      </h3>
-                      <p className="text-blue-200 text-xs font-semibold">
-                        {t.principalTitle}
-                      </p>
+  {t.principalName}
+</h3>
+<p className="text-blue-200 text-xs font-semibold mb-2">
+  {t.principalTitle}
+</p>
+
+{/* Facebook Link */}
+<a
+  href="https://www.facebook.com/lokendra.jaisi.96"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-white text-xs font-medium transition-all duration-300"
+>
+  <FaFacebookF size={11} />
+  Connect on Facebook
+</a>
                     </div>
                   </div>
 
@@ -450,7 +595,7 @@ export default function HomePage({
 
       {/* ═══════════════════ QUICK LINKS ═══════════════════ */}
 
-      <HomeQuickLinks links={QUICK_LINKS} setPage={setPage} />
+      <HomeQuickLinks links={QUICK_LINKS(t)} setPage={setPage} title={t.exploreSchool} subtitle={t.everything} description={t.atFingertips} explore={t.explore} />
 
       {/* ═══════════════════ LATEST NOTICES ═══════════════════ */}
 
@@ -479,21 +624,19 @@ export default function HomePage({
           <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-blue-200 text-sm font-semibold px-4 py-2 rounded-full mb-6">
               <GraduationCap size={16} />
-              Admissions Open for 2083 B.S.
+              {t.admissionsOpen}
             </div>
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-6 tracking-tight">
-              Ready to Join the{" "}
+              {t.readyToJoin}{" "}
               <span className="bg-gradient-to-r from-yellow-300 to-amber-300 bg-clip-text text-transparent">
-                DBS Family
+                {t.dbsFamily}
               </span>
               ?
             </h2>
 
             <p className="text-blue-100 text-lg sm:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
-              Give your child the gift of quality education in a nurturing
-              environment. Applications for the new academic session are now
-              open.
+              {t.ctaDesc}
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
@@ -502,7 +645,7 @@ export default function HomePage({
                 className="group inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-900 font-bold rounded-2xl hover:bg-yellow-50 shadow-2xl shadow-blue-900/50 hover:shadow-yellow-500/30 transition-all duration-300 hover:-translate-y-1 text-base"
               >
                 <FileText size={20} />
-                Apply Now
+                {t.applyNowCTA}
                 <ArrowRight
                   size={18}
                   className="group-hover:translate-x-1 transition-transform"
@@ -513,7 +656,7 @@ export default function HomePage({
                 className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-2xl border-2 border-white/30 hover:bg-white/20 hover:border-white/50 transition-all duration-300 hover:-translate-y-1 text-base"
               >
                 <PhoneCall size={20} />
-                Contact Us
+                {t.contactUs}
               </button>
             </div>
 

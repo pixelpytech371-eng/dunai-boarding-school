@@ -12,15 +12,48 @@ interface BlogPageProps {
 
 const CATEGORIES = ["All", "Essay", "Poetry", "Story", "Science", "Opinion"];
 
+const translations = {
+  en: {
+    studentBlog: "Student Blog",
+    blogDesc: "Words written by our students — essays, poetry, stories, and ideas.",
+    all: "All",
+    essay: "Essay",
+    poetry: "Poetry",
+    story: "Story",
+    science: "Science",
+    opinion: "Opinion",
+    backToBlog: "Back to Blog",
+    featured: "Featured",
+    by: "by",
+    noPosts: "No posts in this category yet.",
+  },
+  ne: {
+    studentBlog: "विद्यार्थी ब्लग",
+    blogDesc: "हाम्रा विद्यार्थीहरूद्वारा लेखिएका शब्दहरू — निबन्ध, कविता, कथा र विचारहरू।",
+    all: "सबै",
+    essay: "निबन्ध",
+    poetry: "कविता",
+    story: "कथा",
+    science: "विज्ञान",
+    opinion: "विचार",
+    backToBlog: "ब्लगमा फर्कनुहोस्",
+    featured: "विशेष",
+    by: "द्वारा",
+    noPosts: "यस श्रेणीमा कुनै पोस्ट छैन।",
+  },
+};
+
 // ── Full post reader ──────────────────────────────────────────────────────────
 function PostReader({ post, onBack }: { post: BlogPost; onBack: () => void }) {
+  const language = useLanguage();
+const t = translations[language];
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
       <button
         onClick={onBack}
         className="flex items-center gap-2 text-sm font-semibold text-blue-700 hover:text-blue-900 transition-colors mb-8"
       >
-        <ArrowLeft size={16} /> Back to Blog
+        <ArrowLeft size={16} /> {t.backToBlog}
       </button>
 
       {/* Cover */}
@@ -183,10 +216,10 @@ export default function BlogPage() {
       <FadeIn>
         <div className="flex items-center gap-2 mb-1">
           <BookOpen size={22} className="text-blue-700" />
-          <h1 className="text-4xl font-extrabold text-gray-900">Student Blog</h1>
+          <h1 className="text-4xl font-extrabold text-gray-900">{t.studentBlog}</h1>
         </div>
         <p className="text-gray-500 mb-8 text-lg">
-          Words written by our students — essays, poetry, stories, and ideas.
+          {t.blogDesc}
         </p>
       </FadeIn>
 
@@ -232,7 +265,7 @@ export default function BlogPage() {
       {filtered.length === 0 && (
         <div className="text-center py-20 text-gray-400">
           <BookOpen size={40} className="mx-auto mb-3 opacity-30" />
-          <p className="font-medium">No posts in this category yet.</p>
+          <p className="font-medium">{t.noPosts}</p>
         </div>
       )}
 

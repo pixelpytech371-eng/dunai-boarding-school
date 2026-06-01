@@ -7,6 +7,12 @@ import axios from "axios";
 
 interface HomeBlogSectionProps {
   setPage: (p: Page) => void;
+   studentBlog: string;
+  blogDesc: string;
+  allPosts: string;
+  readAllPosts: string;
+  featured: string;   // ← Rename prop to featuredText
+  by: string;
 }
 
 interface BlogPost {
@@ -95,7 +101,7 @@ export default function HomeBlogSection({
             onClick={go}
             className="flex items-center gap-1 text-sm font-semibold text-indigo-600 hover:text-indigo-900 transition-colors"
           >
-            All Posts <ArrowRight size={15} />
+            {allPosts} <ArrowRight size={15} />
           </button>
         </div>
       </FadeIn>
@@ -122,8 +128,7 @@ export default function HomeBlogSection({
               <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/30 to-transparent" />
 
               <span className="absolute top-4 left-4 flex items-center gap-1 bg-yellow-400 text-yellow-900 text-xs font-bold px-2.5 py-1 rounded-full shadow">
-                <Star size={10} className="fill-yellow-800" />
-                Featured
+                <Star size={10} className="fill-yellow-800" /> {featuredText}
               </span>
 
               <div className="absolute bottom-0 left-0 right-0 p-5">
@@ -206,8 +211,7 @@ export default function HomeBlogSection({
               onClick={go}
               className="w-full flex items-center justify-center gap-2 py-3 rounded-2xl border-2 border-dashed border-indigo-200 text-indigo-600 text-sm font-semibold hover:bg-indigo-50 hover:border-indigo-400 transition-all"
             >
-              <BookOpen size={16} />
-              Read All Posts
+              <BookOpen size={16} /> {readAllPosts}
             </button>
           </FadeIn>
         </div>

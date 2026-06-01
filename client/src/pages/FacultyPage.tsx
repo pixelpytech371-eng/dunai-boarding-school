@@ -18,7 +18,7 @@ import {
 import { useEffect, useState } from "react";
 import FadeIn from "../components/ui/FadeIn";
 import type { Faculty } from "../types";
-import axios from "axios";
+import { useLanguage } from "../hooks/useLanguage";
 
 // Subject icons mapping
 const subjectIcons: Record<string, React.ReactNode> = {
@@ -28,6 +28,55 @@ const subjectIcons: Record<string, React.ReactNode> = {
   English: <span className="text-indigo-600 font-bold">A</span>,
   "Social Studies": <GlobeIcon />,
   "Computer Science": <CodeIcon />,
+};
+
+const translations = {
+  en: {
+    ourTeam: "Our Team",
+    meetOur: "Meet Our",
+    educators: "Educators",
+    facultyDesc: "Passionate, experienced, and dedicated teachers who inspire, guide, and nurture every child's potential.",
+    backToTeachers: "Back to All Teachers",
+    about: "About",
+    teachingPhilosophy: "Teaching Philosophy",
+    philosophy1: "Student-centered learning approach",
+    philosophy2: "Encourages critical thinking",
+    philosophy3: "Creates inclusive classroom environment",
+    philosophy4: "Regular parent communication",
+    philosophy5: "Uses modern teaching methods",
+    philosophy6: "Mentors students beyond academics",
+    yearsExp: "15+ Years",
+    mastersDegree: "Masters Degree",
+    viewProfile: "View Profile",
+    noTeachers: "No teachers found.",
+    tryDifferent: "Try a different search term.",
+    heartOfSchool: "Our Teachers Are the Heart of Our School",
+    heartDesc: "Every educator at Dunai Boarding School is carefully selected for their expertise, passion, and commitment to shaping young minds.",
+    searchPlaceholder: "Search by name or subject...",
+  },
+  ne: {
+    ourTeam: "हाम्रो टोली",
+    meetOur: "भेट्नुहोस् हाम्रा",
+    educators: "शिक्षकहरूलाई",
+    facultyDesc: "हरेक बच्चाको क्षमतालाई प्रेरित, मार्गदर्शन र पोषण गर्ने जोशिलो, अनुभवी र समर्पित शिक्षकहरू।",
+    backToTeachers: "सबै शिक्षकहरूमा फर्कनुहोस्",
+    about: "बारेमा",
+    teachingPhilosophy: "शिक्षण दर्शन",
+    philosophy1: "विद्यार्थी-केन्द्रित सिकाइ दृष्टिकोण",
+    philosophy2: "आलोचनात्मक सोचलाई प्रोत्साहन",
+    philosophy3: "समावेशी कक्षाकोठा वातावरण सिर्जना",
+    philosophy4: "नियमित अभिभावक संचार",
+    philosophy5: "आधुनिक शिक्षण विधिहरूको प्रयोग",
+    philosophy6: "शैक्षिकभन्दा बाहिर पनि विद्यार्थीहरूको मार्गदर्शन",
+    yearsExp: "१५+ वर्ष",
+    mastersDegree: "स्नातकोत्तर",
+    viewProfile: "प्रोफाइल हेर्नुहोस्",
+    noTeachers: "कुनै शिक्षक फेला परेन।",
+    tryDifferent: "फरक खोज शब्द प्रयास गर्नुहोस्।",
+    heartOfSchool: "हाम्रा शिक्षकहरू हाम्रो विद्यालयको मुटु हुन्",
+    heartDesc: "दुनै बोर्डिङ स्कूलका हरेक शिक्षक उनीहरूको विशेषज्ञता, जोश र युवा दिमागहरूलाई आकार दिने प्रतिबद्धताको लागि सावधानीपूर्वक छानिएका छन्।",
+    searchPlaceholder: "नाम वा विषय अनुसार खोज्नुहोस्...",
+  },
 };
 
 // Small inline SVG icons (to avoid importing too many lucide icons)
@@ -158,6 +207,9 @@ export default function FacultyPage() {
     fetchFaculty();
   }, []);
 
+  const language = useLanguage();
+const t = translations[language];
+
   const filteredFaculty = faculty.filter(
     (f) =>
       f.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -228,11 +280,11 @@ export default function FacultyPage() {
                   <div className="flex justify-center gap-4 text-sm text-gray-400">
                     <div className="flex items-center gap-1.5">
                       <Briefcase size={14} />
-                      <span>15+ Years</span>
+                      <span>{t.yearsExp}</span>
                     </div>
                     <div className="flex items-center gap-1.5">
                       <Award size={14} />
-                      <span>Masters Degree</span>
+                      <span>{t.mastersDegree}</span>
                     </div>
                   </div>
                 </div>
@@ -244,7 +296,7 @@ export default function FacultyPage() {
                   <div className="flex items-center gap-2 mb-3">
                     <Quote size={18} className="text-blue-500" />
                     <span className="text-sm font-semibold text-gray-500 uppercase tracking-wider">
-                      About {selectedTeacher.name.split(" ")[0]}
+                      {t.about} {selectedTeacher.name.split(" ")[0]}
                     </span>
                   </div>
                   <p className="text-gray-700 leading-relaxed text-lg">
@@ -254,20 +306,17 @@ export default function FacultyPage() {
 
                 <div className="space-y-4 pt-8 border-t border-gray-100">
                   <h3 className="font-bold text-gray-900 text-lg flex items-center gap-2">
-                    <Star
-                      size={18}
-                      className="text-yellow-500 fill-yellow-500"
-                    />
-                    Teaching Philosophy
+                    <Star size={18} className="text-yellow-500 fill-yellow-500" />
+                    {t.teachingPhilosophy}
                   </h3>
                   <div className="grid sm:grid-cols-2 gap-3">
                     {[
-                      "Student-centered learning approach",
-                      "Encourages critical thinking",
-                      "Creates inclusive classroom environment",
-                      "Regular parent communication",
-                      "Uses modern teaching methods",
-                      "Mentors students beyond academics",
+                      t.philosophy1,
+                      t.philosophy2,
+                      t.philosophy3,
+                      t.philosophy4,
+                      t.philosophy5,
+                      t.philosophy6,
                     ].map((item, i) => (
                       <div
                         key={i}
@@ -310,17 +359,16 @@ export default function FacultyPage() {
         <div className="text-center mb-12 lg:mb-16">
           <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-sm font-semibold px-4 py-2 rounded-full mb-4">
             <Users size={14} />
-            Our Team
+            {t.ourTeam}
           </div>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 tracking-tight">
-            Meet Our{" "}
-            <span className="bg-linear-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-              Educators
+            {t.meetOur}{" "}
+            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+              {t.educators}
             </span>
           </h1>
           <p className="text-gray-500 text-lg sm:text-xl max-w-3xl mx-auto">
-            Passionate, experienced, and dedicated teachers who inspire, guide,
-            and nurture every child's potential.
+            {t.facultyDesc}
           </p>
         </div>
       </FadeIn>
@@ -338,6 +386,8 @@ export default function FacultyPage() {
             <p className="text-gray-400 text-sm">
               Try a different search term.
             </p>
+            <p className="text-gray-400 text-lg">{t.noTeachers}</p>
+            <p className="text-gray-400 text-sm">{t.tryDifferent}</p>
           </div>
         </FadeIn>
       ) : (
@@ -387,10 +437,10 @@ export default function FacultyPage() {
                     <div className="flex items-center justify-between pt-3 border-t border-gray-200/50">
                       <div className="flex items-center gap-1.5 text-xs text-gray-500">
                         <GraduationCap size={14} />
-                        <span>Masters Degree</span>
+                        <span>{t.mastersDegree}</span>
                       </div>
                       <span className="flex items-center gap-1 text-xs font-bold text-blue-600 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-0 group-hover:translate-x-1">
-                        View Profile
+                        {t.viewProfile}
                         <ChevronRight size={12} />
                       </span>
                     </div>
@@ -407,11 +457,10 @@ export default function FacultyPage() {
         <div className="text-center mt-16 lg:mt-20 py-8 px-6 bg-linear-to-br from-blue-50 to-indigo-50 rounded-3xl border border-blue-100">
           <Heart size={28} className="text-red-400 mx-auto mb-4" />
           <h3 className="text-xl font-extrabold text-gray-900 mb-2">
-            Our Teachers Are the Heart of Our School
+            {t.heartOfSchool}
           </h3>
           <p className="text-gray-500 max-w-lg mx-auto text-sm">
-            Every educator at Dunai Boarding School is carefully selected for
-            their expertise, passion, and commitment to shaping young minds.
+            {t.heartDesc}
           </p>
         </div>
       </FadeIn>

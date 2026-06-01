@@ -7,6 +7,11 @@ import axios from "axios";
 
 interface HomeNoticesPreviewProps {
   setPage: (p: Page) => void;
+  stayUpdated: string;
+  latestNotices: string;
+  noticesDesc: string;
+  viewAllNotices: string;
+  schoolName: string;
 }
 
 interface Notice {
@@ -58,16 +63,15 @@ export default function HomeNoticesPreview({
             <div>
               <div className="inline-flex items-center gap-2 bg-amber-50 text-amber-700 text-sm font-semibold px-4 py-2 rounded-full mb-4">
                 <Bell size={14} />
-                Stay Updated
+                {stayUpdated}
               </div>
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight">
-                Latest Notices
+                {latestNotices}
               </h2>
 
               <p className="text-gray-500 mt-2">
-                Important announcements and updates from the school
-                administration
+                {noticesDesc}
               </p>
             </div>
 
@@ -78,7 +82,7 @@ export default function HomeNoticesPreview({
               }}
               className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-gray-200 text-gray-700 font-semibold rounded-2xl hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700 transition-all duration-300 text-sm shadow-sm hover:shadow-md max-w-46"
             >
-              View All Notices
+              {viewAllNotices}
               <ArrowRight size={15} />
             </button>
           </div>

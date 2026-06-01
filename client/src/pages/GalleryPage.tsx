@@ -4,6 +4,26 @@ import axios from "axios";
 
 import Badge from "../components/ui/Badge";
 import FadeIn from "../components/ui/FadeIn";
+import { useLanguage } from "../hooks/useLanguage";
+
+const translations = {
+  en: {
+    photoGallery: "Photo Gallery",
+    momentsDesc: "Moments that define us.",
+    all: "All",
+    event: "Event",
+    academic: "Academic",
+    sports: "Sports",
+  },
+  ne: {
+    photoGallery: "फोटो ग्यालरी",
+    momentsDesc: "हामीलाई परिभाषित गर्ने क्षणहरू।",
+    all: "सबै",
+    event: "कार्यक्रम",
+    academic: "शैक्षिक",
+    sports: "खेलकुद",
+  },
+};
 
 function GalleryPage() {
   const [filter, setFilter] = useState("All");
@@ -35,16 +55,8 @@ function GalleryPage() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-12">
-      <FadeIn>
-        <h1 className="text-4xl font-extrabold text-gray-900 mb-2">
-          Photo Gallery
-        </h1>
-
-        <p className="text-gray-500 mb-6 text-lg">
-          Moments that define us.
-        </p>
-      </FadeIn>
-
+      <FadeIn><h1 className="text-4xl font-extrabold text-gray-900 mb-2">{t.photoGallery}</h1>
+        <p className="text-gray-500 mb-6 text-lg">{t.momentsDesc}</p></FadeIn>
       <FadeIn>
         <div className="flex gap-2 mb-8 flex-wrap">
           {categories.map((c) => (

@@ -1,115 +1,316 @@
 import {
-  CheckCircle, Cpu, GraduationCap, Heart, Star,
-  BookOpen, BookMarked, Sparkles, Trophy, Users, Globe,
+  CheckCircle, Cpu, GraduationCap, Heart,
+  BookOpen, Sparkles, Trophy, Users, Globe,
   FlaskConical, Monitor, Library, Music, Dumbbell,
   Palette, Code2, Lightbulb, Target, Rocket,
   Calendar, Clock, Zap, Brain, School,
-  FileText, ArrowRight, Atom, Calculator, PenTool,
+  FileText, ArrowRight,  Calculator, PenTool,
 } from "lucide-react";
 import FadeIn from "../components/ui/FadeIn";
+import { useLanguage } from "../hooks/useLanguage";
+
+const translations = {
+  en: {
+    academicExcellence: "Academic Excellence",
+    buildingStrong: "Building Strong",
+    foundations: "Foundations",
+    heroDesc: "A nurturing learning environment from Nursery to Class 8, designed to develop curious minds, strong character, and a lifelong love for learning.",
+    ourPrograms: "Our Programs",
+    threeStages: "Three Stages of",
+    development: "Development",
+    stagesDesc: "Each stage is carefully designed to match your child's developmental needs, ensuring a smooth and joyful learning journey.",
+    age: "Age:",
+    beyondClassroom: "Beyond the Classroom",
+    activitiesClubs: "Activities &",
+    clubs: "Clubs",
+    activitiesDesc: "Holistic development through a diverse range of extracurricular activities that nurture talents, build character, and create lasting memories.",
+    ourCampus: "Our Campus",
+    modernLearning: "Modern Learning",
+    facilities: "Facilities",
+    facilitiesDesc: "A safe, stimulating environment with modern amenities that enhance the learning experience for every child.",
+    ourApproach: "Our Approach",
+    howWe: "How We",
+    teach: "Teach",
+    approachDesc: "Child-centered teaching methods that make learning engaging, meaningful, and fun for every student.",
+    interactiveLearning: "Interactive Learning",
+    interactiveDesc: "Engaging, hands-on lessons that make learning fun through experiments, discussions, and real-world applications.",
+    smallClass: "Small Class Sizes",
+    smallClassDesc: "Maximum 30 students per class ensuring personalized attention and better student-teacher interaction.",
+    regularAssessment: "Regular Assessment",
+    regularAssessmentDesc: "Continuous evaluation through monthly tests, projects, and presentations to track progress effectively.",
+    digitalIntegration: "Digital Integration",
+    digitalDesc: "Smart boards, computer classes, and online resources that prepare students for the digital age.",
+    bestStart: "Give Your Child the Best Start in Life",
+    bestStartDesc: "Join the Dunai Boarding School family and watch your child grow into a confident, curious, and capable young learner.",
+    applyAdmission: "Apply for Admission",
+    scheduleVisit: "Schedule a Visit",
+    earlyChildhood: "Early Childhood",
+nurseryKg: "Nursery – KG",
+age3to5: "3 – 5 years",
+earlyChildhoodDesc: "Play-based learning that sparks curiosity and builds the foundation for lifelong learning through exploration, creativity, and social interaction in a warm, nurturing environment.",
+montessori: "Montessori-inspired activities",
+languageSkill: "Language & motor skill development",
+musicArt: "Music, art & movement",
+socialLearning: "Social & emotional learning",
+playAreas: "Indoor & outdoor play areas",
+
+primary: "Primary",
+class1to5: "Class 1 – 5",
+age6to11: "6 – 11 years",
+primaryDesc: "Strong foundational education aligned with the national curriculum, emphasizing core subjects while nurturing creativity, critical thinking, and moral values.",
+nepaliEnglish: "Nepali, English, Mathematics",
+scienceSocial: "Science & Social Studies",
+computerBasics: "Computer basics",
+artsPE: "Arts & Physical Education",
+moralEducation: "Moral & ethical education",
+
+upperPrimary: "Upper Primary",
+class6to8: "Class 6 – 8",
+age11to14: "11 – 14 years",
+upperPrimaryDesc: "Advanced curriculum with specialized subjects, project-based learning, and preparation for secondary education with focus on analytical and problem-solving skills.",
+coding: "Computer Science & Coding",
+advancedMath: "Advanced Mathematics",
+physicsChemistry: "Physics & Chemistry basics",
+researchProject: "Research & project work",
+careerExploration: "Career exploration",
+
+// Activities
+scienceExhibition: "Annual Science Exhibition",
+spellingBee: "Spelling Bee Competition",
+quizCompetition: "Quiz Competition",
+mathOlympiad: "Math Olympiad Training",
+schoolMagazine: "School Magazine",
+musicDance: "Music & Dance Club",
+artCraft: "Art & Craft Workshop",
+footballTeam: "Football Team",
+cricketTeam: "Cricket Team",
+volleyballTeam: "Volleyball Team",
+ecoClub: "Eco & Gardening Club",
+codingClub: "Computer & Coding Club",
+
+// Facilities
+modernClassrooms: "Modern Classrooms",
+modernClassroomsDesc: "Spacious, well-ventilated classrooms with comfortable seating, whiteboards, and learning aids for optimal engagement.",
+smartSetup: "Smart Setup",
+scienceLab: "Science Laboratory",
+scienceLabDesc: "Well-equipped lab with modern apparatus for Physics, Chemistry, and Biology experiments and hands-on learning.",
+practicalLearning: "Practical Learning",
+computerLab: "Computer Lab",
+computerLabDesc: "Dedicated computer room with modern systems, internet access, and supervised learning for digital literacy.",
+techEnabled: "Tech Enabled",
+library: "Library",
+libraryDesc: "Rich collection of 3,000+ books in Nepali and English with comfortable reading spaces for young readers.",
+books3000: "3,000+ Books",
+playground: "Playground",
+playgroundDesc: "Large outdoor space for football, cricket, volleyball, athletics, and supervised physical activities.",
+sportsZone: "Sports Zone",
+activityHall: "Activity Hall",
+activityHallDesc: "Multipurpose hall for cultural programs, music classes, indoor games, and school assemblies.",
+creativeSpace: "Creative Space",
+  },
+  ne: {
+    academicExcellence: "शैक्षिक उत्कृष्टता",
+    buildingStrong: "बलियो",
+    foundations: "जग निर्माण",
+    heroDesc: "नर्सरीदेखि कक्षा ८ सम्मको पोषणयुक्त सिकाइ वातावरण, जिज्ञासु दिमाग, बलियो चरित्र र जीवनभर सिक्ने प्रेमको विकास गर्न डिजाइन गरिएको।",
+    ourPrograms: "हाम्रा कार्यक्रमहरू",
+    threeStages: "विकासका तीन",
+    development: "चरणहरू",
+    stagesDesc: "प्रत्येक चरण तपाईंको बच्चाको विकासात्मक आवश्यकताहरूसँग मेल खाने गरी सावधानीपूर्वक डिजाइन गरिएको छ, सहज र आनन्ददायी सिकाइ यात्रा सुनिश्चित गर्दै।",
+    age: "उमेर:",
+    beyondClassroom: "कक्षाकोठाभन्दा बाहिर",
+    activitiesClubs: "गतिविधि र",
+    clubs: "क्लबहरू",
+    activitiesDesc: "प्रतिभालाई पोषण गर्ने, चरित्र निर्माण गर्ने र स्थायी सम्झनाहरू सिर्जना गर्ने विविध अतिरिक्त क्रियाकलापहरू मार्फत समग्र विकास।",
+    ourCampus: "हाम्रो क्याम्पस",
+    modernLearning: "आधुनिक सिकाइ",
+    facilities: "सुविधाहरू",
+    facilitiesDesc: "प्रत्येक बच्चाको सिकाइ अनुभव बढाउने आधुनिक सुविधाहरू सहितको सुरक्षित, उत्प्रेरक वातावरण।",
+    ourApproach: "हाम्रो दृष्टिकोण",
+    howWe: "हामी कसरी",
+    teach: "सिकाउँछौं",
+    approachDesc: "बाल-केन्द्रित शिक्षण विधिहरू जसले प्रत्येक विद्यार्थीको लागि सिकाइलाई आकर्षक, अर्थपूर्ण र रमाइलो बनाउँछ।",
+    interactiveLearning: "अन्तरक्रियात्मक सिकाइ",
+    interactiveDesc: "प्रयोग, छलफल र वास्तविक-विश्व अनुप्रयोगहरू मार्फत सिकाइलाई रमाइलो बनाउने आकर्षक, हाते पाठहरू।",
+    smallClass: "सानो कक्षा आकार",
+    smallClassDesc: "प्रति कक्षा अधिकतम ३० विद्यार्थी, व्यक्तिगत ध्यान र राम्रो विद्यार्थी-शिक्षक अन्तरक्रिया सुनिश्चित गर्दै।",
+    regularAssessment: "नियमित मूल्याङ्कन",
+    regularAssessmentDesc: "प्रगति प्रभावकारी रूपमा ट्र्याक गर्न मासिक परीक्षण, परियोजना र प्रस्तुतीकरण मार्फत निरन्तर मूल्याङ्कन।",
+    digitalIntegration: "डिजिटल एकीकरण",
+    digitalDesc: "स्मार्ट बोर्ड, कम्प्युटर कक्षा र अनलाइन स्रोतहरू जसले विद्यार्थीहरूलाई डिजिटल युगको लागि तयार गर्छ।",
+    bestStart: "आफ्नो बच्चालाई जीवनको सबैभन्दा राम्रो सुरुवात दिनुहोस्",
+    bestStartDesc: "दुनै बोर्डिङ स्कूल परिवारमा सामेल हुनुहोस् र आफ्नो बच्चालाई आत्मविश्वासी, जिज्ञासु र सक्षम युवा शिक्षार्थीको रूपमा हुर्केको हेर्नुहोस्।",
+    applyAdmission: "भर्नाको लागि आवेदन दिनुहोस्",
+    scheduleVisit: "भ्रमणको समय तय गर्नुहोस्",
+
+    earlyChildhood: "प्रारम्भिक बाल्यकाल",
+nurseryKg: "नर्सरी – केजी",
+age3to5: "३ – ५ वर्ष",
+earlyChildhoodDesc: "खेल-आधारित सिकाइ जसले जिज्ञासा जगाउँछ र अन्वेषण, रचनात्मकता र सामाजिक अन्तरक्रिया मार्फत आजीवन सिकाइको जग निर्माण गर्छ।",
+montessori: "मोन्टेसरी-प्रेरित गतिविधिहरू",
+languageSkill: "भाषा र मोटर सीप विकास",
+musicArt: "संगीत, कला र आन्दोलन",
+socialLearning: "सामाजिक र भावनात्मक सिकाइ",
+playAreas: "भित्री र बाहिरी खेल क्षेत्रहरू",
+
+primary: "प्राथमिक",
+class1to5: "कक्षा १ – ५",
+age6to11: "६ – ११ वर्ष",
+primaryDesc: "राष्ट्रिय पाठ्यक्रमसँग मिल्दो बलियो आधारभूत शिक्षा, मुख्य विषयहरूमा जोड दिँदै रचनात्मकता, आलोचनात्मक सोच र नैतिक मूल्यहरूको पोषण।",
+nepaliEnglish: "नेपाली, अंग्रेजी, गणित",
+scienceSocial: "विज्ञान र सामाजिक अध्ययन",
+computerBasics: "कम्प्युटर आधारभूत",
+artsPE: "कला र शारीरिक शिक्षा",
+moralEducation: "नैतिक शिक्षा",
+
+upperPrimary: "उच्च प्राथमिक",
+class6to8: "कक्षा ६ – ८",
+age11to14: "११ – १४ वर्ष",
+upperPrimaryDesc: "विशेष विषयहरू, परियोजना-आधारित सिकाइ र विश्लेषणात्मक तथा समस्या-समाधान सीपहरूमा ध्यान केन्द्रित गर्दै उन्नत पाठ्यक्रम।",
+coding: "कम्प्युटर विज्ञान र कोडिङ",
+advancedMath: "उन्नत गणित",
+physicsChemistry: "भौतिकशास्त्र र रसायनशास्त्र आधारभूत",
+researchProject: "अनुसन्धान र परियोजना कार्य",
+careerExploration: "करियर अन्वेषण",
+
+// Activities
+scienceExhibition: "वार्षिक विज्ञान प्रदर्शनी",
+spellingBee: "स्पेलिङ बी प्रतियोगिता",
+quizCompetition: "क्विज प्रतियोगिता",
+mathOlympiad: "गणित ओलम्पियाड प्रशिक्षण",
+schoolMagazine: "विद्यालय पत्रिका",
+musicDance: "संगीत र नृत्य क्लब",
+artCraft: "कला र शिल्प कार्यशाला",
+footballTeam: "फुटबल टोली",
+cricketTeam: "क्रिकेट टोली",
+volleyballTeam: "भलिबल टोली",
+ecoClub: "इको र बगैंचा क्लब",
+codingClub: "कम्प्युटर र कोडिङ क्लब",
+
+// Facilities
+modernClassrooms: "आधुनिक कक्षाकोठाहरू",
+modernClassroomsDesc: "आरामदायी बसाइ, ह्वाइटबोर्ड र सिकाइ सामग्री सहित प्रशस्त, हावादार कक्षाकोठाहरू।",
+smartSetup: "स्मार्ट सेटअप",
+scienceLab: "विज्ञान प्रयोगशाला",
+scienceLabDesc: "भौतिकशास्त्र, रसायनशास्त्र र जीवविज्ञान प्रयोगहरूको लागि आधुनिक उपकरण सहितको सुसज्जित प्रयोगशाला।",
+practicalLearning: "प्रयोगात्मक सिकाइ",
+computerLab: "कम्प्युटर ल्याब",
+computerLabDesc: "आधुनिक प्रणाली, इन्टरनेट पहुँच र डिजिटल साक्षरताको लागि पर्यवेक्षित सिकाइ सहितको समर्पित कम्प्युटर कक्ष।",
+techEnabled: "प्रविधि सक्षम",
+library: "पुस्तकालय",
+libraryDesc: "युवा पाठकहरूको लागि आरामदायी पठन स्थान सहित नेपाली र अंग्रेजीमा ३,०००+ पुस्तकहरूको समृद्ध संग्रह।",
+books3000: "३,०००+ पुस्तकहरू",
+playground: "खेल मैदान",
+playgroundDesc: "फुटबल, क्रिकेट, भलिबल, एथलेटिक्स र पर्यवेक्षित शारीरिक गतिविधिहरूको लागि ठूलो बाहिरी स्थान।",
+sportsZone: "खेल क्षेत्र",
+activityHall: "गतिविधि हल",
+activityHallDesc: "सांस्कृतिक कार्यक्रम, संगीत कक्षा, भित्री खेल र विद्यालय सभाहरूको लागि बहुउद्देश्यीय हल।",
+creativeSpace: "रचनात्मक स्थान",
+
+  },
+};
 
 export default function AcademicsPage() {
+  const language = useLanguage();
+const t = translations[language];
+
   const programs = [
     {
-      level: "Early Childhood",
-      grade: "Nursery – KG",
-      age: "3 – 5 years",
-      desc: "Play-based learning that sparks curiosity and builds the foundation for lifelong learning through exploration, creativity, and social interaction in a warm, nurturing environment.",
+      level: t.earlyChildhood,
+      grade: t.nurseryKg,
+      age: t.age3to5,
+      desc: t.earlyChildhoodDesc,
       icon: <Heart size={24} />,
       color: "from-pink-500 to-rose-600",
       bgColor: "from-pink-50 to-rose-50",
       borderColor: "border-pink-200",
       iconBg: "bg-pink-100 text-pink-600",
       badgeBg: "bg-pink-500",
-      highlights: ["Montessori-inspired activities", "Language & motor skill development", "Music, art & movement", "Social & emotional learning", "Indoor & outdoor play areas"],
+      highlights: [t.montessori, t.languageSkill, t.musicArt, t.socialLearning, t.playAreas],
     },
     {
-      level: "Primary",
-      grade: "Class 1 – 5",
-      age: "6 – 11 years",
-      desc: "Strong foundational education aligned with the national curriculum, emphasizing core subjects while nurturing creativity, critical thinking, and moral values.",
+      level: t.primary,
+      grade: t.class1to5,
+      age: t.age6to11,
+      desc: t.primaryDesc,
       icon: <BookOpen size={24} />,
       color: "from-blue-500 to-blue-700",
       bgColor: "from-blue-50 to-indigo-50",
       borderColor: "border-blue-200",
       iconBg: "bg-blue-100 text-blue-600",
       badgeBg: "bg-blue-500",
-      highlights: ["Nepali, English, Mathematics", "Science & Social Studies", "Computer basics", "Arts & Physical Education", "Moral & ethical education"],
+      highlights: [t.nepaliEnglish, t.scienceSocial, t.computerBasics, t.artsPE, t.moralEducation],
     },
     {
-      level: "Upper Primary",
-      grade: "Class 6 – 8",
-      age: "11 – 14 years",
-      desc: "Advanced curriculum with specialized subjects, project-based learning, and preparation for secondary education with focus on analytical and problem-solving skills.",
+      level: t.upperPrimary,
+      grade: t.class6to8,
+      age: t.age11to14,
+      desc: t.upperPrimaryDesc,
       icon: <Cpu size={24} />,
       color: "from-purple-500 to-purple-700",
       bgColor: "from-purple-50 to-violet-50",
       borderColor: "border-purple-200",
       iconBg: "bg-purple-100 text-purple-600",
       badgeBg: "bg-purple-500",
-      highlights: ["Computer Science & Coding", "Advanced Mathematics", "Physics & Chemistry basics", "Research & project work", "Career exploration"],
+      highlights: [t.coding, t.advancedMath, t.physicsChemistry, t.researchProject, t.careerExploration],
     },
   ];
 
   const activities = [
-    { name: "Annual Science Exhibition", icon: <FlaskConical size={16} />, category: "Academic" },
-    { name: "Spelling Bee Competition", icon: <BookOpen size={16} />, category: "Academic" },
-    { name: "Quiz Competition", icon: <Brain size={16} />, category: "Academic" },
-    { name: "Math Olympiad Training", icon: <Calculator size={16} />, category: "Academic" },
-    { name: "School Magazine", icon: <PenTool size={16} />, category: "Creative" },
-    { name: "Music & Dance Club", icon: <Music size={16} />, category: "Creative" },
-    { name: "Art & Craft Workshop", icon: <Palette size={16} />, category: "Creative" },
-    { name: "Football Team", icon: <Trophy size={16} />, category: "Sports" },
-    { name: "Cricket Team", icon: <Trophy size={16} />, category: "Sports" },
-    { name: "Volleyball Team", icon: <Dumbbell size={16} />, category: "Sports" },
-    { name: "Eco & Gardening Club", icon: <Globe size={16} />, category: "Community" },
-    { name: "Computer & Coding Club", icon: <Code2 size={16} />, category: "Technology" },
+    { name: t.scienceExhibition, icon: <FlaskConical size={16} />, category: "Academic" },
+    { name: t.spellingBee, icon: <BookOpen size={16} />, category: "Academic" },
+    { name: t.quizCompetition, icon: <Brain size={16} />, category: "Academic" },
+    { name: t.mathOlympiad, icon: <Calculator size={16} />, category: "Academic" },
+    { name: t.schoolMagazine, icon: <PenTool size={16} />, category: "Creative" },
+    { name: t.musicDance, icon: <Music size={16} />, category: "Creative" },
+    { name: t.artCraft, icon: <Palette size={16} />, category: "Creative" },
+    { name: t.footballTeam, icon: <Trophy size={16} />, category: "Sports" },
+    { name: t.cricketTeam, icon: <Trophy size={16} />, category: "Sports" },
+    { name: t.volleyballTeam, icon: <Dumbbell size={16} />, category: "Sports" },
+    { name: t.ecoClub, icon: <Globe size={16} />, category: "Community" },
+    { name: t.codingClub, icon: <Code2 size={16} />, category: "Technology" },
   ];
 
   const facilities = [
     {
       icon: <School size={24} className="text-blue-600" />,
-      title: "Modern Classrooms",
-      desc: "Spacious, well-ventilated classrooms with comfortable seating, whiteboards, and learning aids for optimal engagement.",
-      stats: "Smart Setup",
+      title: t.modernClassrooms,
+      desc: t.modernClassroomsDesc,
+      stats: t.smartSetup,
     },
     {
       icon: <FlaskConical size={24} className="text-green-600" />,
-      title: "Science Laboratory",
-      desc: "Well-equipped lab with modern apparatus for Physics, Chemistry, and Biology experiments and hands-on learning.",
-      stats: "Practical Learning",
+      title: t.scienceLab,
+      desc: t.scienceLabDesc,
+      stats: t.practicalLearning,
     },
     {
       icon: <Monitor size={24} className="text-purple-600" />,
-      title: "Computer Lab",
-      desc: "Dedicated computer room with modern systems, internet access, and supervised learning for digital literacy.",
-      stats: "Tech Enabled",
+      title: t.computerLab,
+      desc: t.computerLabDesc,
+      stats: t.techEnabled,
     },
     {
       icon: <Library size={24} className="text-amber-600" />,
-      title: "Library",
-      desc: "Rich collection of 3,000+ books in Nepali and English with comfortable reading spaces for young readers.",
-      stats: "3,000+ Books",
+      title: t.library,
+      desc: t.libraryDesc,
+      stats: t.books3000,
     },
     {
       icon: <Trophy size={24} className="text-red-600" />,
-      title: "Playground",
-      desc: "Large outdoor space for football, cricket, volleyball, athletics, and supervised physical activities.",
-      stats: "Sports Zone",
+      title: t.playground,
+      desc: t.playgroundDesc,
+      stats: t.sportsZone,
     },
     {
       icon: <Music size={24} className="text-indigo-600" />,
-      title: "Activity Hall",
-      desc: "Multipurpose hall for cultural programs, music classes, indoor games, and school assemblies.",
-      stats: "Creative Space",
+      title: t.activityHall,
+      desc: t.activityHallDesc,
+      stats: t.creativeSpace,
     },
   ];
 
-  const examResults = [
-    { year: "2080 B.S.", passRate: "98%", distinction: "42%", students: "65", exam: "Class 8 Final" },
-    { year: "2079 B.S.", passRate: "96%", distinction: "38%", students: "58", exam: "Class 8 Final" },
-    { year: "2078 B.S.", passRate: "95%", distinction: "35%", students: "52", exam: "Class 8 Final" },
-  ];
+  
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
@@ -118,33 +319,19 @@ export default function AcademicsPage() {
         <div className="text-center mb-16 lg:mb-24">
           <div className="inline-flex items-center gap-2 bg-indigo-50 text-indigo-700 text-sm font-semibold px-4 py-2 rounded-full mb-4">
             <Sparkles size={14} />
-            Academic Excellence
+            {t.academicExcellence}
           </div>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 tracking-tight">
-            Building Strong{" "}
+            {t.buildingStrong}{" "}
             <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
-              Foundations
+              {t.foundations}
             </span>
           </h1>
           <p className="text-gray-500 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
-            A nurturing learning environment from Nursery to Class 8, designed to develop 
-            curious minds, strong character, and a lifelong love for learning.
+            {t.heroDesc}
           </p>
           
-          {/* Grade range badge */}
-          <div className="inline-flex items-center gap-3 mt-6 px-5 py-3 bg-white border border-gray-200 rounded-2xl shadow-sm">
-            <div className="flex items-center gap-2">
-              <Heart size={16} className="text-pink-500" />
-              <span className="text-sm font-bold text-gray-700">Nursery</span>
-            </div>
-            <div className="w-px h-5 bg-gray-300" />
-            <ArrowRight size={14} className="text-gray-400" />
-            <div className="w-px h-5 bg-gray-300" />
-            <div className="flex items-center gap-2">
-              <GraduationCap size={16} className="text-purple-500" />
-              <span className="text-sm font-bold text-gray-700">Class 8</span>
-            </div>
-          </div>
+       
         </div>
       </FadeIn>
 
@@ -154,17 +341,16 @@ export default function AcademicsPage() {
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-sm font-semibold px-4 py-2 rounded-full mb-4">
               <School size={14} />
-              Our Programs
+              {t.ourPrograms}
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900">
-              Three Stages of{" "}
+              {t.threeStages}{" "}
               <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                Development
+                {t.development}
               </span>
             </h2>
             <p className="text-gray-500 max-w-2xl mx-auto mt-2">
-              Each stage is carefully designed to match your child's developmental needs, 
-              ensuring a smooth and joyful learning journey.
+              {t.stagesDesc}
             </p>
           </div>
         </FadeIn>
@@ -220,71 +406,7 @@ export default function AcademicsPage() {
         </div>
       </section>
 
-      {/* ═══════════ ACADEMIC RESULTS ═══════════ */}
-      <section className="mb-20 lg:mb-28">
-        <FadeIn>
-          <div className="relative bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-950 rounded-3xl p-8 sm:p-12 lg:p-16 overflow-hidden">
-            {/* Background decoration */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(59,130,246,0.15)_0%,_transparent_50%)]" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_rgba(99,102,241,0.15)_0%,_transparent_50%)]" />
-            
-            {/* Dot pattern */}
-            <div
-              className="absolute inset-0 opacity-[0.02]"
-              style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='1' fill='%23ffffff'/%3E%3C/svg%3E")`,
-              }}
-            />
-
-            <div className="relative">
-              <div className="text-center mb-12">
-                <div className="inline-flex items-center gap-2 bg-white/10 text-blue-300 text-sm font-semibold px-4 py-2 rounded-full mb-4 border border-white/10">
-                  <Trophy size={14} />
-                  Our Track Record
-                </div>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white mb-2">
-                  Class 8 Final Results
-                </h2>
-                <p className="text-blue-200 max-w-2xl mx-auto">
-                  Our students consistently achieve outstanding results, reflecting our 
-                  commitment to academic excellence at every level.
-                </p>
-              </div>
-
-              {/* Results cards */}
-              <div className="grid sm:grid-cols-3 gap-4 sm:gap-6">
-                {examResults.map((result, i) => (
-                  <div
-                    key={i}
-                    className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-all duration-300 hover:-translate-y-1"
-                  >
-                    <span className="text-sm font-bold text-blue-400 bg-blue-400/10 px-3 py-1 rounded-full">
-                      {result.year}
-                    </span>
-                    <div className="mt-4 mb-2">
-                      <span className="text-4xl sm:text-5xl font-black text-white">
-                        {result.passRate}
-                      </span>
-                    </div>
-                    <p className="text-blue-300 text-sm font-semibold mb-1">Pass Rate</p>
-                    <p className="text-blue-400/60 text-xs">{result.exam}</p>
-                    <div className="flex justify-center gap-4 mt-4 pt-4 border-t border-white/10">
-                      <div>
-                        <p className="text-white font-bold text-lg">{result.distinction}</p>
-                        <p className="text-blue-300/70 text-xs">Distinction</p>
-                      </div>
-                      <div>
-                        <p className="text-white font-bold text-lg">{result.students}</p>
-                        <p className="text-blue-300/70 text-xs">Students</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </FadeIn>
-      </section>
+      
 
       {/* ═══════════ STUDENT ACTIVITIES & CLUBS ═══════════ */}
       <section className="mb-20 lg:mb-28">
@@ -292,17 +414,16 @@ export default function AcademicsPage() {
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 bg-purple-50 text-purple-700 text-sm font-semibold px-4 py-2 rounded-full mb-4">
               <Zap size={14} />
-              Beyond the Classroom
+              {t.beyondClassroom}
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900">
-              Activities &{" "}
+              {t.academicExcellence}{" "}
               <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-                Clubs
+                {t.clubs}
               </span>
             </h2>
             <p className="text-gray-500 max-w-2xl mx-auto mt-2">
-              Holistic development through a diverse range of extracurricular activities 
-              that nurture talents, build character, and create lasting memories.
+              {t.activitiesDesc}
             </p>
           </div>
         </FadeIn>
@@ -379,17 +500,16 @@ export default function AcademicsPage() {
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 bg-teal-50 text-teal-700 text-sm font-semibold px-4 py-2 rounded-full mb-4">
               <School size={14} />
-              Our Campus
+              {t.ourCampus}
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900">
-              Modern Learning{" "}
+              {t.modernLearning}{" "}
               <span className="bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">
-                Facilities
+                {t.facilities}
               </span>
             </h2>
             <p className="text-gray-500 max-w-2xl mx-auto mt-2">
-              A safe, stimulating environment with modern amenities that enhance 
-              the learning experience for every child.
+              {t.facilitiesDesc}
             </p>
           </div>
         </FadeIn>
@@ -419,17 +539,16 @@ export default function AcademicsPage() {
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 bg-white text-indigo-700 text-sm font-semibold px-4 py-2 rounded-full mb-4 shadow-sm border border-indigo-100">
                 <Lightbulb size={14} />
-                Our Approach
+                {t.ourApproach}
               </div>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900">
-                How We{" "}
+                {t.howWe}{" "}
                 <span className="bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent">
-                  Teach
+                  {t.teach}
                 </span>
               </h2>
               <p className="text-gray-500 max-w-2xl mx-auto mt-2">
-                Child-centered teaching methods that make learning engaging, 
-                meaningful, and fun for every student.
+                {t.approachDesc}
               </p>
             </div>
 
@@ -437,23 +556,23 @@ export default function AcademicsPage() {
               {[
                 {
                   icon: <Lightbulb size={22} className="text-amber-600" />,
-                  title: "Interactive Learning",
-                  desc: "Engaging, hands-on lessons that make learning fun through experiments, discussions, and real-world applications.",
+                  title: t.interactiveLearning,
+                  desc: t.interactiveDesc,
                 },
                 {
                   icon: <Users size={22} className="text-blue-600" />,
-                  title: "Small Class Sizes",
-                  desc: "Maximum 30 students per class ensuring personalized attention and better student-teacher interaction.",
+                  title: t.smallClass,
+                  desc: t.smallClassDesc,
                 },
                 {
                   icon: <Target size={22} className="text-green-600" />,
-                  title: "Regular Assessment",
-                  desc: "Continuous evaluation through monthly tests, projects, and presentations to track progress effectively.",
+                  title: t.regularAssessment,
+                  desc: t.regularAssessmentDesc,
                 },
                 {
                   icon: <Globe size={22} className="text-purple-600" />,
-                  title: "Digital Integration",
-                  desc: "Smart boards, computer classes, and online resources that prepare students for the digital age.",
+                  title: t.digitalIntegration,
+                  desc: t.digitalDesc,
                 },
               ].map((method, i) => (
                 <div
@@ -479,20 +598,19 @@ export default function AcademicsPage() {
             <Rocket size={28} className="text-white" />
           </div>
           <h3 className="text-2xl font-extrabold text-gray-900 mb-3">
-            Give Your Child the Best Start in Life
+            {t.bestStart}
           </h3>
           <p className="text-gray-500 mb-6">
-            Join the Dunai Boarding School family and watch your child grow into a 
-            confident, curious, and capable young learner.
+            {t.bestStartDesc}
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <button className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-700 text-white font-bold rounded-xl hover:bg-indigo-800 transition-all shadow-lg hover:shadow-xl text-sm">
               <FileText size={16} />
-              Apply for Admission
+              {t.applyAdmission}
             </button>
             <button className="inline-flex items-center gap-2 px-6 py-3 bg-white text-indigo-700 font-bold rounded-xl border-2 border-indigo-200 hover:bg-indigo-50 transition-all text-sm">
               <Calendar size={16} />
-              Schedule a Visit
+              {t.scheduleVisit}
             </button>
           </div>
         </div>

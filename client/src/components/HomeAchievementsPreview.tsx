@@ -6,6 +6,10 @@ import axios from "axios";
 
 interface HomeAchievementsPreviewProps {
   setPage: (p: Page) => void;
+  ourPride: string;
+  studentAchievements: string;
+  achievementsPreviewDesc: string;
+  viewAllAchievements: string;
 }
 
 interface Achievement {
@@ -74,18 +78,18 @@ export default function HomeAchievementsPreview({
             <div>
               <div className="inline-flex items-center gap-2 bg-yellow-50 text-yellow-700 text-sm font-semibold px-4 py-2 rounded-full mb-4 border border-yellow-200">
                 <Trophy size={14} />
-                Our Pride
+                {ourPride}
               </div>
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight">
-                Student{" "}
+                {studentAchievements}{" "}
                 <span className="bg-linear-to-r from-yellow-500 to-amber-600 bg-clip-text text-transparent">
-                  Achievements
+                  {studentAchievements}
                 </span>
               </h2>
 
               <p className="text-gray-500 mt-2 text-sm sm:text-base">
-                Celebrating the brilliance and hard work of our students
+                  {achievementsPreviewDesc}
               </p>
             </div>
 
@@ -96,11 +100,8 @@ export default function HomeAchievementsPreview({
               }}
               className="group inline-flex items-center gap-2 px-5 py-2.5 bg-yellow-500 text-white font-semibold rounded-xl hover:bg-yellow-600 transition-all duration-300 text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5 max-w-52"
             >
-              View All Achievements
-              <ArrowRight
-                size={15}
-                className="group-hover:translate-x-1 transition-transform"
-              />
+              {viewAllAchievements}
+              <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
         </FadeIn>

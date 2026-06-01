@@ -6,6 +6,11 @@ import axios from "axios";
 
 interface HomeGalleryPreviewProps {
   setPage: (p: Page) => void;
+    ourGallery: string;
+  glimpsesOf: string;
+  schoolLife: string;
+  galleryDesc: string;
+  viewFullGallery: string;
 }
 
 interface Photo {
@@ -48,18 +53,18 @@ export default function HomeGalleryPreview({
             <div>
               <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-sm font-semibold px-4 py-2 rounded-full mb-4 border border-blue-100">
                 <Camera size={14} />
-                Our Gallery
+                {ourGallery}
               </div>
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight">
-                Glimpses of{" "}
+                {glimpsesOf}{" "}
                 <span className="bg-linear-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                  School Life
+                  {schoolLife}
                 </span>
               </h2>
 
               <p className="text-gray-500 mt-2 text-sm sm:text-base">
-                Capturing precious moments from our vibrant school community
+                {galleryDesc}
               </p>
             </div>
 
@@ -70,11 +75,8 @@ export default function HomeGalleryPreview({
               }}
               className="group inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all duration-300 text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5 max-w-46"
             >
-              View Full Gallery
-              <ArrowRight
-                size={15}
-                className="group-hover:translate-x-1 transition-transform"
-              />
+              {viewFullGallery}
+              <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
         </FadeIn>
