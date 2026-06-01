@@ -446,7 +446,7 @@ export default function HomePage({
         </div>
       </section>
 
-      <HomeGalleryPreview photos={photos} setPage={setPage} />
+      <HomeGalleryPreview  setPage={setPage} />
 
       {/* ═══════════════════ QUICK LINKS ═══════════════════ */}
 
@@ -454,17 +454,17 @@ export default function HomePage({
 
       {/* ═══════════════════ LATEST NOTICES ═══════════════════ */}
 
-      <HomeNoticesPreview notices={notices} setPage={setPage} />
+      <HomeNoticesPreview  setPage={setPage} />
 
-      <HomeAchievementsPreview achievements={achievements} setPage={setPage} />
+      <HomeAchievementsPreview  setPage={setPage} />
 
       {/* ═══════════════════ STUDENT BLOG SECTION ═══════════════════ */}
-      <HomeBlogSection posts={blogs} setPage={setPage} />
+      <HomeBlogSection  setPage={setPage} />
 
       {/* ═══════════════════ CTA BANNER ═══════════════════ */}
       <section className="relative py-24 lg:py-32 overflow-hidden">
         {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-700 via-indigo-700 to-blue-900" />
+        <div className="absolute inset-0 bg-linear-to-br from-blue-700 via-indigo-700 to-blue-900" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-500/30 via-transparent to-transparent" />
 
         {/* Pattern overlay */}

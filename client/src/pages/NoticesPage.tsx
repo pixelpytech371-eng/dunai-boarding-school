@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Bell, Calendar, Pin, Clock, ChevronRight,
   Megaphone, PartyPopper, CalendarDays,
@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import type { Notice } from "../types";
 import FadeIn from "../components/ui/FadeIn";
+import axios from "axios";
 
 // Notice type configurations
 const noticeConfig: Record<string, { 
@@ -50,10 +51,42 @@ const noticeConfig: Record<string, {
   },
 };
 
-export default function NoticesPage({ notices }: { notices: Notice[] }) {
+export default function NoticesPage() {
   const [filter, setFilter] = useState("All");
   const [selectedNotice, setSelectedNotice] = useState<Notice | null>(null);
-  const [showPinned, setShowPinned] = useState(true);
+  const [showPinned, setShowPinned] = useState(true);  
+  const [notices, setNotices] = useState<Notice[]>([]);
+
+useEffect(() => {
+  const fetchNotices = async () => {
+    try {
+      const res = await axios.get(
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/notice`
+      );
+
+      const formatted = Array.isArray(res.data)
+        ? res.data.map((item: any) => ({
+            id: item.id,
+            title: item.title,
+            body: item.body,
+            type: item.type,
+            date: item.notice_date, // API -> UI mapping
+          }))
+        : [];
+
+      setNotices(formatted);
+
+      console.log("Notices:", formatted);
+    } catch (error) {
+      console.error("Failed to fetch notices:", error);
+      setNotices([]);
+    }
+  };
+
+  fetchNotices();
+}, []);
+
+
 
   const types = ["All", "Exam", "Event", "Holiday", "Meeting"];
 
