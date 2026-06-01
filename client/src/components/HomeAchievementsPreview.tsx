@@ -47,6 +47,10 @@ const typeConfig: Record<
 
 export default function HomeAchievementsPreview({
   setPage,
+   ourPride,
+  studentAchievements,
+  achievementsPreviewDesc,
+  viewAllAchievements
 }: HomeAchievementsPreviewProps) {
   const [achievements, setAchievements] = useState<Achievement[]>([]);
 
@@ -83,9 +87,6 @@ export default function HomeAchievementsPreview({
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight">
                 {studentAchievements}{" "}
-                <span className="bg-linear-to-r from-yellow-500 to-amber-600 bg-clip-text text-transparent">
-                  {studentAchievements}
-                </span>
               </h2>
 
               <p className="text-gray-500 mt-2 text-sm sm:text-base">

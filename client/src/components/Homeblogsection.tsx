@@ -7,11 +7,11 @@ import axios from "axios";
 
 interface HomeBlogSectionProps {
   setPage: (p: Page) => void;
-   studentBlog: string;
+  studentBlog: string;
   blogDesc: string;
   allPosts: string;
   readAllPosts: string;
-  featured: string;   // ← Rename prop to featuredText
+  featured: string; // ← Rename prop to featuredText
   by: string;
 }
 
@@ -31,6 +31,12 @@ interface BlogPost {
 
 export default function HomeBlogSection({
   setPage,
+  studentBlog,
+  blogDesc,
+  allPosts,
+  readAllPosts,
+  featured,
+  by,
 }: HomeBlogSectionProps) {
   const [posts, setPosts] = useState<BlogPost[]>([]);
 
@@ -38,7 +44,7 @@ export default function HomeBlogSection({
     const fetchBlogs = async () => {
       try {
         const res = await axios.get(
-          `${import.meta.env.VITE_BACKEND_URL}/api/v1/blogs/`
+          `${import.meta.env.VITE_BACKEND_URL}/api/v1/blogs/`,
         );
 
         setPosts(Array.isArray(res.data) ? res.data : []);
@@ -151,9 +157,7 @@ export default function HomeBlogSection({
 
                 <p className="text-indigo-300 text-xs font-semibold">
                   by {featured.author}
-                  {featured.author_class
-                    ? ` · ${featured.author_class}`
-                    : ""}
+                  {featured.author_class ? ` · ${featured.author_class}` : ""}
                 </p>
               </div>
             </div>
@@ -196,9 +200,7 @@ export default function HomeBlogSection({
 
                     <p className="text-xs text-gray-500 truncate">
                       {post.author}
-                      {post.author_class
-                        ? ` · ${post.author_class}`
-                        : ""}
+                      {post.author_class ? ` · ${post.author_class}` : ""}
                     </p>
                   </div>
                 </div>

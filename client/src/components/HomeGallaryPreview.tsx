@@ -22,7 +22,7 @@ interface Photo {
 }
 
 export default function HomeGalleryPreview({
-  setPage,
+  setPage,ourGallery,glimpsesOf,schoolLife,galleryDesc,viewFullGallery
 }: HomeGalleryPreviewProps) {
   const [displayPhotos, setPhotos] = useState<Photo[]>([]);
 

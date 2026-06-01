@@ -25,6 +25,11 @@ interface Notice {
 
 export default function HomeNoticesPreview({
   setPage,
+    stayUpdated,
+  latestNotices,
+  noticesDesc,
+  viewAllNotices,
+  
 }: HomeNoticesPreviewProps) {
   const [notices, setNotices] = useState<Notice[]>([]);
 

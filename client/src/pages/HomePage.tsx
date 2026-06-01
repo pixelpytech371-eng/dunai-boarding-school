@@ -33,11 +33,11 @@ const translations = {
     schoolName2: "Boarding",
     schoolName3: "School",
 
-
-     exploreSchool: "Explore Our School",
+    exploreSchool: "Explore Our School",
     everything: "Everything You Need,",
     atFingertips: "Right at Your Fingertips",
-    discoverInfo: "Discover all the resources and information about Dunai Boarding School in one place.",
+    discoverInfo:
+      "Discover all the resources and information about Dunai Boarding School in one place.",
     explore: "Explore",
 
     ourGallery: "Our Gallery",
@@ -45,7 +45,7 @@ const translations = {
     schoolLife: "School Life",
     galleryDesc: "Capturing precious moments from our vibrant school community",
     viewFullGallery: "View Full Gallery",
-    
+
     // Quick Link cards
     aboutUs: "About Us",
     aboutDesc: "Our history, vision, and the message from our principal.",
@@ -60,17 +60,18 @@ const translations = {
     admission: "Admission",
     admissionDesc: "Inquire about joining Dunai Boarding School.",
 
-
     stayUpdated: "Stay Updated",
     latestNotices: "Latest Notices",
-    noticesDesc: "Important announcements and updates from the school administration",
+    noticesDesc:
+      "Important announcements and updates from the school administration",
     viewAllNotices: "View All Notices",
     dunaiAdmin: "Dunai Boarding School",
 
     // Achievements
     ourPride: "Our Pride",
     studentAchievements: "Student Achievements",
-    achievementsPreviewDesc: "Celebrating the brilliance and hard work of our students",
+    achievementsPreviewDesc:
+      "Celebrating the brilliance and hard work of our students",
     viewAllAchievements: "View All Achievements",
 
     // Blog
@@ -79,22 +80,23 @@ const translations = {
     viewAllPosts: "View All Posts",
 
     allPosts: "All Posts",
-readAllPosts: "Read All Posts",
-featured: "Featured",
-by: "by",
-
+    readAllPosts: "Read All Posts",
+    featured: "Featured",
+    by: "by",
 
     // CTA Banner
     admissionsOpen: "Admissions Open for 2083 B.S.",
     readyToJoin: "Ready to Join the",
     dbsFamily: "DBS Family",
-    ctaDesc: "Give your child the gift of quality education in a nurturing environment. Applications for the new academic session are now open.",
+    ctaDesc:
+      "Give your child the gift of quality education in a nurturing environment. Applications for the new academic session are now open.",
     applyNowCTA: "Apply Now",
     contactUs: "Contact Us",
 
     // Footer
     schoolName: "Dunai Boarding School",
-    footerDesc: "Nurturing young minds with quality education and strong values since 2050 B.S.",
+    footerDesc:
+      "Nurturing young minds with quality education and strong values since 2050 B.S.",
     quickLinks: "Quick Links",
     getInTouch: "Get In Touch",
     footerAddress: "ThuliBheri Municipality-3, Dunai, Dolpa, Nepal",
@@ -146,18 +148,20 @@ by: "by",
     galleryDesc: "हाम्रो जीवन्त विद्यालय समुदायका अमूल्य क्षणहरू कैद गर्दै",
     viewFullGallery: "पूरा ग्यालरी हेर्नुहोस्",
 
-      // Quick Links
+    // Quick Links
     exploreSchool: "हाम्रो विद्यालय अन्वेषण गर्नुहोस्",
     everything: "तपाईंलाई चाहिने सबै,",
     atFingertips: "तपाईंकै हातमा",
-    discoverInfo: "दुनै बोर्डिङ स्कूलको बारेमा सबै जानकारी एकै ठाउँमा पाउनुहोस्।",
+    discoverInfo:
+      "दुनै बोर्डिङ स्कूलको बारेमा सबै जानकारी एकै ठाउँमा पाउनुहोस्।",
     explore: "अन्वेषण गर्नुहोस्",
-    
+
     // Quick Link cards
     aboutUs: "हाम्रो बारेमा",
     aboutDesc: "हाम्रो इतिहास, दृष्टिकोण र प्रधानाध्यापकको सन्देश।",
     academicPrograms: "शैक्षिक कार्यक्रमहरू",
-    academicDesc: "कक्षाहरू, कार्यक्रमहरू र विद्यार्थी गतिविधिहरू अन्वेषण गर्नुहोस्।",
+    academicDesc:
+      "कक्षाहरू, कार्यक्रमहरू र विद्यार्थी गतिविधिहरू अन्वेषण गर्नुहोस्।",
     facultyStaff: "शिक्षक र कर्मचारी",
     facultyDesc: "हाम्रो समर्पित शिक्षक टोलीलाई भेट्नुहोस्।",
     noticeBoard: "सूचना पाटी",
@@ -167,7 +171,7 @@ by: "by",
     admission: "भर्ना",
     admissionDesc: "दुनै बोर्डिङ स्कूलमा भर्ना बारे जानकारी।",
 
-     stayUpdated: "अपडेट रहनुहोस्",
+    stayUpdated: "अपडेट रहनुहोस्",
     latestNotices: "भर्खरका सूचनाहरू",
     noticesDesc: "विद्यालय प्रशासनबाट महत्त्वपूर्ण घोषणा र अपडेटहरू",
     viewAllNotices: "सबै सूचनाहरू हेर्नुहोस्",
@@ -185,21 +189,23 @@ by: "by",
     viewAllPosts: "सबै पोस्टहरू हेर्नुहोस्",
 
     allPosts: "सबै पोस्टहरू",
-readAllPosts: "सबै पोस्ट पढ्नुहोस्",
-featured: "विशेष",
-by: "द्वारा",
+    readAllPosts: "सबै पोस्ट पढ्नुहोस्",
+    featured: "विशेष",
+    by: "द्वारा",
 
     // CTA Banner
     admissionsOpen: "२०८३ सालको लागि भर्ना खुल्ला",
     readyToJoin: "जोडिन तयार हुनुहुन्छ",
     dbsFamily: "DBS परिवारमा",
-    ctaDesc: "आफ्नो बच्चालाई पोषण वातावरणमा गुणस्तरीय शिक्षाको उपहार दिनुहोस्। नयाँ शैक्षिक सत्रको लागि आवेदन खुल्ला छ।",
+    ctaDesc:
+      "आफ्नो बच्चालाई पोषण वातावरणमा गुणस्तरीय शिक्षाको उपहार दिनुहोस्। नयाँ शैक्षिक सत्रको लागि आवेदन खुल्ला छ।",
     applyNowCTA: "अहिले आवेदन दिनुहोस्",
     contactUs: "हामीलाई सम्पर्क गर्नुहोस्",
 
     // Footer
     schoolName: "दुनै बोर्डिङ स्कूल",
-    footerDesc: "२०५० सालदेखि गुणस्तरीय शिक्षा र बलियो मूल्यमान्यताका साथ युवा दिमागहरूलाई हुर्काउँदै।",
+    footerDesc:
+      "२०५० सालदेखि गुणस्तरीय शिक्षा र बलियो मूल्यमान्यताका साथ युवा दिमागहरूलाई हुर्काउँदै।",
     quickLinks: "द्रुत लिङ्कहरू",
     getInTouch: "सम्पर्कमा रहनुहोस्",
     footerAddress: "ठूलीभेरी नगरपालिका-३, दुनै, डोल्पा, नेपाल",
@@ -228,7 +234,6 @@ import {
   PhoneCall,
   Globe,
   Shield,
-
   Trophy,
 } from "lucide-react";
 import FadeIn from "../components/ui/FadeIn";
@@ -321,149 +326,147 @@ export default function HomePage({
 
   return (
     <div className="overflow-x-hidden">
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-  {/* Full width background image */}
-  <div className="absolute inset-0">
-    <img
-      src={HeroImage}
-      alt="Dunai Boarding School"
-      className="w-full h-full object-cover"
-    />
-    <div className="absolute inset-0 bg-linear-to-r from-slate-900/80 via-slate-900/80 to-slate-900/60" />
-    <div className="absolute inset-0 bg-linear-to-t from-slate-900/50 via-transparent to-slate-900/30" />
-  </div>
-
-  {/* Floating orbs */}
-  <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-  <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl" />
-
-  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 w-full">
-    <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-      {/* Left Content */}
-      <div
-        className="space-y-6"
-        style={{ animation: "heroSlideUp 0.8s ease both" }}
-      >
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-blue-200 text-xs sm:text-sm font-semibold">
-          <Sparkles size={14} className="text-yellow-400 animate-pulse" />
-          <span>{t.established}</span>
-          <span className="w-1 h-1 rounded-full bg-blue-400" />
-          <span>{t.location}</span>
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        {/* Full width background image */}
+        <div className="absolute inset-0">
+          <img
+            src={HeroImage}
+            alt="Dunai Boarding School"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-linear-to-r from-slate-900/80 via-slate-900/80 to-slate-900/60" />
+          <div className="absolute inset-0 bg-linear-to-t from-slate-900/50 via-transparent to-slate-900/30" />
         </div>
 
-        {/* Main Heading */}
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-[1.1] tracking-tight">
-          {t.schoolName1}{" "}
-          <span className="relative inline-block">
-            <span className="relative z-10 bg-linear-to-r from-blue-400 via-indigo-300 to-purple-300 bg-clip-text text-transparent">
-              {t.schoolName2}
-            </span>
+        {/* Floating orbs */}
+        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl" />
 
-            <svg
-              className="absolute -bottom-2 left-0 w-full h-3 text-blue-400/40"
-              viewBox="0 0 100 12"
-              preserveAspectRatio="none"
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 w-full">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left Content */}
+            <div
+              className="space-y-6"
+              style={{ animation: "heroSlideUp 0.8s ease both" }}
             >
-              <path
-                d="M0,6 Q25,0 50,6 Q75,12 100,6"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="3"
-              />
-            </svg>
-          </span>
-
-          <br />
-
-          <span className="text-blue-300">{t.schoolName3}</span>
-        </h1>
-
-        {/* Description */}
-        <p className="text-lg sm:text-xl text-blue-100/90 leading-relaxed max-w-lg">
-          {t.heroDesc}
-        </p>
-
-        {/* CTA Buttons */}
-        <div className="flex flex-wrap gap-4 pt-2">
-          <button
-            onClick={() => go("admission")}
-            className="group relative inline-flex items-center gap-2 px-6 sm:px-8 py-3.5 bg-white text-blue-900 font-bold rounded-2xl hover:bg-blue-50 transition-all duration-300 shadow-2xl shadow-blue-500/25 hover:shadow-blue-500/40 hover:-translate-y-0.5 text-sm sm:text-base overflow-hidden"
-          >
-            <span className="relative z-10 flex items-center gap-2">
-              <FileText size={18} />
-              {t.apply}
-            </span>
-
-            <div className="absolute inset-0 bg-linear-to-r from-blue-50 to-indigo-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </button>
-
-          <button
-            onClick={() => go("about")}
-            className="group inline-flex items-center gap-2 px-6 sm:px-8 py-3.5 border-2 border-white/30 text-white font-semibold rounded-2xl hover:bg-white/10 hover:border-white/50 transition-all duration-300 text-sm sm:text-base hover:-translate-y-0.5"
-          >
-            <Play size={18} />
-            {t.discover}
-            <ArrowRight
-              size={16}
-              className="group-hover:translate-x-1 transition-transform"
-            />
-          </button>
-        </div>
-
-        {/* Trust indicators */}
-        <div className="flex flex-wrap items-center gap-6 pt-4 text-sm text-blue-200/70">
-          <div className="flex items-center gap-2">
-            <Shield size={16} className="text-green-400" />
-            <span>{t.affiliated}</span>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <Trophy size={16} className="text-yellow-400" />
-            <span>{t.excellence}</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Right Side */}
-      <div
-        className="relative lg:ml-auto hidden lg:block"
-        style={{ animation: "heroSlideUp 0.8s ease 0.2s both" }}
-      />
-    </div>
-  </div>
-</section>
-
-{/* Stats Section */}
-<section className="relative bg-white -mt-1">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-      {STATS(t).map((s, i) => (
-        <FadeIn key={i} delay={i * 0.1}>
-          <div className="group relative p-5 sm:p-6 rounded-2xl bg-linear-to-br from-gray-50 to-white border border-gray-100 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 hover:-translate-y-1">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-linear-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-blue-500/25 group-hover:scale-110 transition-transform duration-300">
-                {s.icon}
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-blue-200 text-xs sm:text-sm font-semibold">
+                <Sparkles size={14} className="text-yellow-400 animate-pulse" />
+                <span>{t.established}</span>
+                <span className="w-1 h-1 rounded-full bg-blue-400" />
+                <span>{t.location}</span>
               </div>
 
-              <div>
-                <p className="text-2xl sm:text-3xl font-black text-gray-900 tabular-nums">
-                  {s.value}
-                </p>
+              {/* Main Heading */}
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-[1.1] tracking-tight">
+                {t.schoolName1}{" "}
+                <span className="relative inline-block">
+                  <span className="relative z-10 bg-linear-to-r from-blue-400 via-indigo-300 to-purple-300 bg-clip-text text-transparent">
+                    {t.schoolName2}
+                  </span>
 
-                <p className="text-xs sm:text-sm text-gray-500 font-medium tracking-wide">
-                  {s.label}
-                </p>
+                  <svg
+                    className="absolute -bottom-2 left-0 w-full h-3 text-blue-400/40"
+                    viewBox="0 0 100 12"
+                    preserveAspectRatio="none"
+                  >
+                    <path
+                      d="M0,6 Q25,0 50,6 Q75,12 100,6"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                    />
+                  </svg>
+                </span>
+                <br />
+                <span className="text-blue-300">{t.schoolName3}</span>
+              </h1>
+
+              {/* Description */}
+              <p className="text-lg sm:text-xl text-blue-100/90 leading-relaxed max-w-lg">
+                {t.heroDesc}
+              </p>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-wrap gap-4 pt-2">
+                <button
+                  onClick={() => go("admission")}
+                  className="group relative inline-flex items-center gap-2 px-6 sm:px-8 py-3.5 bg-white text-blue-900 font-bold rounded-2xl hover:bg-blue-50 transition-all duration-300 shadow-2xl shadow-blue-500/25 hover:shadow-blue-500/40 hover:-translate-y-0.5 text-sm sm:text-base overflow-hidden"
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                    <FileText size={18} />
+                    {t.apply}
+                  </span>
+
+                  <div className="absolute inset-0 bg-linear-to-r from-blue-50 to-indigo-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </button>
+
+                <button
+                  onClick={() => go("about")}
+                  className="group inline-flex items-center gap-2 px-6 sm:px-8 py-3.5 border-2 border-white/30 text-white font-semibold rounded-2xl hover:bg-white/10 hover:border-white/50 transition-all duration-300 text-sm sm:text-base hover:-translate-y-0.5"
+                >
+                  <Play size={18} />
+                  {t.discover}
+                  <ArrowRight
+                    size={16}
+                    className="group-hover:translate-x-1 transition-transform"
+                  />
+                </button>
+              </div>
+
+              {/* Trust indicators */}
+              <div className="flex flex-wrap items-center gap-6 pt-4 text-sm text-blue-200/70">
+                <div className="flex items-center gap-2">
+                  <Shield size={16} className="text-green-400" />
+                  <span>{t.affiliated}</span>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <Trophy size={16} className="text-yellow-400" />
+                  <span>{t.excellence}</span>
+                </div>
               </div>
             </div>
 
-            <div className="absolute top-0 right-0 w-20 h-20 bg-linear-to-bl from-blue-50 to-transparent rounded-tr-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            {/* Right Side */}
+            <div
+              className="relative lg:ml-auto hidden lg:block"
+              style={{ animation: "heroSlideUp 0.8s ease 0.2s both" }}
+            />
           </div>
-        </FadeIn>
-      ))}
-    </div>
-  </div>
-</section>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="relative bg-white -mt-1">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {STATS(t).map((s, i) => (
+              <FadeIn key={i} delay={i * 0.1}>
+                <div className="group relative p-5 sm:p-6 rounded-2xl bg-linear-to-br from-gray-50 to-white border border-gray-100 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 hover:-translate-y-1">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-linear-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-blue-500/25 group-hover:scale-110 transition-transform duration-300">
+                      {s.icon}
+                    </div>
+
+                    <div>
+                      <p className="text-2xl sm:text-3xl font-black text-gray-900 tabular-nums">
+                        {s.value}
+                      </p>
+
+                      <p className="text-xs sm:text-sm text-gray-500 font-medium tracking-wide">
+                        {s.label}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="absolute top-0 right-0 w-20 h-20 bg-linear-to-bl from-blue-50 to-transparent rounded-tr-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ═══════════════════ PRINCIPAL'S MESSAGE ═══════════════════ */}
       <section className="relative py-14 lg:py-20 overflow-hidden">
@@ -514,22 +517,22 @@ export default function HomePage({
 
                       {/* Info */}
                       <h3 className="text-lg sm:text-xl font-extrabold text-white mb-0.5">
-  {t.principalName}
-</h3>
-<p className="text-blue-200 text-xs font-semibold mb-2">
-  {t.principalTitle}
-</p>
+                        {t.principalName}
+                      </h3>
+                      <p className="text-blue-200 text-xs font-semibold mb-2">
+                        {t.principalTitle}
+                      </p>
 
-{/* Facebook Link */}
-<a
-  href="https://www.facebook.com/lokendra.jaisi.96"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-white text-xs font-medium transition-all duration-300"
->
-  <FaFacebookF size={11} />
-  Connect on Facebook
-</a>
+                      {/* Facebook Link */}
+                      <a
+                        href="https://www.facebook.com/lokendra.jaisi.96"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-white text-xs font-medium transition-all duration-300"
+                      >
+                        <FaFacebookF size={11} />
+                        Connect on Facebook
+                      </a>
                     </div>
                   </div>
 
@@ -557,7 +560,7 @@ export default function HomePage({
 
                     {/* Secondary text - shorter */}
                     <p className="text-xs sm:text-sm text-gray-500 leading-relaxed mb-4">
-                    {t.principalDescription}
+                      {t.principalDescription}
                     </p>
 
                     {/* CTA Buttons */}
@@ -591,20 +594,55 @@ export default function HomePage({
         </div>
       </section>
 
-      <HomeGalleryPreview  setPage={setPage} />
+      <HomeGalleryPreview
+        setPage={setPage}
+        ourGallery={t.ourGallery}
+        glimpsesOf={t.glimpsesOf}
+        schoolLife={t.schoolLife}
+        galleryDesc={t.galleryDesc}
+        viewFullGallery={t.viewFullGallery}
+      />
 
       {/* ═══════════════════ QUICK LINKS ═══════════════════ */}
 
-      <HomeQuickLinks links={QUICK_LINKS(t)} setPage={setPage} title={t.exploreSchool} subtitle={t.everything} description={t.atFingertips} explore={t.explore} />
+      <HomeQuickLinks
+        links={QUICK_LINKS(t)}
+        setPage={setPage}
+        title={t.exploreSchool}
+        subtitle={t.everything}
+        description={t.atFingertips}
+        explore={t.explore}
+      />
 
       {/* ═══════════════════ LATEST NOTICES ═══════════════════ */}
 
-      <HomeNoticesPreview  setPage={setPage} />
+      <HomeNoticesPreview
+        setPage={setPage}
+        stayUpdated={t.stayUpdated}
+        latestNotices={t.latestNotices}
+        noticesDesc={t.noticesDesc}
+        viewAllNotices={t.viewAllNotices}
+        schoolName={t.dunaiAdmin}
+      />
 
-      <HomeAchievementsPreview  setPage={setPage} />
+      <HomeAchievementsPreview
+        setPage={setPage}
+        ourPride={t.ourPride}
+        studentAchievements={t.studentAchievements}
+        achievementsPreviewDesc={t.achievementsPreviewDesc}
+        viewAllAchievements={t.viewAllAchievements}
+      />
 
       {/* ═══════════════════ STUDENT BLOG SECTION ═══════════════════ */}
-      <HomeBlogSection  setPage={setPage} />
+      <HomeBlogSection
+        setPage={setPage}
+        studentBlog={t.studentBlog}
+        blogDesc={t.blogDesc}
+        allPosts={t.allPosts || t.viewAllPosts}
+        readAllPosts={t.readAllPosts || "Read All Posts"}
+        featured={t.featured || "Featured"}
+        by={t.by || "by"}
+      />
 
       {/* ═══════════════════ CTA BANNER ═══════════════════ */}
       <section className="relative py-24 lg:py-32 overflow-hidden">
