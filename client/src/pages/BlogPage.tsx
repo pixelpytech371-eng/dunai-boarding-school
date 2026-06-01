@@ -1,9 +1,10 @@
-import  { useState } from "react";
+// @ts-nocheck
+import  { useEffect, useState } from "react";
 import { ArrowLeft, Calendar, BookOpen, User, Tag } from "lucide-react";
 import FadeIn from "../components/ui/FadeIn";
 import Badge from "../components/ui/Badge";
 import type { BlogPost } from "../types";
-import { useLanguage } from "../hooks/useLanguage";
+import axios from "axios";
 
 interface BlogPageProps {
   posts: BlogPost[];
@@ -117,7 +118,7 @@ function BlogCard({
         style={{ aspectRatio: "21/7", minHeight: 220 }}
       >
         <img
-          src={post.coverImage}
+          src={post.cover_image}
           alt={post.title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
@@ -148,7 +149,7 @@ function BlogCard({
     >
       <div className="overflow-hidden" style={{ aspectRatio: "16/9" }}>
         <img
-          src={post.coverImage}
+          src={post.cover_image}
           alt={post.title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           loading="lazy"
@@ -179,11 +180,27 @@ function BlogCard({
 }
 
 // ── Main BlogPage ─────────────────────────────────────────────────────────────
-export default function BlogPage({ posts }: BlogPageProps) {
-    const language = useLanguage();
-const t = translations[language];
+export default function BlogPage() {
   const [filter, setFilter] = useState("All");
   const [reading, setReading] = useState<BlogPost | null>(null);
+  const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const res = await axios.get(
+          `${import.meta.env.VITE_BACKEND_URL}/api/v1/blogs/`
+        );
+
+        setPosts(res.data || []);
+      } catch (error) {
+        console.error("Failed to fetch blogs:", error);
+        setPosts([]);
+      }
+    };
+
+    fetchBlogs();
+  }, []);
 
   if (reading) return <PostReader post={reading} onBack={() => setReading(null)} />;
 

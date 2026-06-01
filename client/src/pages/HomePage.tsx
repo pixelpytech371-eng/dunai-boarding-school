@@ -591,7 +591,7 @@ export default function HomePage({
         </div>
       </section>
 
-      <HomeGalleryPreview photos={photos} setPage={setPage} ourGallery={t.ourGallery} glimpsesOf={t.glimpsesOf} schoolLife={t.schoolLife} galleryDesc={t.galleryDesc} viewFullGallery={t.viewFullGallery} />
+      <HomeGalleryPreview  setPage={setPage} />
 
       {/* ═══════════════════ QUICK LINKS ═══════════════════ */}
 
@@ -599,29 +599,17 @@ export default function HomePage({
 
       {/* ═══════════════════ LATEST NOTICES ═══════════════════ */}
 
-      <HomeNoticesPreview notices={notices} setPage={setPage} stayUpdated={t.stayUpdated}
-  latestNotices={t.latestNotices}
-  noticesDesc={t.noticesDesc}
-  viewAllNotices={t.viewAllNotices}
-  schoolName={t.dunaiAdmin}/>
+      <HomeNoticesPreview  setPage={setPage} />
 
-      <HomeAchievementsPreview achievements={achievements} setPage={setPage}   ourPride={t.ourPride}
-  studentAchievements={t.studentAchievements}
-  achievementsPreviewDesc={t.achievementsPreviewDesc}
-  viewAllAchievements={t.viewAllAchievements}/>
+      <HomeAchievementsPreview  setPage={setPage} />
 
       {/* ═══════════════════ STUDENT BLOG SECTION ═══════════════════ */}
-      <HomeBlogSection posts={blogs} setPage={setPage} studentBlog={t.studentBlog}
-  blogDesc={t.blogDesc}
-  allPosts={t.allPosts || t.viewAllPosts}
-  readAllPosts={t.readAllPosts || "Read All Posts"}
-  featured={t.featured || "Featured"}
-  by={t.by || "by"}/>
+      <HomeBlogSection  setPage={setPage} />
 
       {/* ═══════════════════ CTA BANNER ═══════════════════ */}
       <section className="relative py-24 lg:py-32 overflow-hidden">
         {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-700 via-indigo-700 to-blue-900" />
+        <div className="absolute inset-0 bg-linear-to-br from-blue-700 via-indigo-700 to-blue-900" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-500/30 via-transparent to-transparent" />
 
         {/* Pattern overlay */}

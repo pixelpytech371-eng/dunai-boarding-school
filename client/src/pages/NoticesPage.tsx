@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Bell, Calendar, Pin, Clock, ChevronRight,
   Megaphone, PartyPopper, CalendarDays,
@@ -6,56 +6,7 @@ import {
 } from "lucide-react";
 import type { Notice } from "../types";
 import FadeIn from "../components/ui/FadeIn";
-import { useLanguage } from "../hooks/useLanguage";
-
-const translations = {
-  en: {
-    stayInformed: "Stay Informed",
-    noticeBoard: "Notice",
-    board: "Board",
-    noticeDesc: "All official announcements, updates, and important information from the school administration.",
-    totalNotices: "Total Notices",
-    thisMonth: "This Month",
-    exams: "Exams",
-    upcomingEvents: "Upcoming Events",
-    importantNotices: "Important Notices",
-    backToNotices: "Back to Notices",
-    published: "Published:",
-    readMore: "Read More",
-    noNotices: "No notices found",
-    tryDifferent: "Try selecting a different category",
-    neverMiss: "Never Miss an Update",
-    neverMissDesc: "All notices are also displayed on the school notice board and shared with parents through our official communication channels.",
-    today: "Today",
-    yesterday: "Yesterday",
-    daysAgo: "days ago",
-    weeksAgo: "weeks ago",
-    monthsAgo: "months ago",
-  },
-  ne: {
-    stayInformed: "सूचित रहनुहोस्",
-    noticeBoard: "सूचना",
-    board: "पाटी",
-    noticeDesc: "विद्यालय प्रशासनबाट सबै आधिकारिक घोषणाहरू, अपडेटहरू र महत्त्वपूर्ण जानकारीहरू।",
-    totalNotices: "कुल सूचनाहरू",
-    thisMonth: "यो महिना",
-    exams: "परीक्षा",
-    upcomingEvents: "आगामी कार्यक्रम",
-    importantNotices: "महत्त्वपूर्ण सूचनाहरू",
-    backToNotices: "सूचनाहरूमा फर्कनुहोस्",
-    published: "प्रकाशित:",
-    readMore: "थप पढ्नुहोस्",
-    noNotices: "कुनै सूचना फेला परेन",
-    tryDifferent: "फरक श्रेणी छान्ने प्रयास गर्नुहोस्",
-    neverMiss: "कहिल्यै अपडेट नछुटाउनुहोस्",
-    neverMissDesc: "सबै सूचनाहरू विद्यालयको सूचना पाटीमा पनि प्रदर्शित हुन्छन् र हाम्रो आधिकारिक संचार माध्यमहरू मार्फत अभिभावकहरूसँग साझा गरिन्छ।",
-    today: "आज",
-    yesterday: "हिजो",
-    daysAgo: "दिन अघि",
-    weeksAgo: "हप्ता अघि",
-    monthsAgo: "महिना अघि",
-  },
-};
+import axios from "axios";
 
 // Notice type configurations
 const noticeConfig: Record<string, { 
@@ -100,13 +51,42 @@ const noticeConfig: Record<string, {
   },
 };
 
-export default function NoticesPage({ notices }: { notices: Notice[] }) {
-  const language = useLanguage();
-const t = translations[language];
-
+export default function NoticesPage() {
   const [filter, setFilter] = useState("All");
   const [selectedNotice, setSelectedNotice] = useState<Notice | null>(null);
-  const [showPinned, setShowPinned] = useState(true);
+  const [showPinned, setShowPinned] = useState(true);  
+  const [notices, setNotices] = useState<Notice[]>([]);
+
+useEffect(() => {
+  const fetchNotices = async () => {
+    try {
+      const res = await axios.get(
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/notice`
+      );
+
+      const formatted = Array.isArray(res.data)
+        ? res.data.map((item: any) => ({
+            id: item.id,
+            title: item.title,
+            body: item.body,
+            type: item.type,
+            date: item.notice_date, // API -> UI mapping
+          }))
+        : [];
+
+      setNotices(formatted);
+
+      console.log("Notices:", formatted);
+    } catch (error) {
+      console.error("Failed to fetch notices:", error);
+      setNotices([]);
+    }
+  };
+
+  fetchNotices();
+}, []);
+
+
 
   const types = ["All", "Exam", "Event", "Holiday", "Meeting"];
 

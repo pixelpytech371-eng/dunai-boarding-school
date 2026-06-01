@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Star, Trophy, Award, Medal,  Quote,
   ChevronRight,  GraduationCap, 
@@ -91,11 +91,42 @@ const typeConfig: Record<string, {
   },
 };
 
-export default function AchievementsPage({ achievements }: { achievements: Achievement[] }) {
-  const language = useLanguage();
-const t = translations[language];
+export default function AchievementsPage() {
   const [selectedAchievement, setSelectedAchievement] = useState<Achievement | null>(null);
   const [filter, setFilter] = useState("All");
+
+  const [achievements, setAchievements] = useState<Achievement[]>([]);
+  
+    useEffect(() => {
+  const fetchAchievements = async () => {
+    try {
+      const res = await axios.get(
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/achievement`
+      );
+
+      const formatted: Achievement[] = Array.isArray(res.data)
+        ? res.data.map((item: any) => ({
+            id: item.id,
+            student: item.student,
+            title: item.title,
+            desc: item.description, // description -> desc
+            type: item.type,
+            year: item.year, // "2081 B.S."
+            photo: item.photo,
+          }))
+        : [];
+
+      setAchievements(formatted);
+
+      console.log("Achievements:", formatted);
+    } catch (error) {
+      console.error("Failed to fetch achievements:", error);
+      setAchievements([]);
+    }
+  };
+
+  fetchAchievements();
+}, []);
 
   const types = ["All", "Academic", "Sports", "Technology", "Cultural"];
   

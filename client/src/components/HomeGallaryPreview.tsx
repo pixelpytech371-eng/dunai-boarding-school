@@ -1,9 +1,10 @@
 import { ArrowRight, Camera, Sparkles } from "lucide-react";
 import FadeIn from "./ui/FadeIn";
-import type { Photo, Page } from "../types";
+import type { Page } from "../types";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 interface HomeGalleryPreviewProps {
-  photos: Photo[];
   setPage: (p: Page) => void;
     ourGallery: string;
   glimpsesOf: string;
@@ -12,13 +13,36 @@ interface HomeGalleryPreviewProps {
   viewFullGallery: string;
 }
 
-export default function HomeGalleryPreview({ photos, setPage, ourGallery,
-  glimpsesOf, 
-  schoolLife, 
-  galleryDesc, 
-  viewFullGallery   }: HomeGalleryPreviewProps) {
-  // Take 6 photos for desktop, first 4 shown on mobile
-  const displayPhotos = photos.slice(0, 6);
+interface Photo {
+  id: number;
+  url: string;
+  caption: string;
+  category: string;
+  created_at: string;
+}
+
+export default function HomeGalleryPreview({
+  setPage,
+}: HomeGalleryPreviewProps) {
+  const [displayPhotos, setPhotos] = useState<Photo[]>([]);
+
+  useEffect(() => {
+    const fetchAllPic = async () => {
+      try {
+        const res = await axios.get(
+          `${import.meta.env.VITE_BACKEND_URL}/api/v1/gallery`
+        );
+
+        setPhotos(Array.isArray(res.data) ? res.data : []);
+        console.log("++++++++++++++++++++", res.data);
+      } catch (error) {
+        console.error("Failed to fetch gallery:", error);
+        setPhotos([]);
+      }
+    };
+
+    fetchAllPic();
+  }, []);
 
   return (
     <section className="relative py-16 lg:py-24 overflow-hidden bg-white">
@@ -31,16 +55,19 @@ export default function HomeGalleryPreview({ photos, setPage, ourGallery,
                 <Camera size={14} />
                 {ourGallery}
               </div>
+
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight">
                 {glimpsesOf}{" "}
                 <span className="bg-linear-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
                   {schoolLife}
                 </span>
               </h2>
+
               <p className="text-gray-500 mt-2 text-sm sm:text-base">
                 {galleryDesc}
               </p>
             </div>
+
             <button
               onClick={() => {
                 setPage("gallery");
@@ -54,101 +81,115 @@ export default function HomeGalleryPreview({ photos, setPage, ourGallery,
           </div>
         </FadeIn>
 
-        {/* ═══ DESKTOP: 3x2 Grid (6 photos) ═══ */}
-        {/* ═══ MOBILE: 2x2 Grid (4 photos) ═══ */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
-          
-          {/* Photo 1 - Large (spans 2 cols + 2 rows on desktop, 2 cols on mobile) */}
-          <FadeIn delay={0.1}>
-            <div
-              className="col-span-2 md:col-span-2 md:row-span-2 group relative rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100"
-              onClick={() => {
-                setPage("gallery");
-                window.scrollTo(0, 0);
-              }}
-            >
-              <img
-                src={displayPhotos[0]?.url}
-                alt={displayPhotos[0]?.caption}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-5">
-                <span className="inline-block text-[10px] font-bold text-white bg-white/20 backdrop-blur-sm px-2.5 py-1 rounded-full mb-2">
-                  {displayPhotos[0]?.category}
-                </span>
-                <p className="text-white text-sm sm:text-lg font-bold leading-snug">
-                  {displayPhotos[0]?.caption}
-                </p>
-              </div>
-              <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="w-8 h-8 rounded-lg bg-white/30 backdrop-blur-sm flex items-center justify-center">
-                  <Sparkles size={14} className="text-white" />
-                </div>
-              </div>
-            </div>
-          </FadeIn>
-
-          {/* Photos 2-5 (Visible on both desktop & mobile) */}
-          {displayPhotos.slice(1, 5).map((photo, i) => (
-            <FadeIn key={photo.id} delay={0.15 + i * 0.1}>
+        {displayPhotos.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
+            {/* Photo 1 - Large */}
+            <FadeIn delay={0.1}>
               <div
-                className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 aspect-[4/3] border border-gray-100"
+                className="col-span-2 md:col-span-2 md:row-span-2 group relative rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100"
                 onClick={() => {
                   setPage("gallery");
                   window.scrollTo(0, 0);
                 }}
               >
                 <img
-                  src={photo.url}
-                  alt={photo.caption}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  src={displayPhotos[0].url}
+                  alt={displayPhotos[0].caption}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-2.5 sm:p-3">
-                  <span className="inline-block text-[10px] font-bold text-white bg-white/20 backdrop-blur-sm px-2 py-0.5 rounded-full mb-1">
-                    {photo.category}
+
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
+
+                <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-5">
+                  <span className="inline-block text-[10px] font-bold text-white bg-white/20 backdrop-blur-sm px-2.5 py-1 rounded-full mb-2">
+                    {displayPhotos[0].category}
                   </span>
-                  <p className="text-white text-xs font-semibold leading-snug line-clamp-2">
-                    {photo.caption}
+
+                  <p className="text-white text-sm sm:text-lg font-bold leading-snug">
+                    {displayPhotos[0].caption}
                   </p>
+                </div>
+
+                <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="w-8 h-8 rounded-lg bg-white/30 backdrop-blur-sm flex items-center justify-center">
+                    <Sparkles size={14} className="text-white" />
+                  </div>
                 </div>
               </div>
             </FadeIn>
-          ))}
 
-          {/* Photo 6 - Desktop only (hidden on mobile) */}
-          {displayPhotos[5] && (
-            <FadeIn delay={0.5} className="hidden md:block">
-              <div
-                className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 aspect-[4/3] border border-gray-100"
-                onClick={() => {
-                  setPage("gallery");
-                  window.scrollTo(0, 0);
-                }}
-              >
-                <img
-                  src={displayPhotos[5].url}
-                  alt={displayPhotos[5].caption}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-2.5 sm:p-3">
-                  <span className="inline-block text-[10px] font-bold text-white bg-white/20 backdrop-blur-sm px-2 py-0.5 rounded-full mb-1">
-                    {displayPhotos[5]?.category}
-                  </span>
-                  <p className="text-white text-xs font-semibold leading-snug line-clamp-2">
-                    {displayPhotos[5]?.caption}
-                  </p>
+            {/* Photos 2-5 */}
+            {displayPhotos.slice(1, 5).map((photo, i) => (
+              <FadeIn key={photo.id} delay={0.15 + i * 0.1}>
+                <div
+                  className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 aspect-[4/3] border border-gray-100"
+                  onClick={() => {
+                    setPage("gallery");
+                    window.scrollTo(0, 0);
+                  }}
+                >
+                  <img
+                    src={photo.url}
+                    alt={photo.caption}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    loading="lazy"
+                  />
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+
+                  <div className="absolute bottom-0 left-0 right-0 p-2.5 sm:p-3">
+                    <span className="inline-block text-[10px] font-bold text-white bg-white/20 backdrop-blur-sm px-2 py-0.5 rounded-full mb-1">
+                      {photo.category}
+                    </span>
+
+                    <p className="text-white text-xs font-semibold leading-snug line-clamp-2">
+                      {photo.caption}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </FadeIn>
-          )}
-        </div>
+              </FadeIn>
+            ))}
 
+            {/* Photo 6 */}
+            {displayPhotos[5] && (
+              <FadeIn delay={0.5} className="hidden md:block">
+                <div
+                  className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 aspect-[4/3] border border-gray-100"
+                  onClick={() => {
+                    setPage("gallery");
+                    window.scrollTo(0, 0);
+                  }}
+                >
+                  <img
+                    src={displayPhotos[5].url}
+                    alt={displayPhotos[5].caption}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    loading="lazy"
+                  />
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+
+                  <div className="absolute bottom-0 left-0 right-0 p-2.5 sm:p-3">
+                    <span className="inline-block text-[10px] font-bold text-white bg-white/20 backdrop-blur-sm px-2 py-0.5 rounded-full mb-1">
+                      {displayPhotos[5].category}
+                    </span>
+
+                    <p className="text-white text-xs font-semibold leading-snug line-clamp-2">
+                      {displayPhotos[5].caption}
+                    </p>
+                  </div>
+                </div>
+              </FadeIn>
+            )}
+          </div>
+        )}
+
+        {displayPhotos.length === 0 && (
+          <div className="flex items-center justify-center py-20">
+            <p className="text-gray-500 text-sm">No gallery photos available.</p>
+          </div>
+        )}
       </div>
     </section>
   );
