@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Plus, Trash2, Edit3, RefreshCw, Star, Eye, EyeOff,
   BookOpen, Image as ImageIcon,
@@ -40,31 +40,61 @@ export default function AdminBlog({ posts, setPosts }: AdminBlogProps) {
     return e;
   };
 
-  // ── Save (create or update) ──
-  const save = () => {
-    const e = validate();
-    if (Object.keys(e).length) { setErrors(e); return; }
+  useEffect(() => {
+  fetch("/api/blogs")
+    .then(res => res.json())
+    .then(data => setPosts(data));
+}, []);
 
-    if (editingId !== null) {
-      setPosts(
-        posts.map((p) =>
-          p.id === editingId
-            ? { ...p, ...form }
-            : p
-        )
-      );
-      setEditingId(null);
-    } else {
-      const newPost: BlogPost = {
-        id: Date.now(),
-        ...form,
-        publishedAt: new Date().toISOString().split("T")[0],
-      };
-      setPosts([newPost, ...posts]);
-    }
-    setForm({ ...EMPTY });
-    setErrors({});
-  };
+const save = async () => {  // ← Make async
+  const e = validate();
+  if (Object.keys(e).length) { setErrors(e); return; }
+
+  if (editingId !== null) {
+    // 🔁 UPDATE API CALL
+    const res = await fetch(`/api/blogs/${editingId}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
+    const updated = await res.json();
+    setPosts(posts.map((p) => p.id === editingId ? updated : p));
+    setEditingId(null);
+  } else {
+    // 🔁 CREATE API CALL
+    const res = await fetch("/api/blogs", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
+    const created = await res.json();
+    setPosts([created, ...posts]);
+  }
+  
+  setForm({ ...EMPTY });
+  setErrors({});
+};
+
+  const deletePost = async (id: number) => {  // ← Make async
+  if (window.confirm("Delete this post permanently?")) {
+    await fetch(`/api/blogs/${id}`, { method: "DELETE" });
+    setPosts(posts.filter((p) => p.id !== id));
+  }
+};
+
+const toggleFeatured = async (id: number) => {  // ← Make async
+  const post = posts.find(p => p.id === id);
+  if (!post) return;
+  
+  // 🔁 UPDATE API CALL
+  const res = await fetch(`/api/blogs/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ featured: !post.featured }),
+  });
+  const updated = await res.json();
+  setPosts(posts.map((p) => (p.id === id ? updated : p)));
+};
 
   const startEdit = (post: BlogPost) => {
     setEditingId(post.id);
@@ -88,15 +118,9 @@ export default function AdminBlog({ posts, setPosts }: AdminBlogProps) {
     setErrors({});
   };
 
-  const deletePost = (id: number) => {
-    if (window.confirm("Delete this post permanently?")) {
-      setPosts(posts.filter((p) => p.id !== id));
-    }
-  };
+  
 
-  const toggleFeatured = (id: number) => {
-    setPosts(posts.map((p) => (p.id === id ? { ...p, featured: !p.featured } : p)));
-  };
+  
 
   // ── Field helper ──
   const Field = ({

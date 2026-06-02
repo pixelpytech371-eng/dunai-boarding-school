@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Trash2, Plus } from "lucide-react";
 import FadeIn from "../components/ui/FadeIn";
 import Badge from "../components/ui/Badge";
@@ -7,11 +7,33 @@ import type { Achievement } from "../types";
 function AdminAchievements({ achievements, setAchievements }: { achievements: Achievement[]; setAchievements: (v: Achievement[]) => void }) {
   const [form, setForm] = useState({ student: "", title: "", desc: "", type: "Academic", year: "2081" });
   const types = ["Academic", "Sports", "Technology", "Cultural"];
-  const add = () => {
-    if (!form.student || !form.title) return;
-    setAchievements([{ id: Date.now(), ...form }, ...achievements]);
-    setForm({ student: "", title: "", desc: "", type: "Academic", year: "2081" });
-  };
+
+  useEffect(() => {
+  fetch("/api/achievements")
+    .then(res => res.json())
+    .then(data => setAchievements(data));
+}, []);
+
+const add = async () => {  // ← Make async
+  if (!form.student || !form.title) return;
+  
+  // 🔁 CREATE API CALL
+  const res = await fetch("/api/achievements", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(form),
+  });
+  const created = await res.json();
+  setAchievements([created, ...achievements]);
+  setForm({ student: "", title: "", desc: "", type: "Academic", year: "2081" });
+};
+
+  const del = async (id: number) => {  // ← New async function
+  
+  await fetch(`/api/achievements/${id}`, { method: "DELETE" });
+  setAchievements(achievements.filter(x => x.id !== id));
+};
+
   return (
     <FadeIn>
       <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm mb-5">
@@ -33,7 +55,7 @@ function AdminAchievements({ achievements, setAchievements }: { achievements: Ac
         {achievements.map(a => (
           <div key={a.id} className="flex items-start justify-between gap-3 bg-white rounded-xl border border-gray-100 p-4 shadow-sm">
             <div><p className="font-bold text-gray-900 text-sm">{a.student}</p><p className="text-sm text-blue-700 font-semibold">{a.title}</p><p className="text-xs text-gray-500 mt-0.5">{a.desc}</p><div className="flex gap-2 mt-1"><Badge label={a.type} /><span className="text-xs text-gray-400">{a.year} B.S.</span></div></div>
-            <button onClick={() => setAchievements(achievements.filter(x => x.id !== a.id))} className="p-1.5 hover:bg-red-50 text-red-500 rounded-lg transition-colors"><Trash2 size={14} /></button>
+            <button onClick={() => del(a.id)} className="p-1.5 hover:bg-red-50 text-red-500 rounded-lg transition-colors"><Trash2 size={14} /></button>
           </div>
         ))}
       </div>

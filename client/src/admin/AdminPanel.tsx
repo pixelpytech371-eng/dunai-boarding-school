@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   BarChart2, Bell, Camera, Award, Users, FileText,
   Shield, LogOut, BookOpen,
@@ -42,6 +42,8 @@ function Dashboard({
   inquiries: Inquiry[]; blogs: BlogPost[];
 }) {
   const pending = inquiries.filter((i) => i.status === "Pending").length;
+
+  
 
   return (
     <FadeIn>
@@ -142,6 +144,24 @@ export default function AdminPanel({
   onLogout,
 }: AdminPanelProps) {
   const [tab, setTab] = useState("dashboard");
+
+  useEffect(() => {
+    Promise.all([
+      fetch("/api/notices").then(r => r.json()),
+      fetch("/api/photos").then(r => r.json()),
+      fetch("/api/achievements").then(r => r.json()),
+      fetch("/api/faculty").then(r => r.json()),
+      fetch("/api/inquiries").then(r => r.json()),
+      fetch("/api/blogs").then(r => r.json()),
+    ]).then(([n, p, a, f, i, b]) => {
+      setNotices(n);
+      setPhotos(p);
+      setAchievements(a);
+      setFaculty(f);
+      setInquiries(i);
+      setBlogs(b);
+    });
+  }, []);
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">

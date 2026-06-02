@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Plus, Edit3, Trash2, RefreshCw } from "lucide-react";
 import FadeIn from "../components/ui/FadeIn";
 import Badge from "../components/ui/Badge";
@@ -8,18 +8,45 @@ function AdminNotices({ notices, setNotices }: { notices: Notice[]; setNotices: 
   const [form, setForm] = useState({ title: "", body: "", type: "Exam" });
   const [editing, setEditing] = useState<number | null>(null);
   const types = ["Exam", "Event", "Holiday", "Meeting"];
+
+  useEffect(() => {
+  // 🔁 REPLACE WITH API CALL
+  fetch("/api/notices")
+    .then(res => res.json())
+    .then(data => setNotices(data));
+}, []);
+
+const save = async () => {  // ← Make async
+  if (!form.title || !form.body) return;
+  
+  if (editing !== null) {
+    // 🔁 UPDATE API CALL
+    const res = await fetch(`/api/notices/${editing}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
+    const updated = await res.json();
+    setNotices(notices.map(n => n.id === editing ? updated : n));
+    setEditing(null);
+  } else {
+    const res = await fetch("/api/notices", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
+    const created = await res.json();
+    setNotices([created, ...notices]);
+  }
+  
+  setForm({ title: "", body: "", type: "Exam" });
+};
  
-  const save = () => {
-    if (!form.title || !form.body) return;
-    if (editing !== null) {
-      setNotices(notices.map(n => n.id === editing ? { ...n, ...form } : n));
-      setEditing(null);
-    } else {
-      setNotices([{ id: Date.now(), ...form, date: new Date().toISOString().split("T")[0] }, ...notices]);
-    }
-    setForm({ title: "", body: "", type: "Exam" });
-  };
-  const del = (id: number) => setNotices(notices.filter(n => n.id !== id));
+const del = async (id: number) => {  
+  await fetch(`/api/notices/${id}`, { method: "DELETE" });
+  setNotices(notices.filter(n => n.id !== id));
+};
+
   const edit = (n: Notice) => { setForm({ title: n.title, body: n.body, type: n.type }); setEditing(n.id); };
  
   return (

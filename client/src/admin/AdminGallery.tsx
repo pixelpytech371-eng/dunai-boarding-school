@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Trash2, Upload } from "lucide-react";
 import FadeIn from "../components/ui/FadeIn";
 import Badge from "../components/ui/Badge";
@@ -7,12 +7,38 @@ import type { Photo } from "../types";
 function AdminGallery({ photos, setPhotos }: { photos: Photo[]; setPhotos: (v: Photo[]) => void }) {
   const [form, setForm] = useState({ url: "", caption: "", category: "Event" });
   const cats = ["Event", "Academic", "Sports"];
-  const add = () => {
-    if (!form.caption) return;
-    const url = form.url || `https://picsum.photos/400/300?random=${Date.now()}`;
-    setPhotos([{ id: Date.now(), ...form, url }, ...photos]);
-    setForm({ url: "", caption: "", category: "Event" });
-  };
+
+  useEffect(() => {
+  fetch("/api/photos")
+    .then(res => res.json())
+    .then(data => setPhotos(data));
+}, []);
+
+const add = async () => {  // ← Make async
+  if (!form.caption) return;
+  
+  // 🔁 UPLOAD API CALL - use FormData for file upload
+  const formData = new FormData();
+  formData.append("caption", form.caption);
+  formData.append("category", form.category);
+  // If you add file input later:
+  // formData.append("image", fileInput.files[0]);
+  
+  const res = await fetch("/api/photos", {
+    method: "POST",
+    body: formData,  // ← FormData, not JSON
+  });
+  const created = await res.json();
+  setPhotos([created, ...photos]);
+  setForm({ url: "", caption: "", category: "Event" });
+};
+
+
+ const del = async (id: number) => {  // ← New async function
+  await fetch(`/api/photos/${id}`, { method: "DELETE" });
+  setPhotos(photos.filter(ph => ph.id !== id));
+};
+
   return (
     <FadeIn>
       <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm mb-5">
@@ -30,7 +56,7 @@ function AdminGallery({ photos, setPhotos }: { photos: Photo[]; setPhotos: (v: P
           <div key={p.id} className="relative group rounded-xl overflow-hidden border border-gray-100 shadow-sm">
             <img src={p.url} alt={p.caption} className="w-full object-cover" style={{ aspectRatio: "4/3" }} />
             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-              <button onClick={() => setPhotos(photos.filter(ph => ph.id !== p.id))} className="p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors"><Trash2 size={16} /></button>
+              <button onClick={() => del(p.id)} className="p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors"><Trash2 size={16} /></button>
             </div>
             <div className="px-3 py-2 bg-white"><p className="text-xs font-medium text-gray-700 truncate">{p.caption}</p><Badge label={p.category} /></div>
           </div>

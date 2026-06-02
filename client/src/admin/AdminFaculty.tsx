@@ -1,16 +1,44 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Trash2, Plus } from "lucide-react";
 import FadeIn from "../components/ui/FadeIn";
 import type { Faculty } from "../types";
 
 function AdminFaculty({ faculty, setFaculty }: { faculty: Faculty[]; setFaculty: (v: Faculty[]) => void }) {
   const [form, setForm] = useState({ name: "", subject: "", photo: "", bio: "" });
-  const add = () => {
-    if (!form.name || !form.subject) return;
-    const idx = Math.floor(Math.random() * 70) + 1;
-    setFaculty([...faculty, { id: Date.now(), ...form, photo: form.photo || `https://i.pravatar.cc/150?img=${idx}` }]);
-    setForm({ name: "", subject: "", photo: "", bio: "" });
-  };
+
+  useEffect(() => {
+  fetch("/api/faculty")
+    .then(res => res.json())
+    .then(data => setFaculty(data));
+}, []);
+
+const add = async () => {  // ← Make async
+  if (!form.name || !form.subject) return;
+  
+  // 🔁 UPLOAD API CALL - use FormData for photo
+  const formData = new FormData();
+  formData.append("name", form.name);
+  formData.append("subject", form.subject);
+  formData.append("bio", form.bio);
+  // If you add file input later:
+  // formData.append("photo", fileInput.files[0]);
+  
+  const res = await fetch("/api/faculty", {
+    method: "POST",
+    body: formData,
+  });
+  const created = await res.json();
+  setFaculty([...faculty, created]);
+  setForm({ name: "", subject: "", photo: "", bio: "" });
+};
+
+ const del = async (id: number) => {  // ← New async function
+  
+  await fetch(`/api/faculty/${id}`, { method: "DELETE" });
+  setFaculty(faculty.filter(x => x.id !== id));
+};
+
+
   return (
     <FadeIn>
       <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm mb-5">
@@ -31,7 +59,7 @@ function AdminFaculty({ faculty, setFaculty }: { faculty: Faculty[]; setFaculty:
               <img src={f.photo} alt={f.name} className="w-10 h-10 rounded-full object-cover border-2 border-blue-100" />
               <div><p className="font-bold text-gray-900 text-sm">{f.name}</p><p className="text-xs text-blue-600">{f.subject}</p></div>
             </div>
-            <button onClick={() => setFaculty(faculty.filter(x => x.id !== f.id))} className="p-1.5 hover:bg-red-50 text-red-500 rounded-lg transition-colors shrink-0"><Trash2 size={14} /></button>
+            <button onClick={() => del(f.id)} className="p-1.5 hover:bg-red-50 text-red-500 rounded-lg transition-colors shrink-0"><Trash2 size={14} /></button>
           </div>
         ))}
       </div>

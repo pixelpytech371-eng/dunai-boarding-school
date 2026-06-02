@@ -5,6 +5,10 @@ import type { Notice, Photo, Achievement, Inquiry } from "../types";
 import StatCard from "../components/ui/StatCard";
 
 function AdminDashboard({ notices, photos, achievements, inquiries }: { notices: Notice[]; photos: Photo[]; achievements: Achievement[]; inquiries: Inquiry[] }) {
+ 
+
+  
+
   const pending = inquiries.filter(i => i.status === "Pending").length;
   return (
     <FadeIn>

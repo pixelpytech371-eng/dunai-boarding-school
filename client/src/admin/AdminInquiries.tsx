@@ -1,10 +1,37 @@
+import { useState, useEffect } from "react";
 import { Trash2, FileText, Mail, PhoneCall } from "lucide-react";
 import FadeIn from "../components/ui/FadeIn";
 import type { Inquiry } from "../types";
 import MessageSquareIcon from "../components/ui/MessageSquareIcon";
 
 function AdminInquiries({ inquiries, setInquiries }: { inquiries: Inquiry[]; setInquiries: (v: Inquiry[]) => void }) {
-  const mark = (id: number, status: string) => setInquiries(inquiries.map(q => q.id === id ? { ...q, status } : q));
+
+
+
+  useEffect(() => {
+  fetch("/api/inquiries")
+    .then(res => res.json())
+    .then(data => setInquiries(data));
+}, []);
+
+
+const mark = async (id: number, status: string) => {  // ← Make async
+  const res = await fetch(`/api/inquiries/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ status }),
+  });
+  const updated = await res.json();
+  setInquiries(inquiries.map(q => q.id === id ? updated : q));
+};
+
+const del = async (id: number) => {  // ← New async function
+  await fetch(`/api/inquiries/${id}`, { method: "DELETE" });
+  setInquiries(inquiries.filter(x => x.id !== id));
+};
+
+
+
   return (
     <FadeIn>
       <div className="space-y-4">
